@@ -7,11 +7,6 @@
 
 <!--  <div class="address" *ngIf="(service.addresses$ | async)">-->
 <!--  <div class="card" *ngFor="let address of (service.addresses$ | async).addresses">-->
-
-  <div class="row" style="border: 1px solid gainsboro" *ngFor="let address of listAddress">
-    <div class="card-body">
-      <h5 class="card-title">Tên khách hàng: {{address.name}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: {{ address.phone }}</h6>
 <!--      <mat-form-field appearance="fill">-->
 <!--        <mat-label>Tỉnh / Thành Phố</mat-label>-->
 <!--        <mat-select [value]="address.cityAddressId">-->
@@ -20,18 +15,63 @@
 <!--          </mat-option>-->
 <!--        </mat-select>-->
 <!--      </mat-form-field>-->
+<!--  <div class="row" style="border: 1px solid gainsboro" *ngFor="let address of listAddress">-->
+<div class="row" style="border: 1px solid gainsboro">
+    <div *ngIf="isEdit" class="card-body">
+      <h5 class="card-title">
+          Tên khách hàng
+        <input type="text" [value]="address.name">
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: <input type="text" [value]="address.phone"></h6>
+      Địa chỉ:
+<!--      -->
+      <mat-form-field appearance="fill">
+        <mat-label>Tỉnh / Thành Phố</mat-label>
+        <mat-select  [value]="address.cityAddressId" (valueChange)="getDistrictById($event)">
+          <mat-option *ngFor="let city of cityList" [value]="city.id">
+            {{city.cityName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Quận / Huyện</mat-label>
+        <mat-select [value]="address.districtAddressId" (valueChange)="getWard(this.cityId, $event)">
+          <mat-option *ngFor="let district of districtList" [value]="district.id">
+            {{district.districtName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+<!--      -->
+      <mat-form-field appearance="fill">
+        <mat-label>Phường / Xã</mat-label>
+        <mat-select [value]="address.wardId">
+          <mat-option *ngFor="let ward of wardList" [value]="ward.id">
+            {{ward.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+<!--      -->
+      <div class="text-right">
+        <button (click)="updateAddress()" routerLinkActive="router-link-active" class="card-link btn btn-warning">
+          Cập nhật
+        </button>
+        <button  class="card-link btn btn-danger">
+          Xóa
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!isEdit" class="card-body">
+      <h5 class="card-title">Tên khách hàng: {{address.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: {{ address.phone }}</h6>
       Địa chỉ: {{
       address.ward.districtAddress.cityAddress.cityCode+" "+address.ward.districtAddress.cityAddress.cityName + "," +
-        address.ward.districtAddress.prefix + " " + address.ward.districtAddress.districtName + ", " +
-        address.ward.prefix + " " + address.ward.name + ", "
+      address.ward.districtAddress.prefix + " " + address.ward.districtAddress.districtName + ", " +
+      address.ward.prefix + " " + address.ward.name + ", "
       +address.street_Address
       }}
       <div class="text-right">
-        <button
-          [routerLink]="['/user', 'address', address.id]"
-          routerLinkActive="router-link-active"
-          class="card-link btn btn-warning"
-        >
+        <button (click)="editAddress()" routerLinkActive="router-link-active" class="card-link btn btn-warning">
           Sửa
         </button>
         <button  class="card-link btn btn-danger">
@@ -39,5 +79,5 @@
         </button>
       </div>
     </div>
-  </div>
 
+  </div>

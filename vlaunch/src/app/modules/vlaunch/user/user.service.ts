@@ -3,7 +3,7 @@ import {HttpService} from '../../../core/services/http.service';
 import {TokenService} from '../../../core/services/token.service';
 import {Result} from '../../../models/result';
 import {BehaviorSubject} from 'rxjs';
-import {City, District, User} from '../../../models/user';
+import {Address, City, District, User, Ward} from '../../../models/user';
 import { SnackbarModifyService } from 'src/app/core/services/snackbar-modify.service';
 
 @Injectable({
@@ -18,6 +18,9 @@ export class UserService {
 
   private districtSubject = new BehaviorSubject(new Array(new District()));
   $district = this.districtSubject.asObservable();
+
+  private wardSubject = new BehaviorSubject(new Array(new Ward()));
+  $ward = this.wardSubject.asObservable();
   constructor(private httpService: HttpService, private tokenService: TokenService, private snackbarModifyService: SnackbarModifyService) { }
 
   getProfile(): any {
@@ -57,6 +60,13 @@ export class UserService {
     const url = 'Address/GetDistrictById/' + cityAddressId;
     this.httpService.getHandle(url).subscribe((res: Result) => {
       this.districtSubject.next(res.data);
+    });
+  }
+
+  getWardByCityIdAndDistrictId(address: Address): any {
+    const url = 'Address/GetWardByCityIdAndDistrict/' + address.cityAddressId + '/' + address.districtAddressId;
+    this.httpService.getHandle(url).subscribe((res: Result) => {
+      this.wardSubject.next(res.data);
     });
   }
 }

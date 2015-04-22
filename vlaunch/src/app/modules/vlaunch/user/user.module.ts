@@ -10,6 +10,8 @@ import { AddressComponent } from './address/address.component';
 import {MaterialModule} from '../material.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -22,6 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatInputModule,
+    MatAutocompleteModule,
   ]
 })
 export class UserModule { }

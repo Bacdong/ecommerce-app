@@ -2,6 +2,12 @@ export class City {
   'id': number;
   'cityName': string;
   'cityCode': string;
+
+  constructor() {
+    this.id = 0;
+    this.cityName = '';
+    this.cityCode = '';
+  }
 }
 
 export class District {
@@ -10,6 +16,15 @@ export class District {
   'prefix': string;
   'cityAddressId': number;
   'cityAddress': City;
+
+
+  constructor() {
+    this.id = 0;
+    this.districtName = '';
+    this.prefix = '';
+    this.cityAddressId = 0;
+    this.cityAddress = new City();
+  }
 }
 
 export class Ward {
@@ -19,9 +34,30 @@ export class Ward {
   'cityAddressId': number;
   'districtAddressId': number;
   'districtAddress': District;
+
+  constructor() {
+    this.id = 0;
+    this.name = '';
+    this.prefix = '';
+    this.cityAddressId = 0;
+    this.districtAddressId = 0;
+    this.districtAddress = new District();
+  }
 }
 
 export class Address {
+
+  constructor() {
+    this.id = 0;
+    this.street_Address = '';
+    this.phone = 'phone';
+    this.name = '';
+    this.cityAddressId = 0;
+    this.districtAddressId = 0;
+    this.wardId = 0;
+    this.ward = new Ward();
+  }
+
   'id': number;
   'street_Address': string;
   'phone': string;
