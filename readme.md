@@ -1,10 +1,10 @@
-# Vlaunch - LavisDecor.Art
+# Ecommerce App - BookStore
 ## Reference Links
 * [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Environment
 * NodeJS: v12.19.0
-* Angular: v10.2.0
+* Angular: v11.2.1
 
 ## Install Environment
 * Install packages:
