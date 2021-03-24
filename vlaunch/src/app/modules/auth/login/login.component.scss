@@ -1,0 +1,366 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.auth {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: $overlay-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease 325ms;
+  #login {
+    opacity: 0;
+    display: none;
+    &.show {
+      opacity: 1;
+      display: block;
+    }
+  }
+  &__login {
+    animation: fadeInPopup ease 0.6s;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    .logo {
+      background-image: url('/assets/images/backgrounds/login-bg.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 30px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        object-fit: contain;
+        object-position: center;
+        width: 100px;
+      }
+      &__title {
+        display: block;
+        width: 100%;
+        margin-top: 16px;
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text, 12px, 150%, 600, center, uppercase, '');
+      }
+    }
+    .form-container {
+      padding: 40px;
+      padding-bottom: 0;
+      .form-groups {
+        input {
+          width: 100%;
+          padding: 12px 20px;
+          outline: none;
+          border: 1px solid $border-input;
+          border-radius: 4px;
+          &.error { border-color: red; }
+          &:focus { border-color: $black; }
+        }
+        &:not(:first-child),
+        &--check { margin-top: 15px; }
+        &--check {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .check-box {
+            &__label {
+              margin: 0 0 0 15px;
+              cursor: pointer;
+              @include text-style($primary-text, 16px, 150%, 400, '', '', capitalize);
+            }
+          }
+          .forgot-pwd {
+            &__link {
+              display: block;
+              text-decoration: none;
+              letter-spacing: $letter-spacing;
+              transition: $primary-transition;
+              @include text-style($link-color, 12px, 150%, 400, '', capitalize, '');
+              &:hover,
+              &:active,
+              &:focus { 
+                color: $link-color-hover;
+                text-decoration: underline; 
+              }
+            }
+          }
+        }
+      }
+      .form-button {
+        margin-top: 15px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: $black;
+        transition: $primary-transition;
+        border: none;
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text, 13px, 150%, 600, center, uppercase, '');
+        &:hover,
+        &:active,
+        &:focus { background-color: $hover-background; }
+      }
+      .direction-to-register {
+        padding: 15px 0;
+        &__title {
+          display: block;
+          letter-spacing: $letter-spacing;
+          @include text-style($primary-text, 16px, 150%, 600, center, '', capitalize);
+        }
+        &__link { 
+          cursor: pointer;
+          display: block;
+          text-decoration: none;
+          transition: $primary-transition;
+          letter-spacing: $letter-spacing;
+          @include text-style($link-color, 16px, 150%, 400, center, '', capitalize);
+          &:hover,
+          &:active,
+          &:focus { 
+            color: $link-color-hover;
+            text-decoration: underline; 
+          }
+        }
+      }
+    }
+    .footer {
+      background-color: $decor-background;
+      padding: 30px;
+      &__title,
+      &__sub-title {
+        letter-spacing: $letter-spacing;
+        display: block;
+        @include text-style($primary-text, 16px, 150%, 600, center, capitalize, '');
+      }
+      &__action { 
+        margin-top: 15px;
+        text-align: center; 
+      }
+    }
+  }
+  .register {
+    animation: fadeInPopup ease 0.4s;
+    backface-visibility: hidden;
+    background: $primary-background;
+    border-radius: 5px;
+    overflow: auto;
+    display: none;
+    opacity: 0;
+    &__container { padding: 20px 40px 0; }
+    &__header {
+      h3 {
+        letter-spacing: $letter-spacing;
+        @include text-style($primary-text, 30px, 150%,  400, center, uppercase, '');
+      }
+    }
+    &__form {
+      .group {
+        &:not(:first-child) { margin-top: 15px; }
+        &--separate {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          input { 
+            flex: 0 0 50%; 
+            &:nth-child(1) {
+              border-right: none;
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+              &:focus { border-right: 1px solid $black; }
+            }
+            &:nth-child(2) {
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+          }
+        }
+        input {
+          border: 1px solid $border-input;
+          border-radius: 4px;
+          outline: none;
+          padding: 12px 20px;
+          letter-spacing: $letter-spacing;
+          width: 100%;
+          &:focus { border-color: $black; }
+          &.error { border-color: red; }
+        }
+        &--dropdown {
+          position: relative;
+          select {
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid $border-input;
+            outline: none;
+            padding: 12px 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            letter-spacing: $letter-spacing;
+            @include text-style($primary-text, 16px, 150%, 400, left, capitalize, '');
+            &:focus { border-color: $black; }
+          }
+          .dropdown-icon {
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .arrow-icon {
+              --size: 30px;
+              width: var(--size);
+              height: var(--size);
+              font-size: var(--size);
+            }
+          }
+        }
+        &--checkbox {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          input { width: 20px; }
+          .checkbox-label {
+            cursor: pointer;
+            flex: 1;
+            margin: 0 0 0 10px;
+            letter-spacing: $letter-spacing;
+            @include text-style($primary-text, 12px, 150%, 400, left, '', capitalize);
+          }
+        }
+      }
+      .create-button {
+        margin-top: 15px;
+        border-radius: 4px;
+        padding: 14px 20px;
+        border: none;
+        letter-spacing: $letter-spacing;
+        background: $secondary-background;
+        transition: $primary-transition;
+        @include text-style($secondary-text, 12px, 150%, 600, center, uppercase, '');
+        &:hover,
+        &:active,
+        &:focus { background: $hover-background; }
+      }
+    }
+    &__note {
+      padding: 15px 0;
+      span {
+        display: block;
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text-opacity, 12px, 150%, 400, center, '', capitalize);
+        .terms-link,
+        .privacy-link {
+          display: inline-block;
+          transition: $primary-transition;
+          @include text-style($link-color, 14px, 150%, 400, '', '', '');
+          &:hover,
+          &:active,
+          &:focus { color: $link-color-hover; }
+        }
+        .privacy-link { text-transform: capitalize; }
+      }
+    }
+    &__direction {
+      margin-top: 15px;
+      border-top: 1px solid $border-input;
+      &__link {
+        display: block;
+        cursor: pointer;
+        padding: 15px 40px;
+        transition: $primary-transition;
+        text-decoration: none;
+        letter-spacing: $letter-spacing;
+        @include text-style($primary-text, 16px, 150%, 600, center, '', capitalize);
+        &:hover,
+        &:active,
+        &:focus { 
+          background: $hover-background; 
+          color: $secondary-text;
+        }
+      }
+    }
+    &.show {
+      display: block;
+      opacity: 1;
+    }
+  }
+  .close-action {
+    position: absolute;
+    z-index: 1;
+    --space: 60px;
+    top: var(--space);
+    right: var(--space);
+    &__link {
+      display: block;
+      text-decoration: none;
+      .close-icon {
+        --size: 50px;
+        width: var(--size);
+        height: var(--size);
+        color: $secondary-text;
+        transition: $primary-transition;
+        font-size: var(--size);
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        .close-icon { color: $hover-background; }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .auth {
+    padding-left: 0;
+    padding-right: 0;
+    .auth-wrapper {
+      > div {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .close-action {
+      --space: 10px;
+      &__link {
+        .close-icon { --size: 36px; }
+      }
+    }
+    .register {
+      max-height: 90vh;
+      &__container { padding: 20px 15px 0; }
+      &__header {
+        h3 { font-size: 22px; }
+      }
+      &__form {
+        .group {
+          input { font-size: 14px; }
+          &--dropdown {
+            select { font-size: 14px; }
+          }
+          &--checkbox {
+            .checkbox-label { font-size: 10px; }
+          }
+        }
+      }
+      &__direction {
+        margin-top: 0;
+        &__link { 
+          padding: 15px;
+          font-size: 16px; 
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInPopup {
+  0% { transform: rotateY(180deg); }
+  60% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0deg); }
+}

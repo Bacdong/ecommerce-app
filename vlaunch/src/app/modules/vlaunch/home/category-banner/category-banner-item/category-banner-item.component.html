@@ -1,0 +1,12 @@
+<div class="category-banner-item">
+  <a routerLink="/" class="wrapper-link">
+    <div class="category-banner-item__image">
+      <img onerror="this.src='assets/images/no-image.jpg'"
+        src="{{ currentImage.src }}" 
+        alt="{{ currentItemName }}"
+        loading="lazy"
+      >
+    </div>
+    <h3 class="category-banner-item__title">{{ currentItemName }}</h3>
+  </a>
+</div>

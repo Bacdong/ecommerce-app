@@ -1,0 +1,18 @@
+<app-general-banner
+  [title]="title"
+  [background]="background"
+></app-general-banner>
+
+<div class="sitemap container">
+  <div class="sitemap__breadcrumb col-12">
+    <app-breadcrumb [currentPath]="path"></app-breadcrumb>
+  </div>
+  <div class="sitemap__list col-12"
+    *ngFor="let sitemap of sitemaps"
+  >
+    <app-sitemap-list 
+      
+      [sitemapList]="sitemap.data"
+    ></app-sitemap-list> 
+  </div>
+</div>

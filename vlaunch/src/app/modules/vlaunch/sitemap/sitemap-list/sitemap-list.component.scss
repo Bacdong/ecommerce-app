@@ -1,0 +1,26 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.sitemaps {
+  --spacing: 40px;
+  margin-top: var(--spacing); 
+  border-top: 1px solid $border-input;
+  padding-top: var(--spacing);
+  max-width: $max-width-container;
+  &__title {
+    h3 {
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 30px, 150%, 300, left, uppercase, '');
+    }
+  }
+  &__wrapper {
+    > div { 
+      --margin: 15px;
+      margin-bottom: var(--margin);
+      margin-top: var(--margin); 
+    }
+  }
+  @media screen and (max-width: $tablet) {
+    --spacing: 20px;
+  }
+}

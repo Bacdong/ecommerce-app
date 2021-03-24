@@ -1,0 +1,133 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.rooms-item {
+  animation: slideToRight ease 1s;
+  transition: $primary-transition;
+  .content {
+    border-radius: $border-radius;
+    overflow: hidden;
+    position: relative;
+    &__image {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    &__info {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      transition: ease 325ms;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom,rgba(76,76,76,0) 0,#131313 100%);
+      &__name {
+        span {
+          display: block;
+          letter-spacing: $letter-spacing;
+          color: $secondary-text;
+          line-height: 150%;
+          &:first-child {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+          }
+          &:last-child {
+            text-transform: capitalize;
+            font-weight: normal;
+            font-size: 12px;
+            padding-top: 4px;
+          }
+        }
+      }
+      &__action {
+        .action-icon {
+          cursor: pointer;
+          color: $secondary-text;
+          transition: ease 325ms;
+          &:hover { color: $red; }
+          &.liked { color: $red; }
+        }
+      }
+    }
+    &__overlay {
+      position: absolute;
+      visibility: hidden;
+      transition: ease 0.5s;
+      backface-visibility: visible;
+      opacity: 0;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: $secondary-overlay-background;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__link {
+        display: block;
+        flex: 0 0 100%;
+        height: 100%;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .overlay-icon {
+          --size: 32px;
+          width: var(--size);
+          height: var(--size);
+          font-size: var(--size);
+          color: $secondary-text;
+        }
+        .overlay-title {
+          display: inline-block;
+          letter-spacing: $letter-spacing;
+          padding-top: 14px;
+          animation: slideToTop ease 1s;
+          backface-visibility: visible;
+          transition: ease 325ms;
+          @include text-style($secondary-text, 13px, 150%, 400, center, uppercase, '');
+          @keyframes slideToTop {
+            from { padding-top: 100px; opacity: 0; }
+            to { padding-top: 14px; opacity: 1; }
+          }
+        }
+      }
+    }
+    &:hover {
+      .content__info {
+        visibility: visible;
+        opacity: 1;
+      }
+      .content__overlay { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+    }
+  }
+}
+
+.preview {
+  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}

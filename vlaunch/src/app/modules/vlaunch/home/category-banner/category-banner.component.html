@@ -1,0 +1,18 @@
+<section class="category-banner container-fluid">
+  <div class="category-banner__wrapper row">
+    <div class="category-banner__list col-12">
+      <owl-carousel-o class="carousel"
+        [options]="customOptions"
+      >
+        <ng-container *ngFor="let item of categories; let i = index">
+          <ng-template carouselSlide>
+            <app-category-banner-item 
+              [index]="i"
+              [item]="item"
+            ></app-category-banner-item>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>

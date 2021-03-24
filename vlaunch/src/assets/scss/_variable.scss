@@ -1,0 +1,46 @@
+$white: #fff;
+$black: #000;
+$red: #db185c;
+$dark-yellow: #A09178;
+
+$primary-font: 'Open Sans', sans-serif;
+$primary-font-size: 16px;
+$primary-line-height: 150%;
+$primary-transition: ease 325ms;
+
+$header-background: rgba(0, 0, 0, 0.5);
+$primary-background: $white;
+$secondary-background: $black;
+$hover-background: #564d55;
+$decor-background: #eeedee;
+$grey-background: #f4f3f3;
+$grey-hover-background: rgba(255, 255, 255, 0.3);
+$overlay-background: rgba(0, 0, 0, 0.8);
+$secondary-overlay-background: rgba(86, 77, 85, 0.8);
+$selection-highlight-background: rgba(0, 0, 0, 0.3);
+
+$decor-color: #564d55;
+$primary-text: #282828;
+$secondary-text: $white;
+$secondary-text-opacity: #737579;
+$link-color: #007bff;
+$link-color-hover: #0056b3;
+$letter-spacing: 1.2px;
+$title-highlight-color-0: #4f94fb;
+$title-highlight-color-1: #00ce8e;
+$title-highlight-color-2: #ff0067;
+$title-highlight-color-3: #00c6e0;
+
+$primary-border-color: $black;
+$secondary-border-color: $white;
+$border-lightcolor: #5c5c5c;
+$border-color: rgba(255, 255, 255, 0.3);
+$border-input: #afb2b5;
+$border-radius: 8px;
+
+// Responsive Breakpoint
+$desktop: 1026px; //min-width
+$tablet: 1025px;
+$mobile: 767px;
+
+$max-width-container: 1320px; // set max-width like bootstrap

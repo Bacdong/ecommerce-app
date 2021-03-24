@@ -1,0 +1,90 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.product {
+  animation: slideToRight ease 1.5s;
+  transition: $primary-transition;
+  &__image {
+    display: block;
+    text-decoration: none;
+    color: currentColor;
+    text-align: center;
+    img { 
+      width: 60%; 
+      transition: ease-in-out 325ms;
+    }
+    cursor: pointer;
+  }
+  &__name {
+    margin-top: 20px;
+    margin-bottom: 0;
+    letter-spacing: $letter-spacing;
+    @include text-style($decor-color, 18px, '', 400, left, uppercase, '');
+  }
+  &__more-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__origin {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+      .origin-name {
+        display: inline-block;
+        letter-spacing: $letter-spacing;
+        @include text-style($primary-text, 12px, '', 600, '', uppercase, '');
+      }
+      .origin-brief {
+        display: inline-block;
+        letter-spacing: $letter-spacing;
+        padding-left: 10px;
+        @include text-style($primary-text, 8px, '', 600, '', uppercase, '');
+      }
+    }
+    &__price {
+      display: inline-block;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 12px, '', 600, '', uppercase, '');
+    }
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    .product__image {
+      img { 
+        transform: scale(1.1); 
+        transition: ease-in-out 325ms;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .product {
+    &__name { font-size: 14px; }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .product {
+    &__name { margin-bottom: 8px; }
+    &__more-info {
+      &__origin {
+        margin-top: 0;
+        .origin-name { font-size: 8px; }
+        .origin-brief { padding-left: 4px; }
+      }
+      &__price { font-size: 8px; }
+    }
+  }
+}
+
+@keyframes in {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes out {
+  from { transform: scale(1.1); }
+  to { transform: scale(1); }
+}

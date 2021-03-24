@@ -1,0 +1,190 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.product {
+  --spacing: 80px;
+  margin-top: 160px;
+  margin-bottom: var(--spacing);
+  padding-top: var(--spacing);
+  padding-bottom: var(--spacing);
+  background: $grey-background;
+  @media screen and (max-width: $tablet) {
+    margin-bottom: 0;
+    margin-top: 50px;
+    padding-bottom: 40px;
+  }
+  @media screen and (max-width: $tablet) {
+    padding-top: 40px; 
+  }
+  > div { max-width: $max-width-container; }
+  &__img-slider {
+    animation: slideToRight ease 1s;
+    transition: ease 1s;
+    .content {
+      picture {
+        img {
+          cursor: pointer;
+          max-width: 40%;
+          object-fit: contain;
+          object-position: center;
+          transform: scale(1.0);
+          animation: grownUp ease 325ms; 
+          transition: $primary-transition;
+          &:hover {
+            transform: scale(1.1);
+            transition: $primary-transition;
+          }
+          @media screen and (max-width: $mobile) {
+            max-width: 70%;
+          }
+        }
+      }
+    }
+  }
+  &__info {
+    animation: slideToLeft ease 1s;
+    transition: ease 1s;
+    .content {
+      position: relative;
+      &__header {
+        span {
+          display: block;
+          letter-spacing: $letter-spacing;
+        }
+        &__code {
+          @include text-style($secondary-text-opacity, 14px, 150%, 400, left, uppercase, '');
+        }
+        &__name {
+          @include text-style($primary-text, 24px, 150%, 400, left, uppercase, '');
+        }
+      }
+      &__brief {
+        margin-top: 26px;
+        p {
+          letter-spacing: $letter-spacing;
+          @include text-style($primary-text, 16px, 150%, 300, left, '', capitalize);
+        }
+      }
+      &__dropdown { margin-top: 30px; }
+      &__variant {
+        padding: 20px 0;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        &__original {
+          span {
+            display: inline-block;
+            letter-spacing: $letter-spacing;
+          }
+          .type { @include text-style($secondary-text-opacity, 14px, 150%, 700, left, uppercase, ''); }
+          .type-brief {
+            margin-left: 8px;
+            @include text-style($secondary-text-opacity, 8px, 150%, 700, left, uppercase, '');
+          }
+        }
+        &__price {
+          display: inline-block;
+          letter-spacing: $letter-spacing;
+          @include text-style($secondary-text-opacity, 14px, 150%, 700, left, uppercase, '');
+        }
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            rgba(255, 255, 255,0) 0,
+            rgba(0,0,0,.22) 50%,
+            rgba(255,255,255,.29) 
+            100%
+          );
+        }
+      }
+      &__action {
+        a {
+          max-width: 100%;
+          background-color: $secondary-background;
+          letter-spacing: $letter-spacing;
+          transition: $primary-transition;
+          @include text-style($secondary-text, 14px, 150%, 600, center, uppercase, '');
+          &:hover,
+          &:active { background-color: $hover-background; }
+        }
+      }
+      &__more-action {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        a {
+          & + a { margin-left: 20px; }
+          display: block;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          .more-icon {
+            --size: 36px;
+            width: var(--size);
+            height: var(--size);
+            font-size: var(--size);
+            color: $decor-color;
+            transition: $primary-transition;
+            &--plus { --size: 50px; }
+          }
+          .icon-title {
+            opacity: 0;
+            margin-top: 10px;
+            display: inline-block;
+            letter-spacing: $letter-spacing;
+            transition: $primary-transition;
+            animation: opacity ease 325ms;
+            @include text-style($decor-color, 12px, 150%, 600, center, '', capitalize);
+          }
+          &:hover {
+            .icon-title { opacity: 1; }
+            .more-icon {
+              &--favorite { color: $red; }
+              &--plus { color: $secondary-text-opacity; }
+            }
+          }
+        }
+      }
+      &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        &__link {
+          display: block;
+          text-decoration: none;
+          .close-icon {
+            --size: 40px;
+            width: var(--size);
+            height: var(--size);
+            font-size: var(--size);
+            color: $primary-text;
+            transition: $primary-transition;
+          }
+          &:hover,
+          &:active,
+          &:focus {
+            .close-icon { color: $secondary-text-opacity; }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes grownUp {
+  from { transform: scale(1.0); }
+  to { transform: scale(1.1); }
+}
+

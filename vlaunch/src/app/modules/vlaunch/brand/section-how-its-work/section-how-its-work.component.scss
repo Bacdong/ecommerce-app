@@ -1,0 +1,107 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.how-its-work {
+  height: 100vh;
+  background-image: url('/assets/images/brand/craft/decor-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-top: 5px solid $hover-background;
+  border-bottom: 5px solid $hover-background;
+  > div { background-color: rgba(0, 0, 0, 0.6); }
+  .title {
+    h3 {
+      letter-spacing: $letter-spacing;
+      animation: slideToBottom ease 1s;
+      transition: ease 1s;
+      backface-visibility: hidden;
+      @include text-style($secondary-text, 58px, 150%, 300, center, capitalize, '');
+    }
+  }
+  .crafted-list {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideToTop ease 1s;
+    transition: ease 1s;
+    backface-visibility: hidden;
+    li {
+      & + li { margin-left: 100px; }
+      a {
+        display: block;
+        display: flex;
+        text-decoration: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span {
+          margin-top: 20px;
+          display: inline-block;
+          transition: ease 325ms;
+          letter-spacing: $letter-spacing;
+          opacity: 0.4;
+          @include text-style($secondary-text, 14px, 150%, 700, center, uppercase, '');
+        }
+        .craft-icon {
+          --size: 100px;
+          width: var(--size);
+          height: var(--size);
+          font-size: var(--size);
+          color: $secondary-text;
+          transition: ease 325ms;
+          opacity: 0.4;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          span,
+          .craft-icon { 
+            color: $hover-background; 
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .how-its-work{
+    --padding: 40px;
+    height: auto;
+    padding-top: var(--padding);
+    padding-bottom: var(--padding);
+    background: $secondary-background;
+    .alert {
+      position: relative;
+      top: 40px;
+      background: transparent;
+      animation: slideToBottom ease 1s;
+      transition: ease 1s;
+      backface-visibility: hidden;
+      h3 {
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text, 12px, 150%, 700, center, uppercase ,'');
+      }
+    }
+    .title {
+      h3 { font-size: 32px; }
+    }
+    .crafted-list {
+      flex-direction: column;
+      li {
+        & + li { 
+          margin-left: 0; 
+          margin-top: 40px; 
+        }
+        a {
+          .craft-icon { --size: 85px; }
+          span,
+          .craft-icon { opacity: 0.8; }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.trending-product {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  animation: fadeIn ease 1s;
+  transition: $primary-transition;
+  .wrapper { max-width: $max-width-container; } 
+  &__title {
+    h3 {
+      animation: slideToRight ease 1s;
+      transition: $primary-transition;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 24px, '', 400, '', capitalize, '');
+    }
+  }
+  &__wrapper {
+    animation: slideToRight ease 1.5s;
+    transition: $primary-transition;
+  }
+  &__item {
+    animation: fadeIn ease 1s;
+    transition: $primary-transition;
+    padding: 0 40px;
+    margin: 30px 0;
+  }
+  &__load-more {
+    animation: slideToRight ease 2s;
+    transition: $primary-transition;
+    margin-top: 60px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .trending-product {
+    &__item { padding: 0 15px; }
+  }
+}

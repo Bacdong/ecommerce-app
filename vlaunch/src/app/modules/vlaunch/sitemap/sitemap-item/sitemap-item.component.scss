@@ -1,0 +1,32 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.sitemap-item {
+  ul {
+    li {
+      a {
+        display: block;
+        padding: 2px 0;
+        text-decoration: none;
+        transition: $primary-transition;
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text-opacity, 12px, 150%, 400, left, capitalize, '');
+        &:hover,
+        &:active,
+        &:focus {
+          color: $primary-text;
+          padding-left: 6px;
+        }
+        &.sitemap-item__title {
+          @include text-style($primary-text, 16px, 150%, 600, left, uppercase, '');
+          &:hover,
+          &:active,
+          &:focus {
+            color: $secondary-text-opacity;
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

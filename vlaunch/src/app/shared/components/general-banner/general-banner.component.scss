@@ -1,0 +1,108 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.general-banner {
+  height: 340px;
+  // background-image: url('/assets/images/backgrounds/product-page/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  animation: fadeIn ease 1s;
+  .container { 
+    max-width: $max-width-container; 
+    position: relative;
+  }
+  &__title {
+    position: absolute;
+    left: 0;
+    top: 200px;
+    user-select: none;
+    letter-spacing: $letter-spacing;
+    animation: titleSlideToBottom ease 1s, fadeIn ease 1s;
+    @include text-style($secondary-text, 40px, 150%, 400, left, '', capitalize);
+    @keyframes titleSlideToBottom {
+      from { top: 0; }
+      to { top: 200px; }
+    }
+  }
+  &__action {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 160px;
+    transform: translateX(-50%);
+    animation: actionSlideToBottom ease 1s, fadeIn ease 1s;
+    @keyframes actionSlideToBottom {
+      from { top: 0; }
+      to { top: 160px; }
+    }
+    &__name {
+      display: inline-block;
+      user-select: none;
+      letter-spacing: 3.6px;
+      @include text-style($secondary-text, 40px, 150%, 400, center, uppercase, '');
+    }
+    &__link {
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .link-name {
+          display: inline-block;
+          letter-spacing: $letter-spacing;
+          @include text-style($secondary-text, 12px, 150%, 600, center, uppercase, '');
+        }
+        .link-icon {
+          --size: 12px;
+          width: var(--size);
+          height: var(--size);
+          font-size: var(--size);
+          color: $secondary-text;
+          padding-left: 10px;
+        }
+        &:hover,
+        &:active,
+        &:focus { border-color: $secondary-border-color; }
+      }
+    }
+  }
+  &.has-action {
+    .general-banner__title { display: none; }
+    .general-banner__action { display: block; }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .general-banner {
+    height: 260px;
+    &__title {
+      top: 100px;
+      font-size: 36px;
+      @keyframes titleSlideToBottom {
+        from { top: 0; }
+        to { top: 100px; }
+      }
+    }
+    &__action {
+      top: 100px;
+      animation: actionSlideToBottom ease 1s, fadeIn ease 1s;
+      @keyframes actionSlideToBottom {
+        from { top: 0; }
+        to { top: 100px; }
+      }
+      &__name { font-size: 36px; }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .general-banner {
+    &__title { font-size: 26px; }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

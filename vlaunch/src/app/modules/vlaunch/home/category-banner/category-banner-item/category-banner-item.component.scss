@@ -1,0 +1,38 @@
+@import '../../../../../../assets/scss/variable';
+@import '../../../../../../assets/scss/shared';
+
+.category-banner-item {
+  .wrapper-link {
+    display: block;
+    text-decoration: none;
+    color: currentColor;
+    transition: ease 325ms;
+    &:hover,
+    &:active,
+    &:focus { background-color: $decor-background; }
+  }
+  &__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img { 
+      width: 80%; 
+      height: 80%;
+      object-fit: contain;
+      object-position: center;
+      transition: opacity ease 325ms;
+      animation: fadeIn ease 325ms;
+    }
+  }
+  &__title {
+    margin: 15px 0 0;
+    letter-spacing: 1.2px;
+    @include text-style($primary-text, 12px, '', 400, center, uppercase, '');
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}

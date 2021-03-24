@@ -1,0 +1,159 @@
+@use 'sass:map';
+@import './variable';
+
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.close-icon {
+  color: $secondary-text;
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $dark-yellow;
+    transition: $primary-transition;
+  }
+}
+
+.button {
+  display: block;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 4px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin: 0 auto;
+  max-width: 260px;
+  transition: all ease 325ms;
+  cursor: pointer;
+  
+  &--primary {
+    color: $primary-text;
+    border: 1px solid $primary-border-color;
+  }
+  &--secondary {
+    color: $secondary-text;
+    border: 1px solid $secondary-border-color;
+  }
+  &--black {
+    color: $primary-text;
+    border: 1px solid $primary-border-color;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    color: $secondary-text;
+    background-color: $hover-background;
+    border-color: transparent;
+    transition: all ease 325ms;
+  }
+}
+
+@mixin add-properties($properties) {
+  @each $prop, $glyph in $properties {
+    #{ $prop }: $glyph;
+  }
+}
+
+@mixin text-style(
+  $color, 
+  $font-size, 
+  $line-height, 
+  $font-weight, 
+  $text-align, 
+  $text-transform, 
+  $first-letter
+) {
+  font-family: $primary-font;
+
+  @include isEmpty(color, $color);
+  @include isEmpty(font-size, $font-size);
+  @include isEmpty(line-height, $line-height);
+  @include isEmpty(font-weight, $font-weight);
+  @include isEmpty(text-align, $text-align);
+  @include isEmpty(text-transform, $text-transform);
+
+  @if $first-letter != '' {
+    &::first-letter { text-transform: capitalize; }
+  }
+}
+
+@mixin isEmpty($prop, $value) {
+  @if $value != '' {
+    #{ $prop }: $value;
+  } @else {
+    @if $prop == 'line-height' {
+      #{ $prop }: $primary-line-height;
+    } @else if $prop == 'font-size' {
+      #{ $prop }: $primary-font-size;
+    } @else {
+      #{ $prop }: default;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .hide-on-desktop { display: none; }
+}
+
+@media screen and (max-width: $tablet) {
+  .hide-on-mobile-tablet {
+    display: none;
+  }
+}
+
+
+// Animate
+@keyframes slideToTop {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideToBottom {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

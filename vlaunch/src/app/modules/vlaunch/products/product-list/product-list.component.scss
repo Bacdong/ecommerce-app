@@ -1,0 +1,10 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.products {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  max-width: $max-width-container;
+  animation: slideToTop ease 1s;
+  transition: $primary-transition;
+}

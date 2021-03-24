@@ -1,0 +1,64 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.filters {
+  &__wrapper {
+    padding-bottom: 15px;
+    border-bottom: 1px solid $border-input; 
+    display: flex;
+    align-items: center;
+    > div + div { margin-left: 15px; }
+  }
+  &__wrapper--sortby {
+    border-bottom: none;
+    justify-content: space-between;
+    padding-top: 15px;
+    .filter-item {
+      flex: 0 0 25%;
+      display: flex;
+      align-items: center;
+      &__title {
+        display: inline-block;
+        letter-spacing: $letter-spacing;
+        @include text-style($primary-text, 14px, 150%, 400, left, '', capitalize);
+      }
+      &:last-child { justify-content: flex-end; }
+      .mat-select-filter { 
+        margin-left: 15px; 
+        max-width: 100px !important;
+        &--sortby { max-width: 100% !important; }
+      }
+    }
+  }
+
+  .filter-item {
+    width: 100px;
+    .mat-select-filter {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .filters {
+    &__wrapper--sortby {
+      .filter-item {
+        flex: 0 0 50%;
+        &:last-child { margin-left: 0; }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .filters {
+    &__wrapper--sortby {
+      flex-wrap: wrap;
+      .filter-item {
+        flex: 0 0 100%;
+        justify-content: space-between;
+        &:last-child { justify-content: space-between; }
+      }
+    }
+  }
+}

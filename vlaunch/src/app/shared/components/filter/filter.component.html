@@ -1,0 +1,69 @@
+<div class="filters">
+  <div class="filters__wrapper">
+    <div class="filter-item">
+      <mat-form-field appearance="outline" class="mat-select-filter">
+        <mat-label>Style</mat-label>
+        <mat-select multiple>
+          <mat-option 
+            *ngFor="let style of styles" 
+            [value]="style"
+          >{{ style }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="filter-item">
+      <mat-form-field appearance="outline" class="mat-select-filter">
+        <mat-label>Size</mat-label>
+        <mat-select multiple>
+          <mat-option 
+            *ngFor="let size of sizes" 
+            [value]="size"
+          >{{ size }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="filter-item">
+      <mat-form-field appearance="outline" class="mat-select-filter">
+        <mat-label>Color</mat-label>
+        <mat-select multiple>
+          <mat-option 
+            *ngFor="let color of colors" 
+            [value]="color"
+          >{{ color }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="filters__wrapper filters__wrapper--sortby">
+    <div class="filter-item">
+      <span class="filter-item__title">refine by:</span>
+      <mat-form-field appearance="outline" class="mat-select-filter">
+        <mat-label>Budget</mat-label>
+        <mat-select multiple>
+          <mat-option 
+            *ngFor="let style of styles" 
+            [value]="style"
+          >{{ style }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="filter-item">
+      <span class="filter-item__title">sort by:</span>
+      <mat-form-field 
+        appearance="outline" 
+        class="mat-select-filter mat-select-filter--sortby"
+      >
+        <mat-select [(value)]="selectedSortby">
+          <mat-option 
+            *ngFor="let sort of sortby" 
+            [value]="sort.value"
+          >{{ sort.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

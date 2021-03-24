@@ -1,0 +1,15 @@
+<section class="products container">
+  <div class="products__filter">
+    <app-filter-bar></app-filter-bar>
+  </div>
+
+  <div class="row">
+    <div class="product__item mt-5 col-6 col-xl-3"
+      *ngFor="let product of products"
+    >
+      <app-product-item
+        [product]="product"
+      ></app-product-item>
+    </div>
+  </div>
+</section>

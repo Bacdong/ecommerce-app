@@ -1,0 +1,104 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.section-subscribe {
+  animation: slideToLeft ease 1s;
+  transition: $primary-transition;
+  .footer__subscribe {
+    &__title {
+      letter-spacing: 3px;
+      @include text-style($secondary-text, 16px, '', 600, '', uppercase, '');
+    }
+    #footer-subscribe {
+      .input-group {
+        .form-control {
+          padding: 20px;
+          background-color: #1a1a1a;
+          outline: none;
+          border: none;
+          border-radius: 2px;
+          letter-spacing: $letter-spacing;
+          @include text-style($secondary-text, 16px, '', 400, '', '', '');
+          &:focus {
+            box-shadow: unset;
+            border-color: unset;
+          }
+        }
+        .input-group-append {
+          margin-left: 2px;
+          width: 40px;
+          height: 40px;
+          .btn {
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            margin: 0;
+            outline: none;
+            border: none;
+            background-color: #1a1a1a;
+            outline: none;
+            color: $secondary-text-opacity;
+            transition: opacity ease 325ms;
+            cursor: pointer;
+            &:hover,
+            &:active,
+            &:focus {
+              border: none;
+              box-shadow: unset;
+              color: $secondary-text;
+              transition: opacity ease 325ms;
+              .subscribe-icon { 
+                color: $secondary-text; 
+                transition: opacity ease 325ms;
+              }
+            }
+            .subscribe-icon { 
+              color: $secondary-text-opacity; 
+              font-size: 16px;
+              font-weight: 400;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer__social {
+    &__list {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      li {
+        & + li { margin-left: 20px; }
+        a {
+          display: block;
+          text-decoration: none;
+          cursor: pointer;
+          .social-icon {
+            width: 20px;
+            height: 20px;
+            color: $secondary-text-opacity;
+          }
+          &:hover,
+          &:active,
+          &:focus {
+            .social-icon {
+              color: $secondary-text;
+              transition: opacity ease 325ms;
+              backface-visibility: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer__copyright {
+    &__info {
+      user-select: none;
+      letter-spacing: 1.2px;
+      @include text-style($secondary-text-opacity, 12px, '', 400, left, uppercase, '');
+    }
+  }
+}

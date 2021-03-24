@@ -1,0 +1,20 @@
+<div class="idea-item">
+  <div class="wrapper">
+    <a [routerLink]="['/']" class="idea-item__image">
+      <img 
+        [src]="idea.src" 
+        [alt]="idea.name"
+        loading="lazy"
+      >
+      <a href="asdasd" class="idea-item__image__popup-link">
+        <mat-icon class="idea-item-icon">favorite</mat-icon>
+        <span>save photo</span>
+      </a>
+    </a>
+    <div class="idea-item__info">
+      <a href="" class="idea-item__info__link">{{ idea.name }}</a>
+      <span class="idea-item__info__author">by {{ idea.author }}</span>
+      <p class="idea-item__info__brief">{{ idea.brief }}</p>
+    </div>
+  </div>
+</div>

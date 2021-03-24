@@ -1,0 +1,25 @@
+<div class="styletools container-fluid">
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="styletools__content">
+        <span class="styletools__content__category">styletools</span>
+        <h3 class="styletools__content__title">interior design made simple</h3>
+        <ul class="styletools__content__action">
+          <li *ngFor="let item of styletools">
+            <a routerLink="{{ item.url }}">
+              <mat-icon class="styletools-icon">
+                {{ item.name }}
+              </mat-icon>
+            </a>
+          </li>
+        </ul>
+        <div class="styletools__content__link">
+          <a routerLink="/" class="button button--secondary">
+            <span class="name">watch overview</span>
+            <mat-icon class="link-icon">play_circle</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<section class="footer container-fluid">
+  <div class="container">
+    <div class="footer__wrapper row">
+      <div class="col-12 col-xl-8">
+        <div class="row">
+          <div class="col-6 col-md-4"
+            *ngFor="let category of infoCategories"
+          >
+            <app-footer-category
+              [category]="category"
+            ></app-footer-category>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="row">
+              <div class="col-12"
+              *ngFor="let category of featureCategories"
+              >
+                <app-footer-category
+                  [category]="category"
+                ></app-footer-category>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-4">
+        <app-footer-subscribe></app-footer-subscribe>
+      </div>
+    </div>
+  </div>
+</section>

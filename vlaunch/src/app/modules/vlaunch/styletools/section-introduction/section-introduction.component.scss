@@ -1,0 +1,131 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.introduction {
+  --padding: 80px;
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  &__item {
+    picture {
+      img {
+        width: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center;
+        animation: slideToRight ease 1s;
+        transition: ease 1s;
+        backface-visibility: hidden;
+      }
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      animation: slideToLeft ease 1s;
+      transition: ease 1s;
+      backface-visibility: hidden;
+    }
+    &__title,
+    &__brief,
+    &__action { max-width: 80%; }
+    &__title {
+      h3 {
+        letter-spacing: $letter-spacing;
+        @include text-style($primary-text, 48px, 120%, 300, right, capitalize, '');
+      }
+    }
+    &__brief {
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 20px, 150%, 300, right, '', capitalize);
+    }
+    &__action {
+      margin-top: 60px;
+      .action-list {
+        flex-wrap: wrap;
+        li + li { margin-left: 40px; }
+        &__link {
+          display: block;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          letter-spacing: $letter-spacing;
+          @include text-style($primary-text, 20px, 150%, 300, '', capitalize, '');
+          .action-icon {
+            color: $secondary-text-opacity;
+            transition: $primary-transition;
+            backface-visibility: hidden;
+            --size: 40px;
+            width: var(--size);
+            height: var(--size);
+            font-size: var(--size);
+          }
+          .txt {
+            margin-top: 6px;
+            &__highlight,
+            &__normal {
+              display: inline-block;
+              letter-spacing: $letter-spacing;
+              transition: $primary-transition;
+              @include text-style($primary-text, 20px, 150%, 300, '', capitalize, '');
+            }
+            &__highlight { font-weight: 400; }
+          }
+          &:hover,
+          &:active,
+          &:focus {
+            .txt {
+              &__highlight--0 { color: $title-highlight-color-0; }
+              &__highlight--1 { color: $title-highlight-color-1; }
+              &__highlight--2 { color: $title-highlight-color-2; }
+              &__highlight--3 { color: $title-highlight-color-3; }
+            }
+            .action-icon--0 { color: $title-highlight-color-0; }
+            .action-icon--1 { color: $title-highlight-color-1; }
+            .action-icon--2 { color: $title-highlight-color-2; }
+            .action-icon--3 { color: $title-highlight-color-3; }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .introduction {
+    --padding: 40px;
+    &__item {
+      &--info { 
+        margin-top: 40px;
+        align-items: flex-start; 
+      }
+      &__title,
+      &__brief,
+      &__action { max-width: 100%; }
+      &__title {
+        h3 { text-align: left; }
+      }
+      &__brief {
+        p { text-align: left; }
+      }
+      &__action { margin: 40px auto 0; }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .introduction {
+    > div { flex-wrap: wrap-reverse; }
+    &__item {
+      &--info { margin-top: 0; }
+      &__title {
+        h3 {
+          font-size: 26px;
+          font-weight: 400;
+        }
+      }
+      &__action { margin: 0 auto; }
+    }
+  }
+}

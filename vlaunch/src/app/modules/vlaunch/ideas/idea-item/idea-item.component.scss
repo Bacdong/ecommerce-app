@@ -1,0 +1,96 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.idea-item {
+  &:hover,
+  &:active,
+  &:focus {
+    .idea-item__image {
+      &__popup-link {
+        opacity: 1;
+        visibility: visible;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.0);
+      }
+    }
+  }
+  &__image {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    &__popup-link {
+      position: absolute;
+      min-width: 60%;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%) scale(0.8);
+      padding: 14px 22px;
+      opacity: 0;
+      visibility: hidden;
+      transition: $primary-transition;
+      background-color: $hover-background;
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      .idea-item-icon {
+        --size: 30px;
+        transition: $primary-transition;
+        width: var(--size);
+        height: var(--size);
+        font-size: var(--size);
+        color: $secondary-text;
+      }
+      span {
+        display: inline-block;
+        transition: $primary-transition;
+        letter-spacing: $letter-spacing;
+        margin-left: 10px;
+        @include text-style($secondary-text, 20px, 150%, 600, center, capitalize, '');
+        @media screen and (max-width: $mobile) {
+          font-size: 16px;
+        }
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: 0.8;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  &__info {
+    padding: 15px 0;
+    &__link {
+      display: block;
+      text-decoration: none;
+      transition: $primary-transition;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 14px, 150%, 600, left, capitalize, '');
+      &:hover,
+      &:active,
+      &:focus { color: $decor-color; }
+    }
+    &__author {
+      display: block;
+      margin-top: 10px;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 12px, 150%, 400, left, capitalize, '');
+    }
+    &__brief {
+      margin-top: 15px;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 12px, 150%, 400, left, '', capitalize);
+    }
+  }
+}

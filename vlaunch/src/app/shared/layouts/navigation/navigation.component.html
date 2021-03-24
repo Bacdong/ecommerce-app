@@ -1,0 +1,146 @@
+<section class="navigation container-fluid">
+  <div class="wrapper container">
+    <div class="row">
+      <div id="logo" class="logo col-md-2 col-xl-1 col-3">
+        <a routerLink="/" class="logo__link">
+          <img 
+            onerror="this.src='assets/images/no-image.jpg'"
+            src="assets/images/logo.png" 
+            alt="Lavis Decor"
+          >
+        </a>
+        <div class="logo__place" *ngIf="currentCity != ''">
+          <span class="logo__place__name">{{ currentCity }}</span>
+        </div>
+      </div>
+      <div class="navbar-content col-md-10 col-xl-11 col-9">
+        <div class="navbar-content__top">
+          <ul class="main-menu">
+            <li *ngFor="let item of navigations">
+              <a 
+                routerLink="{{ item.url }}"
+                routerLinkActive="active"
+              >{{ item.name }}</a>
+            </li>
+          </ul>
+          <ul class="action-menu" id="action-menu">
+            <li>
+              <a class="has-label" (click)="toggleDisplay()">
+                <span class="auth-label">login / register</span>
+                <mat-icon class="action-icon">person_outline</mat-icon>
+              </a>
+            </li>
+            <li>
+              <a (click)="showSearch()">
+                <mat-icon class="action-icon">search</mat-icon>
+              </a>
+            </li>
+            <li class="language">
+              <a>
+                <mat-icon class="action-icon">language</mat-icon>
+                <div class="language-popup">
+                  <ul class="language-list">
+                    <li *ngFor="let lang of languages; let i = index">
+                      <a>
+                        <div class="label">
+                          <div class="label__logo">
+                            <img 
+                              onerror="this.src='assets/images/no-image.jpg'"
+                              [src]="lang.src" 
+                              [alt]="lang.name"
+                            >
+                          </div>
+                          <span class="label__name">{{ lang.name }}</span>
+                        </div>
+                        <div class="mark-select">
+                          <mat-icon 
+                            class="mark-select__checked-icon"
+                            [ngClass]="{ 'active': i==0 }"
+                          >check_circle</mat-icon>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </a>
+            </li>
+            <li class="hide-on-desktop">
+              <a>
+                <mat-icon class="action-icon">menu</mat-icon>
+              </a>
+            </li>
+          </ul>
+          <div class="search" id="search">
+            <form id="main-search" action="">
+              <div class="group-field">
+                <button type="submit">
+                  <mat-icon class="action-icon active">search</mat-icon>
+                </button>
+                <input 
+                  type="text" 
+                  autocomplete="true"
+                  id="input-search"
+                  placeholder="Search by category, name, code or room type"
+                >
+                <mat-icon 
+                  class="action-icon close-icon"
+                  (click)="closeSearch()"
+                >close</mat-icon>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="navbar-content__bottom">
+          <ul class="submenu">
+            <li *ngFor="let menu of submenu">
+              <a routerLink="{{ menu.navigation.url }}"
+                class="submenu__link"
+              >{{ menu.navigation.name }}</a>
+              <div 
+                *ngIf="menu.megaMenu.length > 0"
+                class="mega-menu" 
+                id="mega-menu"
+              >
+                <div class="mega-menu__wrapper container">
+                  <div class="mega-menu__category">
+                    <div 
+                      class="list-group"
+                      *ngFor="let megaMenu of menu.megaMenu"
+                    >
+                      <h3 class="list-group__title">{{ megaMenu.title }}</h3>
+                      <ul>
+                        <li *ngFor="let megaMenuItem of megaMenu.megaMenu">
+                          <a routerLink="{{ megaMenuItem.url }}">
+                            {{ megaMenuItem.name }}
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="mega-menu__image">
+                    <a class="mega-menu__image__link">
+                      <img 
+                        onerror="this.style.display='none'" 
+                        src="assets/images/mega-menu-image/1.jpg" 
+                        alt="Illustration Image"
+                      >
+                      <div class="play-video">
+                        <mat-icon class="play-video__icon">play_circle_outline</mat-icon>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <app-login 
+      id="app-login"
+      *ngIf="isDisplay"
+      [ngClass]="{ 'show': isDisplay }"
+      (toggleDisplay)="toggleDisplay($event)"
+    ></app-login>
+  </div>
+</section>

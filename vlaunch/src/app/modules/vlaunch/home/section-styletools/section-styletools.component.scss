@@ -1,0 +1,120 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.styletools {
+  background-image: url('/assets/images/backgrounds/styletools.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: slideToRight ease 1s;
+  transition: $primary-transition;
+  &__content {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    &__category {
+      animation: slideToRight ease 1.25s;
+      transition: $primary-transition;
+      display: inline-block;
+      letter-spacing: $letter-spacing;
+      @include text-style($secondary-text, 14px, '', 400, center, uppercase, '');
+    }
+    &__title {
+      animation: slideToRight ease 1.5s;
+      transition: $primary-transition;
+      letter-spacing: 3px;
+      margin-top: 26px;
+      @include text-style($secondary-text, 36px, '', 600, center, capitalize, '');
+    }
+    &__action {
+      animation: slideToRight ease 1.75s;
+      transition: $primary-transition;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      li {
+        & + li { margin-left: 20px; }
+        a {
+          display: block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          color: currentColor;
+          background-color: rgba(255, 255, 255, 0.3);
+          padding: 15px;
+          border-radius: 50%;
+          cursor: pointer;
+          .styletools-icon {
+            --size: 34px;
+            width: var(--size);
+            height: var(--size);
+            font-size: var(--size);
+            color: $secondary-text;
+          }
+        }
+      }
+    }
+    &__link {
+      animation: slideToRight ease 2s;
+      transition: $primary-transition;
+      margin-top: 20px;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .name {
+          display: inline-block;
+          letter-spacing: $letter-spacing;
+          @include text-style($secondary-text, 12px, '', 600, center, uppercase, '');
+        }
+        .link-icon {
+          --size: 12px;
+          width: var(--size);
+          height: var(--size);
+          font-size: var(--size);
+          color: $secondary-text;
+          padding-left: 10px;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $primary-background;
+          .name { color: $hover-background; }
+          .link-icon { color: $decor-color; }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .styletools {
+    &__content { padding: 160px 0; }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .styletools {
+    &__content {
+      padding: 60px 0;
+      &__category { 
+        letter-spacing: 3px; 
+        font-weight: 600; 
+      }
+      &__title { font-size: 26px; }
+      &__action {
+        li {
+          a {
+            .styletools-icon { --size: 30px; }
+          }
+        }
+      }
+    }
+  }
+}

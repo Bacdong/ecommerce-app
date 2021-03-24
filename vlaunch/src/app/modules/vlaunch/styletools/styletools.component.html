@@ -1,0 +1,13 @@
+<app-general-banner 
+  [classAdd]="classAdd"
+  [background]="background"
+></app-general-banner>
+<app-section-introduction></app-section-introduction>
+<div 
+  class="styletool"
+  *ngFor="let styletool of styletools"
+>
+  <app-section-styletool-item
+    [styletool]="styletool"
+  ></app-section-styletool-item>
+</div>

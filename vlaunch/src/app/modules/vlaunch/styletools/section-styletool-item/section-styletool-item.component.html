@@ -1,0 +1,51 @@
+<section class="styletool-item container {{ styletool.classAdd }}">
+  <div class="styletool-item__header">
+    <h3 class="title w-100">
+      <span class="title__highlight">{{ styletool.title }}</span>
+      <span class="title__normal">plan</span>
+    </h3>
+    <p class="sub-title w-100">{{ styletool.subtitle }}</p>
+  </div>
+  <div class="row content-wrapper">
+    <div class="col-12 col-xl-6 col-md-12">
+      <div class="content">
+        <div class="content__title">
+          <h3>{{ styletool.contentTitle }}</h3>
+        </div>
+        <div class="content__brief">
+          <p *ngFor="let brief of styletool.contentBrief">
+            {{ brief }}
+          </p>
+          <ul *ngIf="styletool.contentBriefList">
+            <li *ngFor="let brief of styletool.contentBriefList">
+              {{ brief }}
+            </li>
+          </ul>
+        </div>
+        <div class="content__action d-none d-xl-flex">
+          <a href="#" class="button button--primary">
+            <span class="content__action__name">watch overview</span>
+            <mat-icon class="content__action__icon">play_circle</mat-icon>
+          </a>
+          <a href="#" class="button button--secondary button--black">
+            <span class="content__action__name">watch overview</span>
+            <mat-icon class="content__action__icon">play_circle</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-6 col-md-12">
+      <div class="content content--image">
+        <picture>
+          <img 
+            class="w-100"
+            onerror="this.style.display='none'" 
+            [src]="styletool.image" 
+            [alt]="styletool.contentTitle"
+            loading="lazy"
+          >
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>

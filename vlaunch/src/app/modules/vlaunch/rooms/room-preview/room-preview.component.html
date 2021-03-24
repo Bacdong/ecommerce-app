@@ -1,0 +1,39 @@
+<section class="room-preview container">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12 pl-md-0 pr-md-0">
+      <div class="room-preview__wrapper">
+        <owl-carousel-o class="carousel" [options]="customOptions">
+          <ng-container *ngFor="let slide of slides">
+            <ng-template carouselSlide>
+              <div class="room-preview__item">
+                <img 
+                  [src]="slide.src" 
+                  [alt]="slide.name"
+                  loading="lazy"
+                >
+                <div class="room-preview__item__action">
+                  <a href="" class="share-action">
+                    <mat-icon class="share-action__icon">send</mat-icon>
+                    <span class="share-action__name">share</span>
+                  </a>
+                  <a href="" class="share-action">
+                    <mat-icon class="share-action__icon">favorite</mat-icon>
+                    <span class="share-action__name">save</span>
+                  </a>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+  <div class="room-preview__close">
+    <button 
+      class="close-btn"
+      (click)="closePreview()"
+    >
+      <mat-icon class="close-btn__icon">close</mat-icon>
+    </button>
+  </div>
+</section>

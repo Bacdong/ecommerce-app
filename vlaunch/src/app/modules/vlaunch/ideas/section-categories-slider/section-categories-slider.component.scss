@@ -1,0 +1,82 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.categories-slider {
+  --padding: 80px;
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  margin-top: 60px;
+  max-width: $max-width-container;
+  @media screen and (max-width: $tablet) { --padding: 40px; }
+  &__wrapper { animation: slideToRight ease 1.5s; }
+  &__title {
+    h3 {
+      animation: slideToRight ease 1.25s;
+      letter-spacing: $letter-spacing;
+      @include text-style($primary-text, 28px, 150%, 600, left, capitalize, '');
+    }
+  }
+  .categories-item {
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100px;
+    transition: $primary-transition;
+    &__link {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      display: block;
+      height: 100%;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      z-index: 3;
+      overflow: hidden;
+      img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      &__name {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 8px 12px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background: linear-gradient(to bottom,rgba(76,76,76,0) 0,#131313 100%);
+        span {
+          width: 100%;
+          display: inline-block;
+          letter-spacing: $letter-spacing;
+          @include text-style($secondary-text, 12px, 150%, 600, center, capitalize, '');
+        }
+      }
+      &:hover,
+      &:active,
+      &:focus { 
+        img { 
+          opacity: 0.6; 
+          transition: ease 325ms;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $mobile) {
+  .categories-slider {
+    &__title { 
+      h3 { font-size: 20px; } 
+    }
+    .categories-item {
+      height: 80px;
+      &__link {
+        &__name {
+          span { font-size: 10px; }
+        }
+      }
+    }
+  }
+}
+

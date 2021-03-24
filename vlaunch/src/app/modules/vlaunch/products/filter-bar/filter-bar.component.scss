@@ -1,0 +1,17 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.filter {
+  &__sort {
+    animation: slideToLeft ease 1s;
+    transition: $primary-transition;
+    display: flex;
+    justify-content: flex-end;
+    .mat-form-field { max-width: 140px; }
+  }
+  @media screen and (max-width: $mobile) {
+    &__sort {
+      .mat-form-field { max-width: 120px; }
+    }
+  }
+} 

@@ -1,0 +1,19 @@
+<div class="trending-product container-fluid">
+  <div class="wrapper container p-0">
+    <div class="trending-product__title">
+      <h3>trending products</h3>
+    </div>
+    <div class="trending-product__wrapper row mt-5">
+      <div class="trending-product__item col-6 col-xl-3"
+        *ngFor="let product of products"
+      >
+        <app-product-item
+          [product]="product"
+        ></app-product-item>
+      </div>
+    </div>
+    <div class="trending-product__load-more">
+      <a routerLink="/" class="button button--primary">view full catalog</a>
+    </div>
+  </div>
+</div>

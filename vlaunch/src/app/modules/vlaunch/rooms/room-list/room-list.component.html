@@ -1,0 +1,20 @@
+<section class="rooms container">
+  <div class="grid grid-md grid-sm" *ngFor="let room of rooms">
+    <div 
+      class="room-wrapper grid__col-md" 
+      *ngFor="let item of room.data; let idx=index"
+      [class.grid__col-xl]="idx % 6 == 0"
+    >
+      <app-room-item 
+        [room]="item"
+        (eventEmitter)="togglePreview()"
+      ></app-room-item>
+    </div>
+  </div>
+</section>
+
+<div class="preview" *ngIf="isDisplay">
+  <app-room-preview 
+    (closeEmitter)="togglePreview()"
+  ></app-room-preview>
+</div>

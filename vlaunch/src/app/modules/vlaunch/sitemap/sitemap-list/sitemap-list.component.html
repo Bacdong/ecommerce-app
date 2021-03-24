@@ -1,0 +1,16 @@
+<div 
+  class="sitemaps container pl-0 pr-0"
+  *ngFor="let sitemapItem of sitemapList"  
+>
+  <div class="sitemaps__title col-12 pl-0 pr-0">
+    <h3>{{ sitemapItem.title }}</h3>
+  </div>
+  <div class="sitemaps__wrapper row flex-wrap">
+    <div 
+      class="col-6 col-md-3 col-xl-2" 
+      *ngFor="let item of sitemapItem.sitemap_list"
+    >
+      <app-sitemap-item [sitemapItem]="item"></app-sitemap-item>
+    </div>
+  </div>
+</div>

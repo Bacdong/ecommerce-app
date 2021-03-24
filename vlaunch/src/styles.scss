@@ -1,0 +1,144 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+@import './assets/scss/variable';
+@import './assets/scss/shared';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: $primary-font-size;
+  line-height: $primary-line-height;
+  font-family: $primary-font;
+  color: $primary-text;
+}
+
+// Setup hightlight text
+::selection { background-color: $selection-highlight-background; }
+::-moz-selection { background-color: $selection-highlight-background; }
+
+
+// Customize Select Component - Angular Material UI
+.mat-form-field:focus,
+.mat-form-field-wrapper:focus,
+.mat-form-field-flex:hover,
+.mat-form-field-flex:focus,
+.mat-form-field-outline:focus,
+.mat-focused,
+.mat-select-arrow:focus,
+.mat-select-arrow-wrapper:focus { outline: none; }
+.mat-form-field-wrapper { padding-bottom: unset; }
+
+.mat-form-field-appearance-outline {
+  .mat-form-field-infix { padding: 10px 0; }
+}
+
+.mat-select-value-text {
+  letter-spacing: $letter-spacing;
+  @include text-style($primary-text, 16px, 150%, 400, left, capitalize, '');
+}
+
+
+// Customize carousel navigation at ideas template
+.categories-slider {
+  .owl-carousel {
+    position: relative;
+    .owl-nav {
+      margin-top: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      .owl-next,
+      .owl-prev { 
+        --size: 40px;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: $primary-background;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $secondary-text-opacity;
+        font-size: 30px;
+        font-weight: 700;
+        transition: $primary-transition;
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $hover-background;
+          color: $secondary-text;
+        }
+      }
+      .owl-next { right: -30px; }
+      .owl-prev { left: -30px; }
+      @media screen and (max-width: $tablet) {
+        .owl-next { right: -15px; }
+        .owl-prev { left: -15px; }
+      }
+    }
+  }
+}
+
+
+.room-preview {
+  .owl-carousel {
+    position: relative;
+    .owl-nav {
+      margin-top: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      .owl-next,
+      .owl-prev { 
+        --size: 60px;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $secondary-text;
+        font-size: 60px;
+        font-weight: 700;
+        transition: $primary-transition;
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $grey-hover-background;
+          color: $secondary-text;
+        }
+      }
+      .owl-next { right: -150px; }
+      .owl-prev { left: -150px; }
+      @media screen and (max-width: $tablet) {
+        .owl-next,
+        .owl-prev { 
+          --size: 46px; 
+          font-size: 40px;
+        }
+        .owl-next { right: 0; }
+        .owl-prev { left: 0; }
+      }
+      @media screen and (max-width: $mobile) {
+        .owl-next,
+        .owl-prev { --size: 40px; }
+      }
+    }
+  }
+}

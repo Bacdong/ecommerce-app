@@ -1,0 +1,30 @@
+<section class="categories-slider container">
+  <div class="categories-slider__title">
+    <h3>home design ideas</h3>
+  </div>
+  <div class="categories-slider__wrapper row">
+    <div class="col-12">
+      <owl-carousel-o class="carousel" [options]="customOptions">
+        <ng-container *ngFor="let item of categories">
+          <ng-template carouselSlide>
+            <div class="categories-item">
+              <a 
+                [owlRouterLink]="['/']" 
+                class="categories-item__link"
+              >
+                <img 
+                  [src]="item.src" 
+                  [alt]="item.name"
+                  loading="lazy"
+                >
+                <div class="categories-item__link__name">
+                  <span>{{ item.name }}</span>
+                </div>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>

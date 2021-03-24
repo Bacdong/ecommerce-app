@@ -1,0 +1,8 @@
+<div class="footer__category">
+  <h3 class="footer__category__title">{{ category.title }}</h3>
+  <ul class="footer__category__list">
+    <li *ngFor="let link of category.categories">
+      <a [routerLink]="link.path" >{{ link.name }}</a>
+    </li>
+  </ul>
+</div>

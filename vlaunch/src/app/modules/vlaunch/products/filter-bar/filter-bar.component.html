@@ -1,0 +1,22 @@
+<div class="filter">
+  <div class="row">
+    <div class="col-6">
+      <app-breadcrumb [currentPath]="path"></app-breadcrumb>
+    </div>
+    <div class="col-6">
+      <div class="filter__sort">
+        <mat-form-field appearance="outline">
+          <mat-label>Sort by</mat-label>
+          <mat-select>
+            <mat-option 
+              *ngFor="let sort of sortby" 
+              [value]="sort.value"
+            >
+              {{ sort.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

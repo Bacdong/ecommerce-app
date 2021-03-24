@@ -1,0 +1,14 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.ideas {
+  max-width: $max-width-container;
+  animation: slideToRight ease 1s;
+  &__wrapper {
+    > div {
+      @media screen and (max-width: $mobile) {
+        border-bottom: 1px solid $border-input;
+      }
+    }
+  }
+}

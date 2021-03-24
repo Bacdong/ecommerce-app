@@ -1,0 +1,39 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.breadcrumb {
+  background: none;
+  &__list {
+    animation: slideToRight ease 1s;
+    transition: $primary-transition;
+    display: flex;
+    align-items: center;
+    li + li { margin-left: 5px; }
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        display: block;
+        text-decoration: none;
+        letter-spacing: $letter-spacing;
+        border-bottom: 1px solid transparent;
+        transition: all ease 325ms;;
+        @include text-style($secondary-text-opacity, 12px, 150%, 400, center, uppercase, '');
+        &.active { color: $primary-text; }
+        &:hover,
+        &:active,
+        &:focus { border-bottom-color: $border-input; }
+      }
+      &.path-icon {
+        .chevron-icon { 
+          --size: 16px;
+          width: var(--size);
+          height: var(--size);
+          font-size: var(--size);
+          color: $secondary-text-opacity; 
+        }
+      }
+    }
+  }
+}

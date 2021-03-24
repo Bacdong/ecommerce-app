@@ -1,0 +1,15 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.sitemap {
+  --padding: 80px;
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  max-width: $max-width-container;
+  @media screen and (max-width: $tablet) {
+    --padding: 40px;
+  }
+  @media screen and (max-width: $mobile) {
+    padding: var(--padding) 0;
+  }
+}

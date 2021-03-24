@@ -1,0 +1,10 @@
+<div class="sitemap-item">
+  <ul>
+    <li *ngFor="let link of sitemapItem.sitemap">
+      <a 
+        [routerLink]="link.url" 
+        [class]="link.classAdd"
+      >{{ link.name }}</a>
+    </li>
+  </ul>
+</div>

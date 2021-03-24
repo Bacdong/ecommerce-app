@@ -1,0 +1,16 @@
+<div class="breadcrumb p-0">
+  <ul class="breadcrumb__list">
+    <li>
+      <a routerLink="">home</a>
+    </li>
+    <li class="path-icon" *ngIf="currentPath != ''">
+      <mat-icon class="chevron-icon">chevron_right</mat-icon>
+    </li>
+    <li *ngIf="currentPath != ''">
+      <a 
+        routerLink="/" 
+        class="active"
+      >{{ currentPath }}</a>
+    </li>
+  </ul>
+</div>

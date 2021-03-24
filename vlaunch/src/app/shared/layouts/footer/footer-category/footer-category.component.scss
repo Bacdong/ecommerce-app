@@ -1,0 +1,31 @@
+@import '../../../../../assets/scss/variable';
+@import '../../../../../assets/scss/shared';
+
+.footer__category {
+  animation: slideToRight ease 1s;
+  transition: $primary-transition;
+  &__title {
+    letter-spacing: 3px;
+    @include text-style($secondary-text, 16px, '', 600, '', uppercase, '');
+  }
+  &__list {
+    list-style: none;
+    li {
+      & + li { margin-top: 10px; }
+      a {
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+        letter-spacing: $letter-spacing;
+        @include text-style($secondary-text-opacity, 12px, '', 400, '', capitalize, '');
+        &:hover,
+        &:active,
+        &:focus {
+          color: $secondary-text;
+          padding-left: 6px;
+          transition: all ease 325ms;
+        }
+      }
+    }
+  }
+}

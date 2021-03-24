@@ -1,0 +1,89 @@
+<section class="product container-fluid">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-xl-8">
+        <div class="product__img-slider h-100">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide>
+              <div class="content">
+                <picture class="w-100 d-flex justify-content-center align-items-center">
+                  <img 
+                    onerror="this.src='assets/images/no-image.jpg'"
+                    src="assets/images/products/1.png" 
+                    alt="Lavis Product"
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="content">
+                <picture class="w-100 d-flex justify-content-center align-items-center">
+                  <img 
+                    onerror="this.src='assets/images/no-image.jpg'"
+                    src="assets/images/products/1.png" 
+                    alt="Lavis Product"
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+      <div class="col-12 col-xl-4">
+        <div class="product__info">
+          <div class="content">
+            <div class="content__header">
+              <span class="content__header__code">60-0449</span>
+              <span class="content__header__name">jumelle</span>
+            </div>
+            <div class="content__brief">
+              <p>
+                supremely adaptable, this sectional sofa can be 
+                obtained in a variety of combinations to adorn 
+                a host of grand settings.
+              </p>
+            </div>
+            <div class="content__dropdown">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Select Model</mat-label>
+                <mat-select [(value)]="selectedModel">
+                  <mat-option 
+                    [value]="option.value" 
+                    *ngFor="let option of models"
+                  >{{ option.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="content__variant">
+              <div class="content__variant__original">
+                <span class="type">vietnam retail</span>
+                <span class="type-brief">from</span>
+              </div>
+              <span class="content__variant__price">$ 28,665</span>
+            </div>
+            <div class="content__action">
+              <a href="#" class="button button--primary">full details</a>
+            </div>
+            <div class="content__more-action">
+              <a href="#" class="favorite">
+                <mat-icon class="more-icon more-icon--favorite">favorite</mat-icon>
+                <span class="icon-title">favorites</span>
+              </a>
+              <a href="#" class="plus">
+                <mat-icon class="more-icon more-icon--plus">add</mat-icon>
+                <span class="icon-title">add to</span>
+              </a>
+            </div>
+            <div class="content__close d-none d-xl-block">
+              <a href="#" class="content__close__link">
+                <mat-icon class="close-icon">close</mat-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

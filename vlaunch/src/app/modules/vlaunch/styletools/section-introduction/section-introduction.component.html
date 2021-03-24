@@ -1,0 +1,46 @@
+<section class="introduction container-fluid">
+  <div class="row">
+    <div class="col-8 col-xl-4 p-0">
+      <div class="introduction__item">
+        <picture>
+          <img 
+            onerror="this.style.display='none'"
+            src="assets/images/styletools/introduction/intro-decor.jpg" 
+            alt="Styletools Introduction"
+            loading="lazy"
+          >
+        </picture>
+      </div>
+    </div>
+    <div class="col-12 col-xl-6">
+      <div class="introduction__item introduction__item--info">
+        <div class="introduction__item__title">
+          <h3>introducing <br /> styletools by lavis decor</h3>
+        </div>
+        <div class="introduction__item__brief">
+          <p>
+            with the worlds most versatile interior design 
+            suite, you can now plan, visualize and organize 
+            the layout of your dream home with the greatest 
+            ease.
+          </p>
+        </div>
+        <div class="introduction__item__action">
+          <ul class="action-list d-none d-md-flex">
+            <li *ngFor="let action of actions; let idx=index">
+              <a routerLink="{{ action.url }}" 
+                class="action-list__link"
+              >
+                <mat-icon class="action-icon action-icon--{{ idx }}">{{ action.icon }}</mat-icon>
+                <span class="txt">
+                  <span class="txt__highlight txt__highlight--{{ idx }}">{{ action.name }}</span>
+                  <span class="txt__normal">plan</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
