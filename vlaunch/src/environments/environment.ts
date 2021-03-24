@@ -5,5 +5,5 @@
 export const environment = {
   production: false,
   CONFIG_CHECK: 'DEBUG_MOD',
-  API_DOMAIN : 'https://testapi.lavisdecor.art/api/front/',
+  API_DOMAIN : 'https://localhost:5001/api/',
 };
