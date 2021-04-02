@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { this.toggleChangeForm(); }
 
-  login() {
+  login(): any {
     this.authService.login().subscribe(() => {
       if (this.authService.isLoggedIn) {
         // Usually you would use the redirect URL from the auth service.
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logout() {
+  logout(): any {
     this.authService.logout();
   }
 

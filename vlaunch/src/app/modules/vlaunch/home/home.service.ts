@@ -11,23 +11,23 @@ export class HomeService {
 
   constructor(private http: HttpService) { }
 
-  init() {
+  $products = new Subject<Product>();
+
+  init(): any{
     this.getTrendingProducts();
   }
+  getTrendingProducts(): any {
+    const url = 'Books/SearchBook';
+    const data = { totalPerPage: environment.LIMIT_TRENDING_PRODUCTS };
 
-  $products = new Subject<Product>();
-  getTrendingProducts() {
-    let url = 'Books/SearchBook';
-    let data = { "totalPerPage": environment.LIMIT_TRENDING_PRODUCTS };
-
-    this.http.post(url, data).subscribe((res) => {
+    this.http.postHandle(url, data).subscribe((res) => {
       if (res && res.success) {
         console.log(res.data.data);
-        
+
         this.$products.next(res.data);
       } else {
         console.log(res.error_code);
       }
-    })
+    });
   }
 }
