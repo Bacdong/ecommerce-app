@@ -15,12 +15,12 @@ import { FormatPricePipe } from 'src/app/core/pipes';
 
 @NgModule({
   declarations: [
-    ProductItemComponent,
     GeneralBannerComponent,
     FilterComponent,
     BreadcrumbComponent,
     PaginationComponent,
     FormatPricePipe,
+    ProductItemComponent,
   ],
   imports: [
     CommonModule,
