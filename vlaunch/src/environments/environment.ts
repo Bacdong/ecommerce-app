@@ -8,4 +8,5 @@ export const environment = {
   API_DOMAIN : 'https://localhost:5001/api/',
   IMAGE_PATH: 'https://localhost:5001/images/',
   LIMIT_TRENDING_PRODUCTS: 8,
+  PRODUCTS_LIMIT: 12,
 };

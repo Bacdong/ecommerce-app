@@ -37,31 +37,7 @@
             </li>
             <li class="language">
               <a>
-                <mat-icon class="action-icon">language</mat-icon>
-                <div class="language-popup">
-                  <ul class="language-list">
-                    <li *ngFor="let lang of languages; let i = index">
-                      <a>
-                        <div class="label">
-                          <div class="label__logo">
-                            <img 
-                              onerror="this.src='assets/images/no-image.jpg'"
-                              [src]="lang.src" 
-                              [alt]="lang.name"
-                            >
-                          </div>
-                          <span class="label__name">{{ lang.name }}</span>
-                        </div>
-                        <div class="mark-select">
-                          <mat-icon 
-                            class="mark-select__checked-icon"
-                            [ngClass]="{ 'active': i==0 }"
-                          >check_circle</mat-icon>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <mat-icon class="action-icon">shopping_bag</mat-icon>
               </a>
             </li>
             <li class="hide-on-desktop">
