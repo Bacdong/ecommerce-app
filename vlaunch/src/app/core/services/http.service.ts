@@ -61,13 +61,13 @@ export class HttpService {
   putHandle(url: string, data: any): Observable<any>{
     return this.requestModify(Method.put, url, data);
   }
-  getHandle(url: string, data?: FormData): Observable<any>{
+  getHandle(url: string, data?: any): Observable<any>{
     return this.requestModify(Method.get, url, data);
   }
   postHandle(url: string, data: any): Observable<any>{
     return this.requestModify(Method.post, url, data);
   }
-  deleteHandle(url: string, data: FormData): Observable<any>{
+  deleteHandle(url: string, data: any): Observable<any>{
     return this.requestModify(Method.delete, url, data);
   }
 
