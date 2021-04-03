@@ -1,0 +1,56 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/shared';
+
+.pagination {
+  &__wrapper {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li {
+        & + li { margin-left: 10px; }
+        a {
+          cursor: pointer;
+          display: block;
+          display: flex;
+          text-decoration: none;
+          height: 40px;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          padding: 0 15px;
+          transition: $primary-transition;
+          letter-spacing: $letter-spacing;
+          @include text-style($primary-text, 14px, 150%, 600, center, uppercase, '');
+          border-radius: 2px;
+          border: 1px solid $border-input;
+          .chevron-icon {
+            --size: 18px;
+            width: var(--size);
+            height: var(--size);
+            font-size: var(--size);
+            color: $primary-text;
+            transition: $primary-transition;
+          }
+          &.active { 
+            color: $secondary-text;
+            background-color: $hover-background; 
+            .chevron-icon { color: $secondary-text; }
+          }
+          &.disabled {
+            user-select: none;
+            background-color: $grey-background;
+            pointer-events: none;
+            .chevron-icon { opacity: 0.6; }
+          }
+          &:hover,
+          &:active {
+            color: $secondary-text;
+            background-color: $hover-background; 
+            .chevron-icon { color: $secondary-text; }
+          }
+        }
+      }
+    }
+  }
+}

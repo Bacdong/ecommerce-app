@@ -8,6 +8,7 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  rootPath = 'products';
   products: any;
   subscription = new Subscription();
 
@@ -37,5 +38,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.products = products;
       })
     );
+  }
+
+  changePage(page) {
+    this.productsService.getProducts({ page: page });
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
   }
 }

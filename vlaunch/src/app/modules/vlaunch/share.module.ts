@@ -8,6 +8,8 @@ import { FilterComponent } from 'src/app/shared/components/filter/filter.compone
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from 'src/app/shared/components/breadcrumb/breadcrumb.component';
+import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { BreadcrumbComponent } from 'src/app/shared/components/breadcrumb/breadc
     GeneralBannerComponent,
     FilterComponent,
     BreadcrumbComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -23,12 +26,14 @@ import { BreadcrumbComponent } from 'src/app/shared/components/breadcrumb/breadc
     MatSelectModule,
     FormsModule,
     IvyCarouselModule,
+    RouterModule,  
   ],
   exports: [
     ProductItemComponent,
     GeneralBannerComponent,
     FilterComponent,
     BreadcrumbComponent,
+    PaginationComponent,
   ]
 })
 export class ShareModule { }
