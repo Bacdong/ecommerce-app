@@ -1,14 +1,14 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { BrandComponent } from "./brand/brand.component";
-import { HomeComponent } from "./home/home.component";
-import { IdeasComponent } from "./ideas/ideas.component";
-import { ProductDetailComponent } from "./products/product-detail/product-detail.component";
-import { ProductsComponent } from "./products/products.component";
-import { RoomsComponent } from "./rooms/rooms.component";
-import { SitemapComponent } from "./sitemap/sitemap.component";
-import { StyletoolsComponent } from "./styletools/styletools.component";
-import { VlaunchComponent } from "./vlaunch.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { BrandComponent } from './brand/brand.component';
+import { HomeComponent } from './home/home.component';
+import { IdeasComponent } from './ideas/ideas.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { ProductsComponent } from './products/products.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
+import { StyletoolsComponent } from './styletools/styletools.component';
+import { VlaunchComponent } from './vlaunch.component';
 
 const vlaunchRoutes: Routes = [
   {

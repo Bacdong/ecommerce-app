@@ -66,15 +66,20 @@ export class AuthService {
     });
   }
 
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(val => this.isLoggedIn = true)
-    );
-  }
+  // login(): any {
+  //   const url = '/UserAuth/login';
+  //   return this.httpService.postHandle(url, data).subscribe(res => {
+  //     this.isLoggedIn = true;
+  //   });
+  // }
 
   logout(): void {
     this.isLoggedIn = false;
     this.tokenService.clear();
+  }
+
+  login(param: { password: string; username: string }): any{
+    const url = 'UserAuth/login';
+    return this.httpService.postHandle(url, param);
   }
 }

@@ -23,7 +23,6 @@ export class HomeService {
     this.http.postHandle(url, data).subscribe((res) => {
       if (res && res.success) {
         console.log(res.data.data);
-
         this.$products.next(res.data);
       } else {
         console.log(res.error_code);
