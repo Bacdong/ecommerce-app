@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { FormatPricePipe } from './core/pipes';
 import { AuthModule } from './modules/auth/auth.module';
 import { MaterialModule } from './modules/vlaunch/material.module';
 import { VlaunchModule } from './modules/vlaunch/vlaunch.module';
@@ -18,7 +17,6 @@ import { VlaunchModule } from './modules/vlaunch/vlaunch.module';
     AppComponent,
     PageNotFoundComponent,
     AlertComponent,
-    FormatPricePipe,
   ],
   imports: [
     BrowserModule,

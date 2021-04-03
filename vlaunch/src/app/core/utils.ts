@@ -19,6 +19,10 @@ export function removeAccents(str) {
     return str;
 };
 
+export function reverseString(str) {
+  return str === '' ? '' : reverseString(str.substr(1)) + str.charAt(0);
+}
+
 export function stringToSlug(str: string) {
   var from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
       to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";

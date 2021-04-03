@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from 'src/app/shared/components/breadcrumb/breadcrumb.component';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
+import { FormatPricePipe } from 'src/app/core/pipes';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     FilterComponent,
     BreadcrumbComponent,
     PaginationComponent,
+    FormatPricePipe,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { RouterModule } from '@angular/router';
     FilterComponent,
     BreadcrumbComponent,
     PaginationComponent,
+    FormatPricePipe,
   ]
 })
 export class ShareModule { }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from 'src/app/components/page-not-found/page-not-found.component';
 import { BrandComponent } from './brand/brand.component';
 import { HomeComponent } from './home/home.component';
 import { IdeasComponent } from './ideas/ideas.component';
@@ -27,6 +28,10 @@ const vlaunchRoutes: Routes = [
 
       // Footer categories routes
       { path: 'sitemap', component: SitemapComponent },
+
+      // Redirect to 404
+      { path: '404', component: PageNotFoundComponent },
+      { path: '**', redirectTo: '/404' },
     ],
   }
 ];

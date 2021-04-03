@@ -9,8 +9,8 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img 
                     onerror="this.src='assets/images/no-image.jpg'"
-                    src="assets/images/products/1.png" 
-                    alt="Lavis Product"
+                    [src]="pathImg + product?.image1" 
+                    [alt]="product?.bookName"
                     loading="lazy"
                   >
                 </picture>
@@ -21,8 +21,32 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img 
                     onerror="this.src='assets/images/no-image.jpg'"
-                    src="assets/images/products/1.png" 
-                    alt="Lavis Product"
+                    [src]="pathImg + product?.image2" 
+                    [alt]="product?.bookName"
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="content">
+                <picture class="w-100 d-flex justify-content-center align-items-center">
+                  <img 
+                    onerror="this.src='assets/images/no-image.jpg'"
+                    [src]="pathImg + product?.image3" 
+                    [alt]="product?.bookName"
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="content">
+                <picture class="w-100 d-flex justify-content-center align-items-center">
+                  <img 
+                    onerror="this.src='assets/images/no-image.jpg'"
+                    [src]="pathImg + product?.image4" 
+                    [alt]="product?.bookName"
                     loading="lazy"
                   >
                 </picture>
@@ -35,15 +59,11 @@
         <div class="product__info">
           <div class="content">
             <div class="content__header">
-              <span class="content__header__code">60-0449</span>
-              <span class="content__header__name">jumelle</span>
+              <span class="content__header__code">{{ product?.categoryName }}</span>
+              <span class="content__header__name">{{ product?.bookName }}</span>
             </div>
             <div class="content__brief">
-              <p>
-                supremely adaptable, this sectional sofa can be 
-                obtained in a variety of combinations to adorn 
-                a host of grand settings.
-              </p>
+              <p>{{ product?.description }}</p>
             </div>
             <div class="content__dropdown">
               <mat-form-field class="w-100" appearance="outline">
@@ -61,10 +81,10 @@
                 <span class="type">vietnam retail</span>
                 <span class="type-brief">from</span>
               </div>
-              <span class="content__variant__price">$ 28,665</span>
+              <span class="content__variant__price">{{ product?.price |formatPrice }} VND</span>
             </div>
             <div class="content__action">
-              <a href="#" class="button button--primary">full details</a>
+              <a href="#" class="button button--primary">add to cart</a>
             </div>
             <div class="content__more-action">
               <a href="#" class="favorite">
@@ -77,7 +97,7 @@
               </a>
             </div>
             <div class="content__close d-none d-xl-block">
-              <a href="#" class="content__close__link">
+              <a [routerLink]="['/products']" class="content__close__link">
                 <mat-icon class="close-icon">close</mat-icon>
               </a>
             </div>

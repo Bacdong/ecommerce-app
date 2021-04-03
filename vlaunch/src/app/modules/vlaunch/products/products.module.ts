@@ -22,10 +22,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ],
   imports: [
     CommonModule,
+    ShareModule,
     MatIconModule,
     MatSelectModule,
     CarouselModule,
-    ShareModule,
     RouterModule,
     VlaunchRoutingModule,
   ]
