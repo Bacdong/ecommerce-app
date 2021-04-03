@@ -19,7 +19,7 @@ const vlaunchRoutes: Routes = [
       { path: 'products', component: ProductsComponent },
       { path: 'products/:slug', component: ProductsComponent },
       { path: 'products/:slug/:id', component: ProductsComponent },
-      { path: 'products/:slug/:id', component: ProductDetailComponent },
+      { path: 'products/item/:slug/:id', component: ProductDetailComponent },
       { path: 'project', component: RoomsComponent },
       { path: 'styletools', component: StyletoolsComponent },
       { path: 'brand', component: BrandComponent },
