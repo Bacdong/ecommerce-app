@@ -10,7 +10,7 @@ import { SUBMENUS } from './submenu';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  isDisplay: boolean = false;
+  isDisplay = false;
   screenWidth: number;
 
   navigations = NAVIGATIONS;
@@ -33,17 +33,17 @@ export class NavigationComponent implements OnInit {
     this.cityListSlide();
   }
 
-  showSearch() {
+  showSearch(): any {
     document.getElementById('search').classList.add('show');
     document.getElementById('action-menu').style.opacity = '0';
   }
 
-  closeSearch() {
+  closeSearch(): any {
     document.getElementById('search').classList.remove('show');
     document.getElementById('action-menu').style.opacity = '1';
   }
 
-  toggleDisplay() {
+  toggleDisplay(): any{
     this.isDisplay = !this.isDisplay;
     if (this.isDisplay) {
       document.querySelector('body').style.overflow = 'hidden';
@@ -52,13 +52,13 @@ export class NavigationComponent implements OnInit {
     }
   }
 
-  cityListSlide() {
+  cityListSlide(): any{
     let index = 0;
     this.currentCity = this.cityList[index];
     setInterval(() => {
       this.currentCity = this.cityList[index];
       index++;
-      if (index == this.cityList.length) { index = 0; }
+      if (index === this.cityList.length) { index = 0; }
     }, 3000);
   }
 }

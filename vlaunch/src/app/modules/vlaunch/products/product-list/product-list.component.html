@@ -1,15 +1,26 @@
-<section class="products container">
+<section class="products container" *ngIf="products?.data.length > 0">
   <div class="products__filter">
     <app-filter-bar></app-filter-bar>
   </div>
 
   <div class="row">
     <div class="product__item mt-5 col-6 col-xl-3"
-      *ngFor="let product of products"
+      *ngFor="let product of products.data"
     >
       <app-product-item
         [product]="product"
       ></app-product-item>
     </div>
+  </div>
+
+  <div 
+    class="product__pagination mt-4 mt-xl-5"
+    *ngIf="products.list_Page.length > 1"  
+  >
+    <app-pagination
+      [pages]="products"
+      [rootPath]="rootPath"
+      (onPageChange)="changePage($event)"
+    ></app-pagination>
   </div>
 </section>

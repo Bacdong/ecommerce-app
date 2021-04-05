@@ -1,16 +1,16 @@
 <div class="product">
-  <a routerLink="" class="product__image">
-    <img onerror="this.src='assets/images/no-img.jpg'"
-      [src]="product.src" 
-      [alt]="product.name"
+  <a [routerLink]="['/products/item', slug, product.id]" class="product__image">
+    <img 
+      [src]="path + product.mainImage" 
+      [alt]="product.bookName"
     >
   </a>
-  <h3 class="product__name">{{ product.name }}</h3>
+  <h3 class="product__name">{{ product.bookName }}</h3>
   <div class="product__more-info">
     <div class="product__more-info__origin">
       <span class="origin-name">vietnam retail</span>
       <span class="origin-brief">from</span>
     </div>
-    <span class="product__more-info__price">$ {{ product.price }}</span>
+    <span class="product__more-info__price">{{ product.price | formatPrice }} VND</span>
   </div>
 </div>

@@ -1,0 +1,34 @@
+<div class="paginarion">
+  <div class="pagination__wrapper">
+    <ul>
+      <li>
+        <a
+          [routerLink]="['/' + rootPath]"
+          [queryParams]="{ page: pages.prev_Page }"
+          [class.disabled]="pages.prev_Page === null"
+          (click)="changePage(pages.prev_Page)"
+        >
+          <mat-icon class="chevron-icon">chevron_left</mat-icon>
+        </a>
+      </li>
+      <li *ngFor="let page of pages.list_Page">
+        <a 
+          [routerLink]="['/' + rootPath]"
+          [queryParams]="{ page: page }"
+          [class.active]="pages.current_Page === page"
+          (click)="changePage(page)"
+        >{{ page }}</a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/' + rootPath]"
+          [queryParams]="{ page: pages.next_Page }"
+          [class.disabled]="pages.next_Page === null"
+          (click)="changePage(pages.next_Page)"
+        >
+          <mat-icon class="chevron-icon">chevron_right</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

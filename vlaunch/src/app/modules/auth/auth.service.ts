@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { HttpService } from '../../core/services/http.service';
+import {TokenService} from '../../core/services/token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,20 @@ import { HttpService } from '../../core/services/http.service';
 export class AuthService {
   constructor(
     private httpService: HttpService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private tokenService: TokenService
   ) {}
 
   profile: object;
   isLogin = false;
 
+  isLoggedIn = false;
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
+
   apiLogin(data): void {
     const url = 'auth/login';
-    this.httpService.post(url, data).subscribe((res) => {
+    this.httpService.postHandle(url, data).subscribe((res) => {
       if (res && res.success) {
         this.isLogin = true;
         localStorage.setItem('token', res.data.access);
@@ -31,9 +37,9 @@ export class AuthService {
     });
   }
 
-  getProfile() {
+  getProfile(): any {
     const url = 'auth/profile';
-    this.httpService.get(url).subscribe((res) => {
+    this.httpService.getHandle(url).subscribe((res) => {
       if (res && res.success) {
         this.profile = { ...res.data };
         console.log(this.profile);
@@ -46,9 +52,9 @@ export class AuthService {
     });
   }
 
-  updateProfile(data: FormData) {
+  updateProfile(data: FormData): any {
     const url = 'auth/profile';
-    this.httpService.put(url, data).subscribe((res) => {
+    this.httpService.putHandle(url, data).subscribe((res) => {
       if (res && res.success) {
         this.profile = { ...res.data };
       } else {
@@ -60,18 +66,20 @@ export class AuthService {
     });
   }
 
-  isLoggedIn = false;
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
-
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(val => this.isLoggedIn = true)
-    );
-  }
+  // login(): any {
+  //   const url = '/UserAuth/login';
+  //   return this.httpService.postHandle(url, data).subscribe(res => {
+  //     this.isLoggedIn = true;
+  //   });
+  // }
 
   logout(): void {
     this.isLoggedIn = false;
+    this.tokenService.clear();
+  }
+
+  login(param: { password: string; username: string }): any{
+    const url = 'UserAuth/login';
+    return this.httpService.postHandle(url, param);
   }
 }

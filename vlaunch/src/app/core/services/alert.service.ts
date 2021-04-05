@@ -13,7 +13,7 @@ export class AlertService {
     this.alert = alert;
   }
 
-  clear() {
+  clear(): any {
     this.alert = null;
   }
 }

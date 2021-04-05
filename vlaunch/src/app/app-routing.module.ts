@@ -5,7 +5,7 @@ import { VlaunchComponent } from './modules/vlaunch/vlaunch.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: VlaunchComponent },
-  { path: '**', component: PageNotFoundComponent },
+  // { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

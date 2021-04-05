@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { VlaunchComponent } from './vlaunch.component';
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
@@ -31,8 +30,6 @@ import { SitemapModule } from './sitemap/sitemap.module';
   imports: [
     CommonModule,
     MatIconModule,
-    RouterModule,
-    VlaunchRoutingModule,
     HomeModule,
     ProductsModule,
     RoomsModule,
@@ -40,6 +37,8 @@ import { SitemapModule } from './sitemap/sitemap.module';
     BrandModule,
     IdeasModule,
     SitemapModule,
+    RouterModule,
+    VlaunchRoutingModule,
   ],
 })
 export class VlaunchModule { }
