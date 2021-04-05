@@ -59,8 +59,9 @@ export class LoginComponent implements OnInit {
         this.authService.isLoggedIn = true;
         this.tokenService.setRefreshToken(res.data.refresh);
         this.tokenService.setToken(res.data.access);
-        const redirectUrl = '/home';
+        const redirectUrl = '/';
         this.router.navigate([redirectUrl]);
+        this.toggleDisplay.emit();
       }else {
         this.matSnackBar.open(res.error_message, 'Undo', {duration: 2000});
       }

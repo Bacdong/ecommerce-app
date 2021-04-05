@@ -38,4 +38,13 @@ export class TokenService {
   clear(): any {
     localStorage.clear();
   }
+
+  getName(): any {
+    if (this.getToken() == null) {
+      return null;
+    } else {
+      this.payload = jwtDecode(this.getToken());
+      return this.payload.Name;
+    }
+  }
 }

@@ -3,9 +3,9 @@
     <div class="row">
       <div id="logo" class="logo col-md-2 col-xl-1 col-3">
         <a routerLink="/" class="logo__link">
-          <img 
+          <img
             onerror="this.src='assets/images/no-image.jpg'"
-            src="assets/images/logo.png" 
+            src="assets/images/logo.png"
             alt="Lavis Decor"
           >
         </a>
@@ -17,17 +17,28 @@
         <div class="navbar-content__top">
           <ul class="main-menu">
             <li *ngFor="let item of navigations">
-              <a 
+              <a
                 routerLink="{{ item.url }}"
                 routerLinkActive="active"
               >{{ item.name }}</a>
             </li>
           </ul>
           <ul class="action-menu" id="action-menu">
-            <li>
-              <a class="has-label" (click)="toggleDisplay()">
-                <span class="auth-label">login / register</span>
+            <li *ngIf="tokenService.getName()==null">
+                <a class="has-label" (click)="toggleDisplay()">
+                  <span class="auth-label">login / register</span>
+                  <mat-icon class="action-icon">person_outline</mat-icon>
+                </a>
+             </li>
+            <li *ngIf="!(tokenService.getName()==null)">
+              <a class="has-label">
+                <span style="color: white">Xin chào {{tokenService.getName()}}</span>
                 <mat-icon class="action-icon">person_outline</mat-icon>
+              </a>
+            </li>
+            <li *ngIf="!(tokenService.getName()==null)">
+              <a (click)="logout()" class="has-label">
+                <span style="color: white" class="material-icons action-icon">logout</span>
               </a>
             </li>
             <li>
@@ -52,13 +63,13 @@
                 <button type="submit">
                   <mat-icon class="action-icon active">search</mat-icon>
                 </button>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   autocomplete="true"
                   id="input-search"
                   placeholder="Search by category, name, code or room type"
                 >
-                <mat-icon 
+                <mat-icon
                   class="action-icon close-icon"
                   (click)="closeSearch()"
                 >close</mat-icon>
@@ -72,14 +83,14 @@
               <a routerLink="{{ menu.navigation.url }}"
                 class="submenu__link"
               >{{ menu.navigation.name }}</a>
-              <div 
+              <div
                 *ngIf="menu.megaMenu.length > 0"
-                class="mega-menu" 
+                class="mega-menu"
                 id="mega-menu"
               >
                 <div class="mega-menu__wrapper container">
                   <div class="mega-menu__category">
-                    <div 
+                    <div
                       class="list-group"
                       *ngFor="let megaMenu of menu.megaMenu"
                     >
@@ -95,9 +106,9 @@
                   </div>
                   <div class="mega-menu__image">
                     <a class="mega-menu__image__link">
-                      <img 
-                        onerror="this.style.display='none'" 
-                        src="assets/images/mega-menu-image/1.jpg" 
+                      <img
+                        onerror="this.style.display='none'"
+                        src="assets/images/mega-menu-image/1.jpg"
                         alt="Illustration Image"
                       >
                       <div class="play-video">
@@ -112,7 +123,7 @@
         </div>
       </div>
     </div>
-    <app-login 
+    <app-login
       id="app-login"
       *ngIf="isDisplay"
       [ngClass]="{ 'show': isDisplay }"

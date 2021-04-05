@@ -3,6 +3,7 @@ import { MinLengthValidator } from '@angular/forms';
 import { LANGUAGES } from './language';
 import { NAVIGATIONS } from './navigation';
 import { SUBMENUS } from './submenu';
+import {TokenService} from '../../../core/services/token.service';
 
 @Component({
   selector: 'app-navigation',
@@ -27,7 +28,7 @@ export class NavigationComponent implements OnInit {
     'new york',
   ];
 
-  constructor() { }
+  constructor(public tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.cityListSlide();
@@ -60,5 +61,9 @@ export class NavigationComponent implements OnInit {
       index++;
       if (index === this.cityList.length) { index = 0; }
     }, 3000);
+  }
+
+  logout(): any {
+    this.tokenService.clear();
   }
 }
