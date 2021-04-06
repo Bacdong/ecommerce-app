@@ -1,6 +1,6 @@
 # Ecommerce App - BookStore
 ## Reference Links
-* [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+* [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
 ## Environment
 * NodeJS: v12.19.0
