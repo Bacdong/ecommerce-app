@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
 
   isFormDisplay = true;
 
-  ngOnInit(): void { this.toggleChangeForm(); }
-
   // login(): any {
   //   this.authService.login().subscribe(() => {
   //     if (this.authService.isLoggedIn) {
@@ -32,6 +30,9 @@ export class LoginComponent implements OnInit {
   //     }
   //   });
   // }
+  registerForm: any;
+
+  ngOnInit(): void { this.toggleChangeForm(); }
 
   logout(): any {
     this.authService.logout();
@@ -66,5 +67,9 @@ export class LoginComponent implements OnInit {
         this.matSnackBar.open(res.error_message, 'Undo', {duration: 2000});
       }
     });
+  }
+
+  register(): any {
+    console.log(this.registerForm.value);
   }
 }
