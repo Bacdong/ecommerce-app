@@ -17,6 +17,7 @@ import { StyletoolsModule } from './styletools/styletools.module';
 import { BrandModule } from './brand/brand.module';
 import { IdeasModule } from './ideas/ideas.module';
 import { SitemapModule } from './sitemap/sitemap.module';
+import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -27,18 +28,19 @@ import { SitemapModule } from './sitemap/sitemap.module';
       SectionSigninWithUsComponent,
       LoginComponent,
   ],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    HomeModule,
-    ProductsModule,
-    RoomsModule,
-    StyletoolsModule,
-    BrandModule,
-    IdeasModule,
-    SitemapModule,
-    RouterModule,
-    VlaunchRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        HomeModule,
+        ProductsModule,
+        RoomsModule,
+        StyletoolsModule,
+        BrandModule,
+        IdeasModule,
+        SitemapModule,
+        RouterModule,
+        VlaunchRoutingModule,
+        ReactiveFormsModule,
+    ],
 })
 export class VlaunchModule { }

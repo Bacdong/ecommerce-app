@@ -12,21 +12,18 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
+
+  constructor(private productsService: ProductsService, private router: Router) {
+  }
   product: any;
   pathImg = environment.IMAGE_PATH;
   subscription = new Subscription();
 
-  constructor(private productsService: ProductsService, private router: Router) { }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   models = [
-    { value: "60-0449", name: "W454 X D253 X H80 CM" },
-    { value: "60-0450", name: "W390 X D171 X H80 CM" },
-    { value: "60-0530", name: "W554 X D145 X H90 CM" },
-    { value: "60-0532", name: "W390 X D171 X H90 CM" },
+    { value: '60-0449', name: 'W454 X D253 X H80 CM' },
+    { value: '60-0450', name: 'W390 X D171 X H80 CM' },
+    { value: '60-0530', name: 'W554 X D145 X H90 CM' },
+    { value: '60-0532', name: 'W390 X D171 X H90 CM' },
   ];
 
   selectedModel = this.models[0].value;
@@ -48,6 +45,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     nav: false
   };
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   ngOnInit(): void {
     this.subscription.add(
       this.router.events.subscribe((event) => {
@@ -57,10 +58,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       })
     );
 
-    let url = this.router.url;
-    let id = this.extractUrl(url);
-    if (!id) return;
-    
+    const url = this.router.url;
+    const id = this.extractUrl(url);
+    if (!id) { return; }
+
     this.productsService.getProductDetail(id);
     this.subscription.add(
       this.productsService.product$.subscribe((product) => {
@@ -70,24 +71,24 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     );
   }
 
-  private extractUrl(url) {
+  private extractUrl(url): any {
     if (reverseString(url).indexOf('?') > 0) {
-      let index = reverseString(url).indexOf('?');
+      const index = reverseString(url).indexOf('?');
       url = reverseString(reverseString(url).slice(index + 1));
     }
 
-    let arr = url.split('-');
-    let code = arr[arr.length - 1];
+    const arr = url.split('-');
+    const code = arr[arr.length - 1];
     return this.getID(code);
   }
 
-  private getID(code) {
-    let arrCode = code.split('');
+  private getID(code): any {
+    const arrCode = code.split('');
     let type = '';
     let id = '';
 
     for (let i = 0; i < arrCode.length; ++i) {
-      let value = arrCode[i] * 1;
+      const value = arrCode[i] * 1;
       if (!Number.isInteger(value)) {
         type += arrCode[i];
       } else {
@@ -103,8 +104,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     return id;
   }
 
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
+  reloadCurrentRoute(): any {
+    const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });

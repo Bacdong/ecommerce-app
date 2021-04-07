@@ -7,9 +7,9 @@
             <ng-template carouselSlide>
               <div class="content">
                 <picture class="w-100 d-flex justify-content-center align-items-center">
-                  <img 
+                  <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.image1" 
+                    [src]="pathImg + product?.bookImageViewModel.image1"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -19,9 +19,9 @@
             <ng-template carouselSlide>
               <div class="content">
                 <picture class="w-100 d-flex justify-content-center align-items-center">
-                  <img 
+                  <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.image2" 
+                    [src]="pathImg + product?.bookImageViewModel.image2"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -31,9 +31,9 @@
             <ng-template carouselSlide>
               <div class="content">
                 <picture class="w-100 d-flex justify-content-center align-items-center">
-                  <img 
+                  <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.image3" 
+                    [src]="pathImg + product?.bookImageViewModel.image3"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -43,9 +43,9 @@
             <ng-template carouselSlide>
               <div class="content">
                 <picture class="w-100 d-flex justify-content-center align-items-center">
-                  <img 
+                  <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.image4" 
+                    [src]="pathImg + product?.bookImageViewModel.image4"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -69,8 +69,8 @@
               <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Select Model</mat-label>
                 <mat-select [(value)]="selectedModel">
-                  <mat-option 
-                    [value]="option.value" 
+                  <mat-option
+                    [value]="option.value"
                     *ngFor="let option of models"
                   >{{ option.name }}</mat-option>
                 </mat-select>
