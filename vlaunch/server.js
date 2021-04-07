@@ -13,12 +13,12 @@ app.use(requireHTTPS);
 const path = require('path');
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/ecommerce-app'));
+app.use(express.static(__dirname + '/dist/ecommerce-app/vlaunch'));
 
 app.get('/*', function(req,res) {
     
 // res.sendFile(path.join(__dirname+'/dist/LavisDecor-Web/vlaunch/index.html'));
-res.sendFile('index.html', {root: 'dist/ecommerce-app/'})
+res.sendFile('index.html', {root: 'dist/ecommerce-app/vlaunch/'})
 });
 
 // Start the app by listening on the default Heroku port
