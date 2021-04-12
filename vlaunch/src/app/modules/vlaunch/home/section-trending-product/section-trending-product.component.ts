@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../home.service';
+import {Product} from '../../../../models/product';
 
 @Component({
   selector: 'app-section-trending-product',
@@ -8,9 +9,9 @@ import { HomeService } from '../home.service';
   styleUrls: ['./section-trending-product.component.scss']
 })
 export class SectionTrendingProductComponent implements OnInit, OnDestroy {
+  trendingProducts: Product[];
   constructor(private homeService: HomeService) { }
 
-  trendingProducts: any;
   subscription = new Subscription();
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

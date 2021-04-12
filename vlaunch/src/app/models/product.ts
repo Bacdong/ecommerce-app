@@ -19,8 +19,8 @@ export class Product {
   public comment;
   public invoiceDetails;
 
-  constructor(bookName: string, price: number) {
-    this.bookName = bookName;
-    this.price = price;
-  }
+  // constructor(bookName: string, price: number) {
+  //   this.bookName = bookName;
+  //   this.price = price;
+  // }
 }

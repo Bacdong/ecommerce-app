@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
@@ -11,7 +11,7 @@ export class HomeService {
 
   constructor(private http: HttpService) { }
 
-  $products = new Subject<Product>();
+  $products = new BehaviorSubject(new Array(new Product()));
 
   init(): any{
     this.getTrendingProducts();
@@ -22,8 +22,8 @@ export class HomeService {
 
     this.http.postHandle(url, data).subscribe((res) => {
       if (res && res.success) {
-        console.log(res.data.data);
-        this.$products.next(res.data);
+        // console.log(res.data.data);
+        this.$products.next(res.data.data);
       } else {
         console.log(res.error_code);
       }
