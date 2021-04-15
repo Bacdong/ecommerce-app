@@ -109,6 +109,9 @@ export class HttpService {
       if (error.status === 500){
         return {error_message: 'Lỗi server'};
       }
+      if (error.status === 404){
+        return {error_message: 'Không tìm thấy tài nguyên này'};
+      }
       if (error.status === 401 && (!this.tokenService.getRefreshToken() || this.tokenService.getRefreshToken() === '')) {
         return {
           error_code: 'token_not_valid',

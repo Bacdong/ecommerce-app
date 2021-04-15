@@ -14,5 +14,8 @@ export class ProductItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.slug = stringToSlug(this.product.bookName);  }
+    if (this.product.bookName){
+      this.slug = stringToSlug(this.product.bookName);
+    }
+  }
 }

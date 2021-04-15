@@ -39,6 +39,7 @@ const vlaunchRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(vlaunchRoutes)],
   exports: [RouterModule],
+  bootstrap: []
 })
 
 export class VlaunchRoutingModule {}

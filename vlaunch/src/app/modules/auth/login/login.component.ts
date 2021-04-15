@@ -5,6 +5,8 @@ import {AlertService} from '../../../core/services/alert.service';
 import {AlertComponent} from '../../../components/alert/alert.component';
 import {TokenService} from '../../../core/services/token.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Result} from '../../../models/result';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,12 @@ export class LoginComponent implements OnInit {
   //     }
   //   });
   // }
-  registerForm: any;
+  registerForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+    comfirmPassword: new FormControl(''),
+    name: new FormControl('')
+  });
 
   ngOnInit(): void { this.toggleChangeForm(); }
 
@@ -71,5 +78,17 @@ export class LoginComponent implements OnInit {
 
   register(): any {
     console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).subscribe((result: Result) => {
+      if (result.success){
+        this.matSnackBar.open(result.data.toString(), 'Close', {
+          duration: 2000
+        });
+        this.toggleChangeForm();
+      }else {
+        this.matSnackBar.open(result.error_message, 'Close', {
+          duration: 2000
+        });
+      }
+    });
   }
 }

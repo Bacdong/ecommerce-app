@@ -83,49 +83,44 @@
           </div>
           <div class="register__form">
             <form [formGroup]="registerForm" (ngSubmit)="register()">
-              <div class="group group--separate">
-                <label>
+              <div class="group" >
                   <input
                     type="text"
-                    placeholder="First name"
+                    placeholder="Username"
+                  formControlName="username"
                   >
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    placeholder="Last name"
-                  >
-                </label>
-              </div>
-              <div class="group">
-                <label>
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                  >
-                </label>
               </div>
               <div class="group group--separate">
                 <input
                   type="password"
                   placeholder="Create password"
+                formControlName="password"
                 >
                 <input
                   type="password"
                   placeholder="Re-enter password"
+                  formControlName="comfirmPassword"
                 >
               </div>
-              <div class="group group--dropdown">
-                <select name="" class="w-100">
-                  <option value="vietnam">việt nam</option>
-                  <option value="america">america</option>
-                  <option value="korea">korea</option>
-                  <option value="japan">japan</option>
-                </select>
-                <div class="dropdown-icon">
-                  <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
-                </div>
+              <div class="group" >
+                <input
+                  type="text"
+                  placeholder="Name"
+                  formControlName="name"
+                >
               </div>
+<!--              <div class="group">-->
+<!--                <input-->
+<!--                  type="text"-->
+<!--                  placeholder="Last name"-->
+<!--                >-->
+<!--              </div>-->
+<!--              <div class="group">-->
+<!--                <input-->
+<!--                  type="email"-->
+<!--                  placeholder="Email address"-->
+<!--                >-->
+<!--              </div>-->
               <div class="group group--checkbox">
                 <input type="checkbox" id="input-checkbox">
                 <label
@@ -136,7 +131,7 @@
                   updates via email about Lavis Decor and its partners.
                 </label>
               </div>
-              <button
+              <button type="submit"
                 class="btn btn-block btn-primary create-button"
               >create free account</button>
             </form>

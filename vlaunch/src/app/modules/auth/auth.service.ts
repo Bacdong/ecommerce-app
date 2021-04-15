@@ -82,4 +82,9 @@ export class AuthService {
     const url = 'UserAuth/login';
     return this.httpService.postHandle(url, param);
   }
+
+  register(value: any): any {
+    const url = 'UserAuth/register';
+    return this.httpService.postHandle(url, value);
+  }
 }

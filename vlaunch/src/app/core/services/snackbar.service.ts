@@ -19,14 +19,14 @@ export class SnackbarService {
     });
   }
 
-  successMessage(message: string) { 
-    this.showSnackBar(message); 
+  successMessage(message: string): any {
+    this.showSnackBar(message);
     window.location.reload();
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });
   }
 
-  errorMessage(res) {
-    if (res && res.error_code === 'token_not_valid') {
+  errorMessage(res): any {
+    if (res) {
       localStorage.clear();
       window.location.reload();
     }
