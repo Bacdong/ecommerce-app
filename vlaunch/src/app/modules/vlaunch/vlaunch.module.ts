@@ -18,6 +18,8 @@ import { BrandModule } from './brand/brand.module';
 import { IdeasModule } from './ideas/ideas.module';
 import { SitemapModule } from './sitemap/sitemap.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CartComponent} from './cart/cart.component';
+import {ShareModule} from './share.module';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -27,20 +29,22 @@ import {ReactiveFormsModule} from '@angular/forms';
       FooterSubscribeComponent,
       SectionSigninWithUsComponent,
       LoginComponent,
+    CartComponent,
   ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        HomeModule,
-        ProductsModule,
-        RoomsModule,
-        StyletoolsModule,
-        BrandModule,
-        IdeasModule,
-        SitemapModule,
-        RouterModule,
-        VlaunchRoutingModule,
-        ReactiveFormsModule,
-    ],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    HomeModule,
+    ProductsModule,
+    RoomsModule,
+    StyletoolsModule,
+    BrandModule,
+    IdeasModule,
+    SitemapModule,
+    RouterModule,
+    VlaunchRoutingModule,
+    ReactiveFormsModule,
+    ShareModule,
+  ],
 })
 export class VlaunchModule { }

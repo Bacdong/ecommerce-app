@@ -10,6 +10,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { SitemapComponent } from './sitemap/sitemap.component';
 import { StyletoolsComponent } from './styletools/styletools.component';
 import { VlaunchComponent } from './vlaunch.component';
+import {CartComponent} from './cart/cart.component';
 
 const vlaunchRoutes: Routes = [
   {
@@ -25,6 +26,7 @@ const vlaunchRoutes: Routes = [
       { path: 'styletools', component: StyletoolsComponent },
       { path: 'brand', component: BrandComponent },
       { path: 'ideas', component: IdeasComponent },
+      { path: 'cart', component: CartComponent },
 
       // Footer categories routes
       { path: 'sitemap', component: SitemapComponent },

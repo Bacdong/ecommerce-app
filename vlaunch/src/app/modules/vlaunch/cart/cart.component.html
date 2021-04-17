@@ -1,0 +1,99 @@
+<section class="cart-container container">
+  <div class="page-title">
+    <h3>
+      <span class="title">giỏ hàng</span>
+      <span class="qty-count">({{this.sumCart()}} sản phẩm)</span>
+      <span class="title-mobile-tablet">giỏ hàng của bạn</span>
+    </h3>
+  </div>
+
+  <div class="empty-cart" *ngIf="true">
+    <div class="img">
+      <img src="../../../../assets/images/cart-image/empty-cart.png" alt="" />
+    </div>
+
+    <div class="action">
+      <a [routerLink]="['/']" class="action-link">tiếp tục mua sắm</a>
+    </div>
+  </div>
+
+  <div class="has-item row" *ngIf="true">
+    <div class="cart-list col-12 col-md-12 col-xl-8">
+      <ul class="product-list">
+        <li
+          class="product-item d-flex justify-content-between"
+          *ngFor="let line of carts"
+        >
+          <div class="item-image col-12 col-md-2">
+            <img
+              src="{{ line.product.default_image_sm }}"
+              alt="{{ line.product.name }}"
+            />
+          </div>
+
+          <div class="item-info col-12 col-md-6">
+            <a
+              [routerLink]="['/', line.product.slug + '-p' + line.product.id]"
+              class="info-name"
+            >
+              {{ line.product.name }} <br />
+              {{ line.variant ? line.variant.name : "" }}
+            </a>
+          </div>
+
+          <div class="price col-6 col-md-2">
+            <span>{{ line.price | formatPrice }}đ</span>
+          </div>
+
+          <div class="control-qty d-flex flex-column col-6 col-md-2">
+            <div class="control-group d-flex justify-content-center">
+              <button
+                class="decrease-qty"
+                (click)="updateQuantity()"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                min="1"
+                [value]="line.quantity"
+                (change)="updateQuantity()"
+              />
+              <button
+                class="increase-qty"
+                (click)="updateQuantity()"
+              >
+                +
+              </button>
+            </div>
+
+            <a (click)="deleteCartLine()" class="remove-item-action">xóa</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="checkout col-12 col-md-12 col-xl-4">
+      <div class="checkout-info">
+        <!-- <div class="subtotal pb-4 bottom-line d-flex justify-content-between">
+          <span class="subtotal-title">Tạm tính:</span>
+          <span class="subtotal-value">2.280.000đ</span>
+        </div> -->
+
+        <div class="into-money d-flex justify-content-between">
+          <span class="into-money-title">thành tiền:</span>
+          <span class="into-money-value"
+            >{{ 10000 | formatPrice }}đ</span
+          >
+        </div>
+      </div>
+
+      <div class="checkout-action">
+        <a [routerLink]="['/checkout', '1']" class="checkout-now"
+          >thanh toán ngay</a
+        >
+        <a [routerLink]="['/']" class="buy-continue">tiếp tục mua hàng</a>
+      </div>
+    </div>
+  </div>
+</section>
