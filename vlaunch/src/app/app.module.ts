@@ -29,6 +29,7 @@ import { VlaunchModule } from './modules/vlaunch/vlaunch.module';
     AppRoutingModule,
     MaterialModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
 })

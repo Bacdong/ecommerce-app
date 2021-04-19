@@ -9,7 +9,7 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.bookImageViewModel.image1"
+                    [src]="pathImg + product.bookImageViewModel.image1"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -21,7 +21,7 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.bookImageViewModel.image2"
+                    [src]="pathImg + product.bookImageViewModel.image2"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -33,7 +33,7 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.bookImageViewModel.image3"
+                    [src]="pathImg + product.bookImageViewModel.image3"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -45,7 +45,7 @@
                 <picture class="w-100 d-flex justify-content-center align-items-center">
                   <img
                     onerror="this.src='assets/images/no-image.jpg'"
-                    [src]="pathImg + product?.bookImageViewModel.image4"
+                    [src]="pathImg + product.bookImageViewModel.image4"
                     [alt]="product?.bookName"
                     loading="lazy"
                   >
@@ -83,8 +83,8 @@
               </div>
               <span class="content__variant__price">{{ product?.price |formatPrice }} VND</span>
             </div>
-            <div class="content__action">
-              <a href="#" class="button button--primary">add to cart</a>
+            <div (click)="addToCart(product.id)" class="content__action">
+              <a class="button button--primary">add to cart</a>
             </div>
             <div class="content__more-action">
               <a href="#" class="favorite">

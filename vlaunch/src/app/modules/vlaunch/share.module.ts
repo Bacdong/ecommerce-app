@@ -28,7 +28,7 @@ import { FormatPricePipe } from 'src/app/core/pipes';
     MatSelectModule,
     FormsModule,
     IvyCarouselModule,
-    RouterModule,  
+    RouterModule,
   ],
   exports: [
     ProductItemComponent,

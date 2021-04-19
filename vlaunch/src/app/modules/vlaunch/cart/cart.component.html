@@ -7,7 +7,7 @@
     </h3>
   </div>
 
-  <div class="empty-cart" *ngIf="true">
+  <div class="empty-cart" *ngIf="this.listCart.length==0">
     <div class="img">
       <img src="../../../../assets/images/cart-image/empty-cart.png" alt="" />
     </div>
@@ -17,51 +17,53 @@
     </div>
   </div>
 
-  <div class="has-item row" *ngIf="true">
+  <div class="has-item row" *ngIf="this.listCart.length!=0">
     <div class="cart-list col-12 col-md-12 col-xl-8">
       <ul class="product-list">
         <li
           class="product-item d-flex justify-content-between"
-          *ngFor="let line of carts"
+          *ngFor="let line of this.listCart"
         >
           <div class="item-image col-12 col-md-2">
             <img
-              src="{{ line.product.default_image_sm }}"
-              alt="{{ line.product.name }}"
+              src="{{env.IMAGE_PATH+line.book.mainImage}}"
+              alt="{{line.book.bookName }}"
             />
           </div>
 
           <div class="item-info col-12 col-md-6">
             <a
-              [routerLink]="['/', line.product.slug + '-p' + line.product.id]"
+              [routerLink]="['/', stringToSlug(line.book.bookName) + '-p' + line.bookId]"
               class="info-name"
             >
-              {{ line.product.name }} <br />
-              {{ line.variant ? line.variant.name : "" }}
+              <br />
+              <br />
+              {{ line.book.bookName}}
             </a>
           </div>
 
           <div class="price col-6 col-md-2">
-            <span>{{ line.price | formatPrice }}đ</span>
+            <span>{{ line.book.price | formatPrice }}đ</span>
           </div>
 
           <div class="control-qty d-flex flex-column col-6 col-md-2">
             <div class="control-group d-flex justify-content-center">
               <button
                 class="decrease-qty"
-                (click)="updateQuantity()"
+                (click)="decreaseQuantity(line.id, amount.value)"
               >
                 -
               </button>
               <input
-                type="text"
+                type="number"
                 min="1"
-                [value]="line.quantity"
-                (change)="updateQuantity()"
+                [value]="line.amount"
+                #amount
+                (change)="changeQuantity(line.id, amount.value)"
               />
               <button
                 class="increase-qty"
-                (click)="updateQuantity()"
+                (click)="increaseQuantity(line.id, amount.value)"
               >
                 +
               </button>
@@ -83,7 +85,7 @@
         <div class="into-money d-flex justify-content-between">
           <span class="into-money-title">thành tiền:</span>
           <span class="into-money-value"
-            >{{ 10000 | formatPrice }}đ</span
+            >{{ this.priceSum() | formatPrice }}đ</span
           >
         </div>
       </div>

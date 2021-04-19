@@ -15,8 +15,12 @@ export class TokenService {
   }
 
   getUserId(): string {
-    this.payload = jwtDecode(this.getToken());
-    return this.payload.id;
+    if (this.getToken() == null) {
+      return null;
+    }else {
+      this.payload = jwtDecode(this.getToken());
+      return this.payload.id;
+    }
   }
 
   hasToken(): any {

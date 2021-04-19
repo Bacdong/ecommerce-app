@@ -1,6 +1,6 @@
-import { Author } from "./author";
-import { Category } from "./category";
-import { Image } from "./image";
+import { Author } from './author';
+import { Category } from './category';
+import { Image } from './image';
 
 export class Product {
   public id: number;
@@ -15,11 +15,17 @@ export class Product {
   public category: Category;
   public authorId: number;
   public author: Author;
-  public bookImage: Image[];
+  public bookImageViewModel: Image;
   public comment;
   public invoiceDetails;
+  public categoryName: string;
 
-  // constructor(bookName: string, price: number) {
+
+  constructor() {
+    this.bookImageViewModel = new Image();
+  }
+
+// constructor(bookName: string, price: number) {
   //   this.bookName = bookName;
   //   this.price = price;
   // }

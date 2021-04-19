@@ -4,7 +4,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
 import { reverseString } from 'src/app/core/utils';
 import { environment } from 'src/environments/environment';
+import { CartService } from '../../cart/cart.service';
 import { ProductsService } from '../products.service';
+import {TokenService} from '../../../../core/services/token.service';
+import {Product} from '../../../../models/product';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,9 +16,12 @@ import { ProductsService } from '../products.service';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
 
-  constructor(private productsService: ProductsService, private router: Router) {
+  constructor(private productsService: ProductsService,
+              private router: Router,
+              private cartService: CartService,
+              private tokenService: TokenService) {
   }
-  product: any;
+  product: Product = new Product();
   pathImg = environment.IMAGE_PATH;
   subscription = new Subscription();
 
@@ -109,5 +115,15 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });
+  }
+
+  addToCart(id): void {
+
+    const data = {
+      userId: this.tokenService.getUserId(),
+      bookId: id,
+      amount: 1
+    };
+    this.cartService.addCart(data);
   }
 }

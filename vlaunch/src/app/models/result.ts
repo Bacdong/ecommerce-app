@@ -1,5 +1,5 @@
 export class Result{
-  data: object;
+  data: any;
   error_message: string;
   success: boolean;
 }
