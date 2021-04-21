@@ -50,26 +50,29 @@
             <div class="control-group d-flex justify-content-center">
               <button
                 class="decrease-qty"
-                (click)="decreaseQuantity(line.id, amount.value)"
+                (click)="decreaseAmount(line.id)"
               >
                 -
               </button>
               <input
+                id = "{{'amount-quantity-'+line.id}}"
                 type="number"
                 min="1"
                 [value]="line.amount"
                 #amount
                 (change)="changeQuantity(line.id, amount.value)"
+                (keyup)="changeQuantity(line.id, amount.value)"
+
               />
               <button
                 class="increase-qty"
-                (click)="increaseQuantity(line.id, amount.value)"
+                (click)="increaseAmount(line.id)"
               >
                 +
               </button>
             </div>
 
-            <a (click)="deleteCartLine()" class="remove-item-action">xóa</a>
+            <a (click)="deleteCartLine(line.id)" class="remove-item-action">xóa</a>
           </div>
         </li>
       </ul>

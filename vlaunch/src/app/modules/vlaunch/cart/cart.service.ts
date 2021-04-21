@@ -42,4 +42,26 @@ export class CartService {
     const url = 'Cart/';
     return this.httpService.postHandle(url, data);
   }
+
+  deleteCartById(id: number): any {
+    const url = 'Cart/DeleteById/' + id;
+    this.httpService.deleteHandle(url).subscribe((res: Result) => {
+        if (res.success){
+          this.cartSubject.next(res.data);
+        }
+    });
+  }
+
+  updateCart(id: number, value: string): any {
+    const path = 'Cart';
+    const data = {
+      id,
+      amount: value
+    };
+    this.httpService.putHandle(path, data).subscribe((res: Result) => {
+      if (res.success){
+        this.cartSubject.next(res.data);
+      }
+    });
+  }
 }

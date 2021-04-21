@@ -12,6 +12,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class CartComponent implements OnInit, OnDestroy {
   carts: any;
+  amountUpdate = AmountUpdate;
   env = environment;
   listCart: Cart[] = [
     new Cart()
@@ -27,10 +28,6 @@ export class CartComponent implements OnInit, OnDestroy {
       this.listCart = res;
       console.log(this.listCart);
     });
-  }
-
-  deleteCartLine(): void {
-
   }
 
   sumCart(): number{
@@ -54,15 +51,32 @@ export class CartComponent implements OnInit, OnDestroy {
     return sum;
   }
 
-  decreaseQuantity(id: number, value: string) {
-
+  deleteCartLine(id: number): any{
+    this.cartService.deleteCartById(id);
   }
 
-  increaseQuantity(id: number, value: string) {
-
+  changeQuantity(id: number, value: string): any {
+    if (Number(value) <= 0 || value === undefined) {
+      this.deleteCartLine(id);
+    }
+    this.cartService.updateCart(id, value);
   }
 
-  changeQuantity(id: number, value: string) {
-    console.log(value);
+  decreaseAmount(id: number): any {
+    const input = document.querySelector('#amount-quantity-' + id) as HTMLInputElement;
+    input.value = String(Number(input.value) - 1);
+    this.changeQuantity(id, input.value);
   }
+
+  increaseAmount(id: number): any {
+    const input = document.querySelector('#amount-quantity-' + id) as HTMLInputElement;
+    input.value = String(Number(input.value) + 1);
+    this.changeQuantity(id, input.value);
+  }
+
+}
+export enum AmountUpdate{
+  increase,
+  decrease,
+  change,
 }
