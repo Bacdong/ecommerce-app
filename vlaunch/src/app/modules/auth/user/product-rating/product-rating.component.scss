@@ -1,0 +1,61 @@
+:host {
+  margin: 50px 0;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-left: 20px;
+
+  li {
+    cursor: pointer;
+    img {
+      width: 25px;
+    }
+  }
+}
+
+.group {
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product {
+  align-items: flex-start;
+  .product-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .detail {
+    margin-left: 20px;
+    max-width: 300px;
+    .name {
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .rating {
+    align-items: center;
+    margin-top: 10px;
+    ul {
+      li {
+        img {
+          width: 15px;
+        }
+      }
+    }
+  }
+}
+
+.text {
+  margin-top: 30px;
+  line-height: 1.3;
+  font-size: 15px;
+}

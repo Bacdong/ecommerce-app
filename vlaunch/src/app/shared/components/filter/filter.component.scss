@@ -2,9 +2,11 @@
 @import '../../../../assets/scss/shared';
 
 .filters {
+  padding-top: 150px;
+  padding-bottom: 100px;
   &__wrapper {
     padding-bottom: 15px;
-    border-bottom: 1px solid $border-input; 
+    border-bottom: 1px solid $border-input;
     display: flex;
     align-items: center;
     > div + div { margin-left: 15px; }
@@ -23,8 +25,8 @@
         @include text-style($primary-text, 14px, 150%, 400, left, '', capitalize);
       }
       &:last-child { justify-content: flex-end; }
-      .mat-select-filter { 
-        margin-left: 15px; 
+      .mat-select-filter {
+        margin-left: 15px;
         max-width: 100px !important;
         &--sortby { max-width: 100% !important; }
       }

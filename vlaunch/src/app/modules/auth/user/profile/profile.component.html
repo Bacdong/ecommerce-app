@@ -1,0 +1,60 @@
+<h3 class="mb-4">Thông tin cá nhân</h3>
+<div class="row">
+  <form class="col-12" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div class="form-content">
+      <label class="avatar text-center d-block" for="avatar">
+        <img
+          src="{{ profileForm.get('avatar').value | defaultImage: 'user' }}"
+          *ngIf="!uploadService.imgURL"
+        />
+        <img [src]="uploadService.imgURL" *ngIf="uploadService.imgURL" />
+        <div class="bg-hover">
+          <span>Đổi hình ảnh</span>
+        </div>
+        <input
+          class="d-none"
+          type="file"
+          id="avatar"
+          #avatar
+          (change)="uploadService.preview(avatar.files)"
+        />
+      </label>
+      <div class="content">
+        <div class="form-group">
+          <label for="name">Họ và Tên</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Họ và tên"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Địa chỉ email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Địa chỉ email"
+          />
+        </div>
+        <!-- <div class="form-group">
+          <label for="formGroupExampleInput2">Another label</label>
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput2"
+            placeholder="Another input placeholder"
+          />
+        </div> -->
+      </div>
+      <div class="text-right mt-4">
+        <button [disabled]="service.submitted" class="btn btn-primary">
+          Cập nhật thông tin
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

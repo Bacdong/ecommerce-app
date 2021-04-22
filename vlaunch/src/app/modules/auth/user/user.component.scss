@@ -1,0 +1,29 @@
+@import "../../../variables.scss";
+
+.menu {
+  padding-right: 20px;
+  margin-bottom: 20px;
+
+  .icon-menu {
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .list-group.open {
+    display: block;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $aqua-blue;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .list-group {
+    display: none;
+  }
+}

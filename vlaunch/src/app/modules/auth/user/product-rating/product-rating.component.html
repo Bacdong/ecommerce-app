@@ -1,0 +1,154 @@
+<div class="container">
+  <h3 class="mt-4 mb-4">Đánh giá sản phẩm</h3>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="group d-flex">
+        <h5 class="m-0">1. Đánh giá:</h5>
+        <ul class="star d-flex">
+          <li (click)="ratingValue = 1">
+            <img
+              src="{{
+                ratingValue >= 1
+                  ? 'assets/images/star.svg'
+                  : 'assets/images/un-star.png'
+              }}"
+              alt="ratting"
+            />
+          </li>
+          <li (click)="ratingValue = 2">
+            <img
+              src="{{
+                ratingValue >= 2
+                  ? 'assets/images/star.svg'
+                  : 'assets/images/un-star.png'
+              }}"
+              alt="ratting"
+            />
+          </li>
+          <li (click)="ratingValue = 3">
+            <img
+              src="{{
+                ratingValue >= 3
+                  ? 'assets/images/star.svg'
+                  : 'assets/images/un-star.png'
+              }}"
+              alt="ratting"
+            />
+          </li>
+          <li (click)="ratingValue = 4">
+            <img
+              src="{{
+                ratingValue >= 4
+                  ? 'assets/images/star.svg'
+                  : 'assets/images/un-star.png'
+              }}"
+              alt="ratting"
+            />
+          </li>
+          <li (click)="ratingValue = 5">
+            <img
+              src="{{
+                ratingValue == 5
+                  ? 'assets/images/star.svg'
+                  : 'assets/images/un-star.png'
+              }}"
+              alt="ratting"
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="group">
+        <h5>2. Nhập nội dung:</h5>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="5"
+          [(ngModel)]="textValue"
+        ></textarea>
+      </div>
+      <div class="text-center">
+        <div class="btn btn-primary" (click)="ratingProduct()">Gửi đánh giá</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="product d-flex">
+        <a
+          [routerLink]="[
+            '/' + product?.product.slug + '-p' + product?.product.id
+          ]"
+          ><img
+            class="product-image"
+            src="{{ product?.product?.default_image_sm }}"
+            alt=""
+        /></a>
+        <div class="detail">
+          <a class="name">{{ product?.product?.name }}</a>
+          <div class="rating d-flex">
+            <span>Đánh giá:</span>
+            <ul class="star d-flex">
+              <li>
+                <img
+                  src="{{
+                    product?.product?.rating_avg >= 1
+                      ? 'assets/images/star.svg'
+                      : 'assets/images/un-star.png'
+                  }}"
+                  alt="ratting"
+                />
+              </li>
+              <li>
+                <img
+                  src="{{
+                    product?.product?.rating_avg >= 2
+                      ? 'assets/images/star.svg'
+                      : 'assets/images/un-star.png'
+                  }}"
+                  alt="ratting"
+                />
+              </li>
+              <li>
+                <img
+                  src="{{
+                    product?.product?.rating_avg >= 3
+                      ? 'assets/images/star.svg'
+                      : 'assets/images/un-star.png'
+                  }}"
+                  alt="ratting"
+                />
+              </li>
+              <li>
+                <img
+                  src="{{
+                    product?.product?.rating_avg >= 4
+                      ? 'assets/images/star.svg'
+                      : 'assets/images/un-star.png'
+                  }}"
+                  alt="ratting"
+                />
+              </li>
+              <li>
+                <img
+                  src="{{
+                    product?.product?.rating_avg == 5
+                      ? 'assets/images/star.svg'
+                      : 'assets/images/un-star.png'
+                  }}"
+                  alt="ratting"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text">
+        Quý khách có thắc mắc về sản phẩm hoặc dịch vụ của Adiviet? Quý khách
+        cần phản hồi về đơn hàng đã mua?
+        <br />
+        • Tham khảo thông tin thêm tại Thông tin hỗ trợ.<br />
+        • Liên hệ hotline
+        <a href="tel:0867897399" target="_blank">08 6789 7399</a>, hoặc gửi
+        thông tin về email cskh@adiviet.vn để được hỗ trợ. <br />
+      </div>
+    </div>
+  </div>
+</div>

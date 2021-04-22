@@ -61,6 +61,8 @@ export class CartService {
     this.httpService.putHandle(path, data).subscribe((res: Result) => {
       if (res.success){
         this.cartSubject.next(res.data);
+      }else {
+        this.snackbarModifyService.openMessage(res);
       }
     });
   }

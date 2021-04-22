@@ -1,0 +1,134 @@
+<div class="mb-4">
+  <h3>Đơn hàng {{ orderDetail?.code }}</h3>
+</div>
+
+<div class="app" *ngIf="orderDetail">
+  <div class="main-content container">
+    <div class="left col-12 mb-4">
+      <div class="left-bottom col-12 col-md-12 col-xl-12 flex-wrap">
+        <div class="order-info col-12 col-md-6 col-xl-6">
+          <ul class="order-info__list">
+            <li class="order-info__item">thông tin mua hàng</li>
+            <li class="order-info__item">
+              {{ orderDetail.shipping_address.full_name }}
+            </li>
+            <li class="order-info__item">
+              {{ orderDetail.shipping_address.email }}
+            </li>
+            <li class="order-info__item">
+              {{ orderDetail.shipping_address.phone }}
+            </li>
+          </ul>
+
+          <ul class="order-info__list">
+            <li class="order-info__item">phương thức thanh toán</li>
+            <li class="order-info__item capitalize-first">
+              thanh toán khi giao hàng (COD)
+            </li>
+          </ul>
+        </div>
+
+        <div class="order-info col-12 col-md-6 col-xl-6">
+          <ul class="order-info__list">
+            <li class="order-info__item">địa chỉ nhận hàng</li>
+            <li class="order-info__item">
+              {{ orderDetail.shipping_address.street_address }}
+            </li>
+            <li class="order-info__item capitalize">
+              {{ orderDetail.shipping_address.district.name }}
+            </li>
+            <li class="order-info__item">
+              {{ orderDetail.shipping_address.province.name }}
+            </li>
+          </ul>
+
+          <ul class="order-info__list">
+            <li class="order-info__item">phương thức vận chuyển</li>
+            <li class="order-info__item capitalize-first">
+              giao hàng tận nơi: {{ orderDetail.shipping_fee | formatPrice }}đ
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right col-12">
+      <div class="right-row">
+        <div class="right-top__order">
+          <ul class="order-list">
+            <li class="order-item" *ngFor="let line of orderDetail.lines">
+              <a class="order-link">
+                <div class="product-info">
+                  <div class="product-info__img">
+                    <img
+                      src="{{ line.product.default_image }}"
+                      alt="{{ line.product.name }}"
+                    />
+                    <span>{{ line.quantity }}</span>
+                  </div>
+
+                  <div class="product-info__brief">
+                    <h3
+                      *ngIf="line.product"
+                      [routerLink]="[
+                        '/' + line.product.slug + '-p' + line.product.id
+                      ]"
+                      class="brief-title"
+                    >
+                      {{ line.product.name }}
+                    </h3>
+                    <div>
+                      <span
+                        class="brief-variant"
+                        *ngIf="line.product.product_type.has_variant"
+                        >{{ line.variant.name }}</span
+                      >
+                      <a
+                        class="ml-4"
+                        [routerLink]="[
+                          '/user/order/' +
+                            orderDetail.code +
+                            '/rating/' +
+                            line.id
+                        ]"
+                        >Đánh giá</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="price">
+                  <span class="current-price"
+                    >{{ line.total | formatPrice }}đ</span
+                  >
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="right-top__subtotal">
+          <div class="sub-total">
+            <span class="sub-total__title">tạm tính</span>
+            <span class="price">{{ orderDetail.subtotal | formatPrice }}đ</span>
+          </div>
+
+          <div class="sub-total">
+            <span class="sub-total__title">phí vận chuyển</span>
+            <span class="price"
+              >{{ orderDetail.shipping_fee | formatPrice }}đ</span
+            >
+          </div>
+        </div>
+
+        <div class="total">
+          <span class="total-title">tổng cộng</span>
+          <span class="total-price"
+            >{{
+              orderDetail.subtotal + orderDetail.shipping_fee | formatPrice
+            }}đ</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
