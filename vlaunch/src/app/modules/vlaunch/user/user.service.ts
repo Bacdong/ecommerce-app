@@ -21,4 +21,8 @@ export class UserService {
       }
     });
   }
+
+  updateProfile(formData: any): any {
+
+  }
 }

@@ -30,6 +30,17 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(): any {
+    const formValue = this.profileForm.value;
+    const formData = new FormData();
 
+    for (const key in formValue) {
+      if (key === 'avatar' || !formValue[key] || formValue[key] === '') { continue; }
+      formData.append(key, formValue[key]);
+    }
+
+    if (this.uploadService.imagePath) {
+      formData.append('avatar', this.uploadService.imagePath);
+    }
+    this.userService.updateProfile(formData);
   }
 }
