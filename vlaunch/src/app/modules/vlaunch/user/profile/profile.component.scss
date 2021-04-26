@@ -1,0 +1,32 @@
+.avatar {
+  margin-bottom: 20px;
+  label {
+    cursor: pointer;
+  }
+  img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.content {
+  .form-control {
+    height: 45px;
+  }
+}
+
+.btn {
+  height: 45px;
+  text-transform: uppercase;
+}
+
+.form-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.avatar {
+  cursor: pointer;
+}

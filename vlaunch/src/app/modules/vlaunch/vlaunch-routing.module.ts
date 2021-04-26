@@ -13,6 +13,7 @@ import { VlaunchComponent } from './vlaunch.component';
 import {CartComponent} from './cart/cart.component';
 import { FilterComponent } from 'src/app/shared/components/filter/filter.component';
 import {UserComponent} from './user/user.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -34,7 +35,16 @@ vlaunchRoutes = [
       // Footer categories routes
       {path: 'sitemap', component: SitemapComponent},
       // Redirect to 404
-      {path: 'user', component: UserComponent},
+      {
+        path: 'user',
+        component: UserComponent,
+        children: [
+          {
+            path: 'profile',
+            component: ProfileComponent
+          }
+        ]
+      },
       {path: '404', component: PageNotFoundComponent},
       {path: '**', redirectTo: '/404'},
     ],
