@@ -10,57 +10,51 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { SitemapComponent } from './sitemap/sitemap.component';
 import { StyletoolsComponent } from './styletools/styletools.component';
 import { VlaunchComponent } from './vlaunch.component';
-<<<<<<< Updated upstream
 import {CartComponent} from './cart/cart.component';
 import { FilterComponent } from 'src/app/shared/components/filter/filter.component';
-import { UserComponent } from '../auth/user/user.component';
+import {UserComponent} from '../auth/user/user.component';
+import {ProfileComponent} from '../auth/user/profile/profile.component';
+import {PasswordComponent} from '../auth/user/password/password.component';
+import {AddressComponent} from '../auth/user/address/address.component';
+import {AddressFormComponent} from '../auth/user/address-form/address-form.component';
+import {OrderComponent} from '../auth/user/order/order.component';
+import {OrderDetailComponent} from '../auth/user/order-detail/order-detail.component';
 
-=======
-import {UserComponent} from './user/user.component';
-import {ProfileComponent} from './user/profile/profile.component';
-import {PasswordComponent} from './user/password/password.component';
-import {AddressComponent} from './user/address/address.component';
-import {AddressFormComponent} from './user/address-form/address-form.component';
-import {OrderComponent} from './user/order/order.component';
-import {OrderDetailComponent} from './user/order-detail/order-detail.component';
->>>>>>> Stashed changes
 
-const vlaunchRoutes: Routes = [
+let vlaunchRoutes: Routes;
+vlaunchRoutes = [
   {
     path: '',
     component: VlaunchComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'products/:slug', component: ProductsComponent },
-      { path: 'products/:slug/:id', component: ProductsComponent },
-      { path: 'products/item/:slug/:id', component: ProductDetailComponent },
-      { path: 'project', component: RoomsComponent },
-      { path: 'styletools', component: StyletoolsComponent },
-      { path: 'brand', component: BrandComponent },
-      { path: 'ideas', component: IdeasComponent },
-<<<<<<< Updated upstream
-      { path: 'cart', component: CartComponent },
-      {path: "filter", component: FilterComponent},
-=======
+      {path: '', component: HomeComponent},
+      {path: 'products', component: ProductsComponent},
+      {path: 'products/:slug', component: ProductsComponent},
+      {path: 'products/:slug/:id', component: ProductsComponent},
+      {path: 'products/item/:slug/:id', component: ProductDetailComponent},
+      {path: 'project', component: RoomsComponent},
+      {path: 'styletools', component: StyletoolsComponent},
+      {path: 'brand', component: BrandComponent},
+      {path: 'ideas', component: IdeasComponent},
+      {path: 'cart', component: CartComponent},
+      {path: 'filter', component: FilterComponent},
       {
         path: 'user',
         component: UserComponent,
         children: [
-          { path: 'profile', component: ProfileComponent },
-          { path: 'password', component: PasswordComponent },
-          { path: 'address', component: AddressComponent },
-          { path: 'address/:id', component: AddressFormComponent },
-          { path: 'order', component: OrderComponent },
-          { path: 'order/:code', component: OrderDetailComponent },
+          {path: 'profile', component: ProfileComponent},
+          {path: 'password', component: PasswordComponent},
+          {path: 'address', component: AddressComponent},
+          {path: 'address/:id', component: AddressFormComponent},
+          {path: 'order', component: OrderComponent},
+          {path: 'order/:code', component: OrderDetailComponent},
         ],
       },
->>>>>>> Stashed changes
       // Footer categories routes
-      { path: 'sitemap', component: SitemapComponent },
+      {path: 'sitemap', component: SitemapComponent},
       // Redirect to 404
-      { path: '404', component: PageNotFoundComponent },
-      { path: '**', redirectTo: '/404' },
+      {path: '404', component: PageNotFoundComponent},
+      {path: '**', redirectTo: '/404'},
     ],
   }
 ];
