@@ -1,0 +1,55 @@
+<bread-crumb [data]="breadcrumbData"></bread-crumb>
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <div class="menu">
+        <div
+          class="title mb-2 d-flex align-items-center justify-content-between"
+        >
+          <h3 class="m-0">Trang cá nhân</h3>
+          <i class="icon-menu d-lg-none" (click)="openMenu = !openMenu"></i>
+        </div>
+        <ul class="list-group list-group-flush" [class.open]="openMenu">
+          <li
+            [routerLink]="['/user', 'profile']"
+            routerLinkActive="active"
+            class="list-group-item"
+          >
+            Thông tin cá nhân
+          </li>
+          <li
+            [routerLink]="['/user', 'password']"
+            routerLinkActive="active"
+            class="list-group-item"
+          >
+            Đổi mật khẩu
+          </li>
+          <li
+            [routerLink]="['/user', 'order']"
+            routerLinkActive="active"
+            class="list-group-item"
+          >
+            Đơn hàng
+          </li>
+          <li
+            [routerLink]="['/user', 'address']"
+            routerLinkActive="active"
+            class="list-group-item"
+          >
+            Sổ địa chỉ
+          </li>
+          <!-- <li class="list-group-item">Sản phẩm đã xem</li> -->
+          <!-- <li class="list-group-item">Sản phẩm yêu thích</li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-lg-9">
+      <div class="content">
+        <div class="content-page">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

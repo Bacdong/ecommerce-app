@@ -1,0 +1,41 @@
+<div class="mb-4">
+  <h3>Đơn hàng gần nhất</h3>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Mã</th>
+        <th scope="col">Ngày</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col text-center">Giá trị</th>
+        <th scope="col text-center">Tình trạng thanh toán</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="ordersData">
+      <tr *ngFor="let order of ordersData.results">
+        <th scope="row">{{ order.code }}</th>
+        <td>{{ order.created | date: "dd/MM/yyyy" }}</td>
+        <td>
+          {{ order.shipping_address.street_address }}-{{
+            order.shipping_address.district.name
+          }}-{{ order.shipping_address.province.name }}
+        </td>
+        <td class="text-center">
+          {{ order.total + order.shipping_fee | formatPrice }}
+        </td>
+        <td class="text-center">{{ order.status | orderStatus }}</td>
+        <td class="text-center">
+          <a
+            [routerLink]="['/user', 'order', order.code]"
+            routerLinkActive="router-link-active"
+            >Chi tiết</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-pagination (onPageChange)="changePage($event)" *ngIf="ordersData" [data]="ordersData"></app-pagination>
+</div>
