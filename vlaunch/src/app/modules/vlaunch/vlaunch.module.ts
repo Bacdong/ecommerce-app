@@ -20,6 +20,7 @@ import { SitemapModule } from './sitemap/sitemap.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {ShareModule} from './share.module';
+import {AuthModule} from '../auth/auth.module';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -34,6 +35,7 @@ import {ShareModule} from './share.module';
   imports: [
     CommonModule,
     MatIconModule,
+    AuthModule,
     HomeModule,
     ProductsModule,
     RoomsModule,

@@ -12,14 +12,7 @@ import { StyletoolsComponent } from './styletools/styletools.component';
 import { VlaunchComponent } from './vlaunch.component';
 import {CartComponent} from './cart/cart.component';
 import { FilterComponent } from 'src/app/shared/components/filter/filter.component';
-import {UserComponent} from '../auth/user/user.component';
-import {ProfileComponent} from '../auth/user/profile/profile.component';
-import {PasswordComponent} from '../auth/user/password/password.component';
-import {AddressComponent} from '../auth/user/address/address.component';
-import {AddressFormComponent} from '../auth/user/address-form/address-form.component';
-import {OrderComponent} from '../auth/user/order/order.component';
-import {OrderDetailComponent} from '../auth/user/order-detail/order-detail.component';
-
+import {UserComponent} from './user/user.component';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -38,21 +31,10 @@ vlaunchRoutes = [
       {path: 'ideas', component: IdeasComponent},
       {path: 'cart', component: CartComponent},
       {path: 'filter', component: FilterComponent},
-      {
-        path: 'user',
-        component: UserComponent,
-        children: [
-          {path: 'profile', component: ProfileComponent},
-          {path: 'password', component: PasswordComponent},
-          {path: 'address', component: AddressComponent},
-          {path: 'address/:id', component: AddressFormComponent},
-          {path: 'order', component: OrderComponent},
-          {path: 'order/:code', component: OrderDetailComponent},
-        ],
-      },
       // Footer categories routes
       {path: 'sitemap', component: SitemapComponent},
       // Redirect to 404
+      {path: 'user', component: UserComponent},
       {path: '404', component: PageNotFoundComponent},
       {path: '**', redirectTo: '/404'},
     ],
