@@ -9,4 +9,5 @@ export const environment = {
   IMAGE_PATH: 'https://localhost:5001/images/',
   LIMIT_TRENDING_PRODUCTS: 8,
   PRODUCTS_LIMIT: 12,
+  IMG_ROOT: 'localhost:4200/assets/images'
 };

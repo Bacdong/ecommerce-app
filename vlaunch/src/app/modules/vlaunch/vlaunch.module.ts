@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {ShareModule} from './share.module';
 import {AuthModule} from '../auth/auth.module';
+import {UserModule} from './user/user.module';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -43,10 +44,11 @@ import {AuthModule} from '../auth/auth.module';
     BrandModule,
     IdeasModule,
     SitemapModule,
+    UserModule,
     RouterModule,
     VlaunchRoutingModule,
-    ReactiveFormsModule,
     ShareModule,
+    ReactiveFormsModule,
   ],
 })
 export class VlaunchModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UploadService} from '../../../core/utils';
 
 @Component({
   selector: 'app-user',
