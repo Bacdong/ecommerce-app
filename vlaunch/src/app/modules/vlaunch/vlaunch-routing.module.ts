@@ -15,6 +15,7 @@ import { FilterComponent } from 'src/app/shared/components/filter/filter.compone
 import {UserComponent} from './user/user.component';
 import {ProfileComponent} from './user/profile/profile.component';
 import {PasswordComponent} from './user/password/password.component';
+import {AddressComponent} from './user/address/address.component';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -47,6 +48,10 @@ vlaunchRoutes = [
           {
             path: 'password',
             component: PasswordComponent
+          },
+          {
+            path: 'address',
+            component: AddressComponent
           }
         ]
       },

@@ -1,1 +1,43 @@
-<p>address works!</p>
+<div class="mb-4 d-flex justify-content-between align-items-center">
+  <h3>Sổ địa chỉ</h3>
+  <button class="btn btn-primary" [routerLink]="['/user', 'address', 'add']">
+    Thêm địa chỉ
+  </button>
+</div>
+
+<!--  <div class="address" *ngIf="(service.addresses$ | async)">-->
+<!--  <div class="card" *ngFor="let address of (service.addresses$ | async).addresses">-->
+
+  <div class="row" style="border: 1px solid gainsboro" *ngFor="let address of listAddress">
+    <div class="card-body">
+      <h5 class="card-title">Tên khách hàng: {{address.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: {{ address.phone }}</h6>
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Tỉnh / Thành Phố</mat-label>-->
+<!--        <mat-select [value]="address.cityAddressId">-->
+<!--          <mat-option *ngFor="let city of cityList" [value]="city.id">-->
+<!--            {{city.cityName}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+      Địa chỉ: {{
+      address.ward.districtAddress.cityAddress.cityCode+" "+address.ward.districtAddress.cityAddress.cityName + "," +
+        address.ward.districtAddress.prefix + " " + address.ward.districtAddress.districtName + ", " +
+        address.ward.prefix + " " + address.ward.name + ", "
+      +address.street_Address
+      }}
+      <div class="text-right">
+        <button
+          [routerLink]="['/user', 'address', address.id]"
+          routerLinkActive="router-link-active"
+          class="card-link btn btn-warning"
+        >
+          Sửa
+        </button>
+        <button  class="card-link btn btn-danger">
+          Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+

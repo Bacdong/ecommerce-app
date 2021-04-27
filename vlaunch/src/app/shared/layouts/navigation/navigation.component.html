@@ -31,7 +31,7 @@
                 </a>
              </li>
             <li *ngIf="!(tokenService.getName()==null)">
-              <a class="has-label">
+              <a [routerLink]="['/user/profile']" class="has-label">
                 <span style="color: white">Xin chào {{tokenService.getName()}}</span>
               </a>
             </li>

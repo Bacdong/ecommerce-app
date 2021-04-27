@@ -1,13 +1,35 @@
-class UserAddress {
+export class City {
+  'id': number;
+  'cityName': string;
+  'cityCode': string;
+}
+
+export class District {
+  'id': number;
+  'districtName': string;
+  'prefix': string;
+  'cityAddressId': number;
+  'cityAddress': City;
+}
+
+export class Ward {
+  'id': number;
+  'name': string;
+  'prefix': string;
+  'cityAddressId': number;
+  'districtAddressId': number;
+  'districtAddress': District;
+}
+
+export class Address {
   'id': number;
   'street_Address': string;
   'phone': string;
   'name': string;
   'cityAddressId': number;
-  'cityAddress': string;
   'districtAddressId': number;
-  'districtAddress': number;
-  'isDefault': boolean;
+  'wardId': number;
+  'ward': Ward;
 }
 
 export class User{
@@ -15,7 +37,7 @@ export class User{
   'email': string;
   'phone': string;
   'avatar': string;
-  'addresses': UserAddress[];
+  'addresses': Address[];
   'isAccess': boolean;
   'roleId': number;
 }
