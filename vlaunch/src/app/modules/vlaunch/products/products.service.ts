@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Params } from 'src/app/core/http-params';
 import { HttpService } from 'src/app/core/services/http.service';
-import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
-
+import {SnackbarModifyService} from 'src/app/core/services/snackbar-modify.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,37 +13,41 @@ export class ProductsService {
   product$ = new Subject<Product>();
   products$ = new Subject<Product>();
   constructor(
-    private http: HttpService, 
-    private snackbarService: SnackbarService,
-    private router: Router,  
+    private http: HttpService,
+    private router: Router,
+    private snackbarModifyService: SnackbarModifyService
   ) { }
 
-  getProducts(params?: Params) {
-    let url = 'Books/SearchBook';
-    let data = {};
-    
-    if (params) {
-      var limit = params.limit ? params.limit : environment.PRODUCTS_LIMIT;
-      var page = params.page ? params.page : 1;
+  getProducts(params?: Params): any {
+    const url = 'Books/SearchBook';
+    const data = {
+      limit: undefined,
+      page: undefined
+    };
 
-      data['limit'] = limit;
-      data['page']= page;
+    if (params) {
+      const limit = params.limit ? params.limit : environment.PRODUCTS_LIMIT;
+      const page = params.page ? params.page : 1;
+
+      data.limit = limit;
+      data.page = page;
     } else {
-      data['limit'] = environment.PRODUCTS_LIMIT;
-      data['page']= 1;
+      data.limit = environment.PRODUCTS_LIMIT;
+      data.page = 1;
     }
 
     this.http.postHandle(url, data).subscribe((res) => {
       if (res && res.success) {
         this.products$.next(res.data);
       } else {
-        this.snackbarService.errorMessage(res);
+        // this.snackbarService.errorMessage(res);
+        this.snackbarModifyService.openMessage(res);
       }
     });
   }
 
-  getProductDetail(id) {
-    let url = 'Books/' + id;
+  getProductDetail(id): any {
+    const url = 'Books/' + id;
 
     this.http.getHandle(url).subscribe((res) => {
       if (res && res.success) {
@@ -53,7 +56,7 @@ export class ProductsService {
         if (res.error_message) {
           this.router.navigate(['/404']);
         }
-        this.snackbarService.errorMessage(res);
+        this.snackbarModifyService.openMessage(res);
       }
     });
   }

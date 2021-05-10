@@ -7,12 +7,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { AuthService } from './auth.service';
+import {TokenService} from '../../core/services/token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router, private tokenService: TokenService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,12 +24,12 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): true | UrlTree {
-    if (this.authService.isLoggedIn) {
+    if (this.tokenService.getUserId()) {
       return true;
     }
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
     // Redirect to the login page
-    return this.router.parseUrl('/auth/login');
+    return this.router.parseUrl('/');
   }
 }

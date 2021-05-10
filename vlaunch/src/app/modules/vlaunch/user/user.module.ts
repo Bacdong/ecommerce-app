@@ -12,11 +12,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { AddressAddComponent } from './address/address-add/address-add.component';
 
 
 
 @NgModule({
-  declarations: [DefaultImagePipe, ProfileComponent, UserComponent, DefaultImagePipe, PasswordComponent, AddressComponent],
+  declarations: [DefaultImagePipe, ProfileComponent, UserComponent, DefaultImagePipe, PasswordComponent, AddressComponent, AddressAddComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -26,6 +27,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSelectModule,
     MatInputModule,
     MatAutocompleteModule,
+    MaterialModule,
   ]
 })
 export class UserModule { }

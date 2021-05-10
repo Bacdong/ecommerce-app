@@ -101,6 +101,7 @@ export class HttpService {
   }
   private processError(callback?: any): any {
     return async (error: any): Promise<any> => {
+      console.log(error);
       if (error.status === 0){
         return {
           error_message: 'Mạng không ổn định, xin vui lòng kiểm tra lại đường truyền.',

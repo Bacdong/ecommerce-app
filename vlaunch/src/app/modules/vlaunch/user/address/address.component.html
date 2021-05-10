@@ -5,58 +5,139 @@
   </button>
 </div>
 
-<!--  <div class="address" *ngIf="(service.addresses$ | async)">-->
-<!--  <div class="card" *ngFor="let address of (service.addresses$ | async).addresses">-->
+<form [formGroup]="formAddress" (ngSubmit)="submitForm()">
+<div *ngIf="isDelete" class="row" style="border: 1px solid gainsboro">
+    <div *ngIf="isEdit" class="card-body">
+<!--      <h5 class="card-title">-->
+<!--          Tên khách hàng-->
+<!--        <input type="text" formControlName="name" [value]="address.name">-->
+<!--      </h5>-->
+<!--        <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: <input formControlName="phone" type="text" [value]="address.phone"></h6>-->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Họ và tên:</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Họ và tên"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Số điện thoại:</label>
+          <input
+            type="text"
+            formControlName="phone"
+            class="form-control"
+            id="phone"
+            placeholder="Số điện thoại"
+          />
+        </div>
+      </div>
+<!--      -->
 <!--      <mat-form-field appearance="fill">-->
 <!--        <mat-label>Tỉnh / Thành Phố</mat-label>-->
-<!--        <mat-select [value]="address.cityAddressId">-->
+<!--        <mat-select formControlName="cityAddressId"  [value]="address.cityAddressId" (valueChange)="getDistrictById($event)">-->
 <!--          <mat-option *ngFor="let city of cityList" [value]="city.id">-->
 <!--            {{city.cityName}}-->
 <!--          </mat-option>-->
 <!--        </mat-select>-->
 <!--      </mat-form-field>-->
-<!--  <div class="row" style="border: 1px solid gainsboro" *ngFor="let address of listAddress">-->
-<div class="row" style="border: 1px solid gainsboro">
-    <div *ngIf="isEdit" class="card-body">
-      <h5 class="card-title">
-          Tên khách hàng
-        <input type="text" [value]="address.name">
-      </h5>
-      <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: <input type="text" [value]="address.phone"></h6>
-      Địa chỉ:
-<!--      -->
-      <mat-form-field appearance="fill">
-        <mat-label>Tỉnh / Thành Phố</mat-label>
-        <mat-select  [value]="address.cityAddressId" (valueChange)="getDistrictById($event)">
-          <mat-option *ngFor="let city of cityList" [value]="city.id">
-            {{city.cityName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Quận / Huyện</mat-label>
-        <mat-select [value]="address.districtAddressId" (valueChange)="getWard(this.cityId, $event)">
-          <mat-option *ngFor="let district of districtList" [value]="district.id">
-            {{district.districtName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Quận / Huyện</mat-label>-->
+<!--        <mat-select formControlName="districtAddressId" [value]="address.districtAddressId" (valueChange)="getWard(this.cityId, $event)">-->
+<!--          <mat-option *ngFor="let district of districtList" [value]="district.id">-->
+<!--            {{district.districtName}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--&lt;!&ndash;      &ndash;&gt;-->
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Phường / Xã</mat-label>-->
+<!--        <mat-select formControlName="wardId" [value]="address.wardId">-->
+<!--          <mat-option *ngFor="let ward of wardList" [value]="ward.id">-->
+<!--            {{ward.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
 <!--      -->
-      <mat-form-field appearance="fill">
-        <mat-label>Phường / Xã</mat-label>
-        <mat-select [value]="address.wardId">
-          <mat-option *ngFor="let ward of wardList" [value]="ward.id">
-            {{ward.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-<!--      -->
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label class="form-control-label">Tỉnh/Thành phố:</label>
+          <select
+            title="Chọn Tỉnh/Thành phố"
+            formControlName="cityAddressId"
+            class="form-control provinceSelectPicker"
+            id="select-country"
+            data-live-search="true"
+            (change)="changeProvince($event.target.value)"
+          >
+            <option
+              #provincesSelect
+              [value]="city.id"
+              *ngFor="let city of this.cityList"
+            >
+              {{ city.cityName}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>Quận/Huyện:</label>
+          <select
+            title="Chọn Quận/Huyện"
+            formControlName="districtAddressId"
+            class="form-control districtSelectPicker"
+            id="select-country"
+            data-live-search="true"
+            (change)="changeDistrict($event.target.value)"
+          >
+            <option
+              #districtsSelect
+              [value]="district.id"
+              *ngFor="let district of districtList"
+            >
+              {{ district.districtName }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Phường/Xã:</label>
+          <select
+            title="Chọn Quận/Huyện"
+            formControlName="wardId"
+            class="form-control districtSelectPicker"
+            id="select-country"
+            data-live-search="true"
+          >
+            <option
+              #districtsSelect
+              [value]="ward.id"
+              *ngFor="let ward of this.wardList"
+            >
+              {{ ward.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group col-12">
+        <label>Địa chỉ:</label>
+        <input
+          formControlName="street_Address"
+          type="text"
+          class="form-control"
+          placeholder="Địa chỉ"
+        >
+      </div>
+      <!--      -->
       <div class="text-right">
-        <button (click)="updateAddress()" routerLinkActive="router-link-active" class="card-link btn btn-warning">
+        <button type="submit" routerLinkActive="router-link-active" class="card-link btn btn-warning">
           Cập nhật
         </button>
-        <button  class="card-link btn btn-danger">
+        <button (click)="deleteAddress()" class="card-link btn btn-danger">
           Xóa
         </button>
       </div>
@@ -74,10 +155,10 @@
         <button (click)="editAddress()" routerLinkActive="router-link-active" class="card-link btn btn-warning">
           Sửa
         </button>
-        <button  class="card-link btn btn-danger">
+        <button (click)="deleteAddress()" class="card-link btn btn-danger">
           Xóa
         </button>
       </div>
     </div>
-
   </div>
+</form>

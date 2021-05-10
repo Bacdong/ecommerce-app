@@ -64,9 +64,47 @@ export class UserService {
   }
 
   getWardByCityIdAndDistrictId(address: Address): any {
+    console.log(address);
     const url = 'Address/GetWardByCityIdAndDistrict/' + address.cityAddressId + '/' + address.districtAddressId;
     this.httpService.getHandle(url).subscribe((res: Result) => {
       this.wardSubject.next(res.data);
     });
+  }
+
+  updateAddress(value: any): any {
+    const url = 'Address/' + this.tokenService.getUserId();
+    return this.httpService.putHandle(url, value);
+  }
+
+  deleteAddress(): any {
+    const url = 'Address/' + this.tokenService.getUserId();
+    return this.httpService.deleteHandle(url);
+  }
+
+  getDistrictAndWardByCityId(value: any): any {
+    const url = 'Address/GetDistrictAndWardByCityId/' + value;
+    return this.httpService.getHandle(url);
+  }
+
+  getAllWardByDistrictId(districtAddressId: number): any {
+    const url = 'Address/GetWardByDistrict/' + districtAddressId;
+    this.httpService.getHandle(url).subscribe((res: Result) => {
+      this.wardSubject.next(res.data);
+    });
+  }
+
+  getDistrictByCityIdModify(cityAddressId: number): any {
+    const url = 'Address/GetDistrictById/' + cityAddressId;
+    return  this.httpService.getHandle(url);
+  }
+
+  getWardByCityIdAndDistrictIdModify(address: Address): any {
+    const url = 'Address/GetWardByCityIdAndDistrict/' + address.cityAddressId + '/' + address.districtAddressId;
+    return  this.httpService.getHandle(url);
+  }
+
+  AddAddress(value: any): any {
+    const url = 'Address';
+    return this.httpService.postHandle(url, value);
   }
 }

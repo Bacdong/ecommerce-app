@@ -16,6 +16,8 @@ import {UserComponent} from './user/user.component';
 import {ProfileComponent} from './user/profile/profile.component';
 import {PasswordComponent} from './user/password/password.component';
 import {AddressComponent} from './user/address/address.component';
+import {AuthGuard} from '../auth/auth.guard';
+import {AddressAddComponent} from './user/address/address-add/address-add.component';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -40,18 +42,27 @@ vlaunchRoutes = [
       {
         path: 'user',
         component: UserComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: 'profile',
-            component: ProfileComponent
+            component: ProfileComponent,
+            canActivate: [AuthGuard]
           },
           {
             path: 'password',
-            component: PasswordComponent
+            component: PasswordComponent,
+            canActivate: [AuthGuard]
           },
           {
             path: 'address',
-            component: AddressComponent
+            component: AddressComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'address/:id',
+            component: AddressAddComponent,
+            canActivate: [AuthGuard]
           }
         ]
       },

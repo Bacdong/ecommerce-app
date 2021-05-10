@@ -1,10 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {Address, City, District, User, Ward} from '../../../../models/user';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatOptionSelectionChange} from '@angular/material/core';
+import {Result} from '../../../../models/result';
+import { SnackbarModifyService } from 'src/app/core/services/snackbar-modify.service';
 
 @Component({
   selector: 'app-address',
@@ -19,18 +21,30 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
   districtList: District[] = [];
-  private wardList: Ward[] = [];
-  private cityId: number;
-  constructor(private userService: UserService) { }
+  wardList: Ward[] = [];
+  cityId: number;
+  formAddress = new FormGroup({});
+  isDelete: boolean;
+  constructor(private userService: UserService, private snackbarModifyService: SnackbarModifyService) { }
 
   ngOnInit(): void {
     this.initAllCity();
+    this.initForm();
     this.userService.getProfile();
     this.userService.$user.subscribe(res => {
       this.listAddress = res.addresses;
       if (!(this.listAddress === undefined) && !(this.listAddress.length === 0)){
         this.address = this.listAddress.pop();
+        this.isDelete = true;
+      }else {
+        this.isDelete = false;
       }
+      this.formAddress.get('name').value = this.address.name;
+      this.formAddress.get('phone').value = this.address.phone;
+      this.formAddress.get('cityAddressId').value = this.address.cityAddressId;
+      this.formAddress.get('districtAddressId').value = this.address.districtAddressId;
+      this.formAddress.get('wardId').value = this.address.wardId;
+      this.formAddress.get('street_Address').value = this.address.street_Address;
       this.initDistrictByCityId(this.address);
     });
   }
@@ -81,5 +95,61 @@ export class AddressComponent implements OnInit, OnDestroy {
     address.districtAddressId = $event;
     console.log(address);
     this.userService.getWardByCityIdAndDistrictId(address);
+  }
+
+  submitForm(): any {
+    console.log(this.formAddress.value);
+    if (this.formAddress.invalid){
+      this.snackbarModifyService.openMessage({error_message: 'Thong tin dia chi khong hop le', success: false, data: ''});
+      return;
+    }
+    this.userService.updateAddress(this.formAddress.value).subscribe((res: Result) => {
+      if (res.success){
+        this.snackbarModifyService.openMessage(res);
+      }
+    });
+  }
+
+  private initForm(): any {
+    this.formAddress = new FormGroup({
+      name: new FormControl(),
+      phone: new FormControl(),
+      cityAddressId: new FormControl('', Validators.required),
+      districtAddressId: new FormControl('', Validators.required),
+      wardId: new FormControl('', Validators.required),
+      street_Address: new FormControl(),
+    });
+  }
+
+  deleteAddress(): any {
+    this.isEdit = !this.isEdit;
+    this.isDelete = !this.isDelete;
+    this.userService.deleteAddress().subscribe((res: Result) => {
+      this.snackbarModifyService.openMessage(res);
+    });
+  }
+
+  changeProvince(value: any): any {
+    this.userService.getDistrictAndWardByCityId(value).subscribe(res => {
+      this.address = res.data;
+      this.userService.getDistrictByCityIdModify(this.address.cityAddressId).subscribe(dis => {
+        this.districtList = dis.data;
+        this.userService.getWardByCityIdAndDistrictIdModify(this.address).subscribe(ward => {
+            this.wardList = ward.data;
+        });
+      });
+    });
+  }
+
+  changeDistrict(value: any): any{
+    const address: Address = {
+      id: 0,
+      districtAddressId: value,
+      cityAddressId: this.address.cityAddressId
+    };
+    // this.userService.getWardByCityIdAndDistrictId(address);
+    this.userService.getWardByCityIdAndDistrictIdModify(address).subscribe(res => {
+      this.wardList = res.data;
+    });
   }
 }

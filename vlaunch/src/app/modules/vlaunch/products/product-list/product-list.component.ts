@@ -12,7 +12,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: any;
   subscription = new Subscription();
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private route: ActivatedRoute) {
+
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -27,12 +29,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
       })
     );
 
-    if (page && page !== null) {
-      this.productsService.getProducts({ page: page });
+    if (page) {
+      this.productsService.getProducts({ page });
     } else {
       this.productsService.getProducts();
     }
-
     this.subscription.add(
       this.productsService.products$.subscribe((products) => {
         this.products = products;
@@ -40,8 +41,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
     );
   }
 
-  changePage(page) {
-    this.productsService.getProducts({ page: page });
+  changePage(page): any {
+    this.productsService.getProducts({ page });
     window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
   }
 }

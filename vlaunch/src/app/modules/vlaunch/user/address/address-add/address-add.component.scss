@@ -1,0 +1,15 @@
+.form-control {
+  height: 45px;
+}
+
+textarea {
+  min-height: 100px !important;
+}
+
+::ng-deep {
+  .bootstrap-select > .dropdown-toggle {
+    padding: 11px;
+    background-color: transparent !important;
+    border: 1px solid #ced4da;
+  }
+}
