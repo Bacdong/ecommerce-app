@@ -22,6 +22,7 @@ import {CartComponent} from './cart/cart.component';
 import {ShareModule} from './share.module';
 import {AuthModule} from '../auth/auth.module';
 import {UserModule} from './user/user.module';
+import {CheckoutComponent} from './checkout/checkout.component';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -31,7 +32,8 @@ import {UserModule} from './user/user.module';
       FooterSubscribeComponent,
       SectionSigninWithUsComponent,
       LoginComponent,
-    CartComponent,
+      CheckoutComponent,
+      CartComponent,
   ],
   imports: [
     CommonModule,

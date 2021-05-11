@@ -1,0 +1,271 @@
+<div class="container">
+  <form (ngSubmit)="createOrder()" [formGroup]="addressForm">
+    <div class="wrap row">
+      <div class="main col-12 col-lg-7">
+        <div class="main__header">
+          <h1 class="shop__name">
+            <a [routerLink]="'/'"
+            ><img src="assets/images/logo-adiviet.svg" alt="logo"
+            /></a>
+          </h1>
+        </div>
+        <div class="main__content">
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="section">
+                <div class="section__header mb-3">
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <h2 class="m-0">Thông tin nhận hàng</h2>
+                    <a
+                      *ngIf="!this.tokenService.getUserId()"
+                      [routerLink]="['/login']"
+                      routerLinkActive="router-link-active"
+                    >Đăng nhập</a
+                    >
+                    <a
+                      *ngIf="!this.hasAddress()"
+                      [routerLink]="['/user', 'address', 'add']"
+                      routerLinkActive="router-link-active"
+                    >Thêm địa chỉ</a
+                    >
+                  </div>
+                </div>
+
+                <div class="section__content form-row">
+                  <div
+                    class="form-group col-12"
+                    *ngIf="true"
+                  >
+                    <label for="addresses" class="form-control-label"
+                    >Chọn địa chỉ:
+                    </label>
+                    <select
+                      #addressSelect
+                      (change)="selectAddress()"
+                      id="addresses"
+                      class="form-control"
+                      formControlName="userAddressId"
+                    >
+                      <option
+                        *ngFor="let address of this.addressList"
+                        [value]="address.id"
+                      >
+                        {{address.street_Address}}
+                        {{ address.ward.name}}
+                        {{ address.ward.districtAddress.districtName }} {{ address.ward.districtAddress.cityAddress.cityName }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-12">
+                    <label class="form-control-label">Họ và tên: </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Họ và tên"
+                      formControlName="name"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label  class="form-control-label">Email: </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Email"
+                      formControlName="email"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label  class="form-control-label"
+                    >Số điện thoại:
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Số điện thoại"
+                      formControlName="phone"
+                    />
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="form-control-label"
+                    >Tỉnh/Thành phố:
+                    </label>
+                    <select
+                      title="Chọn Tỉnh/Thành phố"
+                      formControlName="cityAddressId"
+                      class="form-control provinceSelectPicker"
+                      data-live-search="true"
+                      (change)="changeProvince($event.target.value)"
+                    >
+                      <option
+                        #provincesSelect
+                        [value]="province.id"
+                        *ngFor="let province of [] "
+                      >
+                        {{ province.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Huyện/Quận :</label>
+                    <select
+                      formControlName="districtAddressId"
+                      class="form-control districtSelectPicker"
+                      data-live-search="true"
+                    >
+                      <option
+                        #districtsSelect
+                        [value]="province.id"
+                        *ngFor="let province of []"
+                      >
+                        {{ province.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Phường/Xã :</label>
+                    <select
+                      formControlName="wardId"
+                      class="form-control districtSelectPicker"
+                      data-live-search="true"
+                    >
+                      <option
+                        #districtsSelect
+                        [value]="province.id"
+                        *ngFor="let province of []"
+                      >
+                        {{ province.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-12">
+                    <label class="form-control-label">Địa chỉ: </label>
+                    <textarea
+                      formControlName="street_Address"
+                      class="form-control textarea"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar col-12 col-lg-5">
+        <div class="sidebar__header">
+          <h2>Đơn hàng ({{ 0 }} sản phẩm)</h2>
+        </div>
+        <div class="sidebar__content">
+          <div class="order__product">
+            <ul class="order__product-list mb-3" *ngIf="true">
+              <li class="order-item" *ngFor="let line of []">
+                <a
+                  [routerLink]="[
+                    '/',
+                    line.product.slug + '-p' + line.product.id
+                  ]"
+                  class="order-link"
+                >
+                  <div class="product-info col-12 col-md-10">
+                    <div class="product-info__img">
+                      <img
+                        src="{{ line.product.default_image}}"
+                        alt="{{ line.product.name }}"
+                      />
+                      <span>{{ line.quantity }}</span>
+                    </div>
+
+                    <div class="product-info__brief">
+                      <h3 class="brief-title">
+                        {{ line.product.name }}
+                      </h3>
+                      <span class="brief-variant">{{ line.variant.name }}</span>
+                    </div>
+                  </div>
+
+                  <div class="price col-12 col-md-2">
+                    <span class="current-price"
+                    >{{ line.subtotal | formatPrice }}đ</span
+                    >
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="order__product-discount mb-3">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nhập mã giảm giá"
+                  aria-label="Nhập mã giảm giá"
+                  aria-describedby="Nhập mã giảm giá"
+                  #voucher
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="addVoucher(voucher)"
+                  >
+                    Áp dụng
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="order__product-summary mb-3">
+              <div class="d-flex justify-content-between pb-3">
+                <span>Tạm tính</span>
+                <span style="font-size: 18px"
+                >{{ 0 | formatPrice }}đ</span
+                >
+              </div>
+              <div class="d-flex justify-content-between pb-3">
+                <span>Giảm giá</span>
+                <span style="font-size: 18px"
+                >{{ 0| formatPrice }}đ</span
+                >
+              </div>
+              <div class="d-flex justify-content-between pb-3">
+                <span>Phí vận chuyển</span>
+                <span style="font-size: 18px"
+                >{{ 0 | formatPrice }}đ</span
+                >
+              </div>
+            </div>
+            <div class="order__product-total">
+              <div class="d-flex justify-content-between pb-3">
+                <span>Tổng cộng</span>
+                <span class="price"
+                >{{ 0 + 0 | formatPrice }} đ</span
+                >
+              </div>
+              <div
+                *ngIf="true"
+                style="color: red; font-size: 13px"
+                class="mb-3 text-right"
+              >
+                Vui lòng cập nhật địa chỉ nhận hàng để tiến hành đặt hàng.
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <a
+                  [routerLink]="['/cart']"
+                  routerLinkActive="router-link-active"
+                >Quay về giỏ hàng</a
+                >
+                <button
+                  type="submit"
+                  [disabled]="true"
+                  class="btn btn-primary"
+                >
+                  Đặt hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -39,12 +39,20 @@ export class AddressComponent implements OnInit, OnDestroy {
       }else {
         this.isDelete = false;
       }
-      this.formAddress.get('name').value = this.address.name;
-      this.formAddress.get('phone').value = this.address.phone;
-      this.formAddress.get('cityAddressId').value = this.address.cityAddressId;
-      this.formAddress.get('districtAddressId').value = this.address.districtAddressId;
-      this.formAddress.get('wardId').value = this.address.wardId;
-      this.formAddress.get('street_Address').value = this.address.street_Address;
+      // this.formAddress.get('name').value = this.address.name;
+      // this.formAddress.get('phone').value = this.address.phone;
+      // this.formAddress.get('cityAddressId').value = this.address.cityAddressId;
+      // this.formAddress.get('districtAddressId').value = this.address.districtAddressId;
+      // this.formAddress.get('wardId').value = this.address.wardId;
+      // this.formAddress.get('street_Address').value = this.address.street_Address;
+      this.formAddress.patchValue({
+        name: this.address.name,
+        phone: this.address.phone,
+        cityAddressId: this.address.cityAddressId,
+        districtAddressId: this.address.districtAddressId,
+        wardId: this.address.wardId,
+        street_Address: this.address.street_Address,
+      });
       this.initDistrictByCityId(this.address);
     });
   }
@@ -142,7 +150,7 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   changeDistrict(value: any): any{
-    const address: Address = {
+    const address: any = {
       id: 0,
       districtAddressId: value,
       cityAddressId: this.address.cityAddressId

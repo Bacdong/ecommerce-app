@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpService} from '../../../core/services/http.service';
 import {TokenService} from '../../../core/services/token.service';
 import {Result} from '../../../models/result';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Address, City, District, User, Ward} from '../../../models/user';
 import { SnackbarModifyService } from 'src/app/core/services/snackbar-modify.service';
 
@@ -106,5 +106,10 @@ export class UserService {
   AddAddress(value: any): any {
     const url = 'Address';
     return this.httpService.postHandle(url, value);
+  }
+
+  getUserAddress(userId: string): Observable<any>{
+    const url = 'Address/GetUserAddressByUserId/' + userId;
+    return this.httpService.getHandle(url);
   }
 }

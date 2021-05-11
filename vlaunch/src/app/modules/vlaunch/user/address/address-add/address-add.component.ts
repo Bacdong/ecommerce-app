@@ -12,7 +12,7 @@ import {TokenService} from '../../../../../core/services/token.service';
   styleUrls: ['./address-add.component.scss']
 })
 export class AddressAddComponent implements OnInit {
-  address: Address = {
+  address: any = {
     wardId: 1,
     districtAddressId: 1,
     cityAddressId: 1,
@@ -29,8 +29,8 @@ export class AddressAddComponent implements OnInit {
     street_Address: new FormControl('')
   });
   citys: City[] = [];
-  private districts: District[];
-  private wards: Ward[];
+  districts: District[];
+  wards: Ward[];
   constructor(private userService: UserService, private snackbarModifyService: SnackbarModifyService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class AddressAddComponent implements OnInit {
       this.citys = res;
       this.userService.getDistrictByCityIdModify(1).subscribe(dis => {
         this.districts = dis.data;
-        let adddress: Address = {
+        const adddress: any = {
           cityAddressId: 1,
           districtAddressId: 1
         };
@@ -80,10 +80,10 @@ export class AddressAddComponent implements OnInit {
   }
 
   changeDistrict(value: any): any {
-    const address: Address = {
+    const address: any = {
       id: 0,
       districtAddressId: value,
-      cityAddressId: this.address.cityAddressId
+      cityAddressId: this.address.cityAddressId,
     };
     // this.userService.getWardByCityIdAndDistrictId(address);
     this.userService.getWardByCityIdAndDistrictIdModify(address).subscribe(res => {
