@@ -25,7 +25,7 @@
                     >Đăng nhập</a
                     >
                     <a
-                      *ngIf="!this.hasAddress()"
+                      *ngIf="true"
                       [routerLink]="['/user', 'address', 'add']"
                       routerLinkActive="router-link-active"
                     >Thêm địa chỉ</a
@@ -34,30 +34,31 @@
                 </div>
 
                 <div class="section__content form-row">
-                  <div
-                    class="form-group col-12"
-                    *ngIf="true"
-                  >
-                    <label for="addresses" class="form-control-label"
-                    >Chọn địa chỉ:
-                    </label>
-                    <select
-                      #addressSelect
-                      (change)="selectAddress()"
-                      id="addresses"
-                      class="form-control"
-                      formControlName="userAddressId"
-                    >
-                      <option
-                        *ngFor="let address of this.addressList"
-                        [value]="address.id"
-                      >
-                        {{address.street_Address}}
-                        {{ address.ward.name}}
-                        {{ address.ward.districtAddress.districtName }} {{ address.ward.districtAddress.cityAddress.cityName }}
-                      </option>
-                    </select>
-                  </div>
+<!--                  <div-->
+<!--                    class="form-group col-12"-->
+<!--                    *ngIf="true"-->
+<!--                  >-->
+<!--                    <label for="addresses" class="form-control-label"-->
+<!--                    >Chọn địa chỉ:-->
+<!--                    </label>-->
+<!--                    <select-->
+<!--                      #addressSelect-->
+<!--                      (change)="selectAddress()"-->
+<!--                      id="addresses"-->
+<!--                      class="form-control"-->
+<!--                      formControlName="userAddressId"-->
+<!--                      [(ngModel)]="addressSelected.id"-->
+<!--                    >-->
+<!--                      <option-->
+<!--                        *ngFor="let address of this.addressList"-->
+<!--                        [value]="address.id"-->
+<!--                      >-->
+<!--                        {{address.street_Address}}-->
+<!--                        {{ address.ward.name}}-->
+<!--                        {{ address.ward.districtAddress.districtName }} {{ address.ward.districtAddress.cityAddress.cityName }}-->
+<!--                      </option>-->
+<!--                    </select>-->
+<!--                  </div>-->
                   <div class="form-group col-12">
                     <label class="form-control-label">Họ và tên: </label>
                     <input
@@ -65,6 +66,7 @@
                       class="form-control"
                       placeholder="Họ và tên"
                       formControlName="name"
+                      [value]="addressSelected?.name"
                     />
                   </div>
                   <div class="form-group col-md-6">
@@ -85,6 +87,7 @@
                       class="form-control"
                       placeholder="Số điện thoại"
                       formControlName="phone"
+                      [value]="addressSelected?.phone"
                     />
                   </div>
                   <div class="form-group col-md-4">
@@ -97,13 +100,14 @@
                       class="form-control provinceSelectPicker"
                       data-live-search="true"
                       (change)="changeProvince($event.target.value)"
+                      [(ngModel)]="addressSelected.cityAddressId"
                     >
                       <option
                         #provincesSelect
                         [value]="province.id"
-                        *ngFor="let province of [] "
+                        *ngFor="let province of cityList "
                       >
-                        {{ province.name }}
+                        {{ province.cityName }}
                       </option>
                     </select>
                   </div>
@@ -113,13 +117,15 @@
                       formControlName="districtAddressId"
                       class="form-control districtSelectPicker"
                       data-live-search="true"
+                      (change)="changeDistrict($event.target.value)"
+                      [(ngModel)]="addressSelected.districtAddressId"
                     >
                       <option
                         #districtsSelect
-                        [value]="province.id"
-                        *ngFor="let province of []"
+                        [value]="district.id"
+                        *ngFor="let district of districtList"
                       >
-                        {{ province.name }}
+                        {{ district.districtName }}
                       </option>
                     </select>
                   </div>
@@ -129,13 +135,14 @@
                       formControlName="wardId"
                       class="form-control districtSelectPicker"
                       data-live-search="true"
+                      [(ngModel)]="addressSelected.wardId"
                     >
                       <option
                         #districtsSelect
-                        [value]="province.id"
-                        *ngFor="let province of []"
+                        [value]="ward.id"
+                        *ngFor="let ward of wardList"
                       >
-                        {{ province.name }}
+                        {{ ward.name }}
                       </option>
                     </select>
                   </div>
@@ -145,6 +152,7 @@
                       formControlName="street_Address"
                       class="form-control textarea"
                       rows="3"
+                      [value]="addressSelected.street_Address"
                     ></textarea>
                   </div>
                 </div>
@@ -241,8 +249,19 @@
                 >{{ 0 + 0 | formatPrice }} đ</span
                 >
               </div>
+              <hr style="margin-top: 0">
+              <div class="d-flex justify-content-between pb-3">
+                <span>Thanh toán qua</span>
+              </div>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group" [(ngModel)]="paymentMethodSelected">
+                <mat-radio-button class="example-radio-button" checked value="1">Thanh toán khi nhận hàng</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="2">Thanh toán bằng Stripe</mat-radio-button>
+              </mat-radio-group>
+              {{paymentMethodSelected}}
               <div
-                *ngIf="true"
+                *ngIf="false"
                 style="color: red; font-size: 13px"
                 class="mb-3 text-right"
               >

@@ -17,12 +17,13 @@ import { StyletoolsModule } from './styletools/styletools.module';
 import { BrandModule } from './brand/brand.module';
 import { IdeasModule } from './ideas/ideas.module';
 import { SitemapModule } from './sitemap/sitemap.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {ShareModule} from './share.module';
 import {AuthModule} from '../auth/auth.module';
 import {UserModule} from './user/user.module';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {MaterialModule} from './material.module';
 @NgModule({
   declarations: [
       VlaunchComponent,
@@ -32,8 +33,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
       FooterSubscribeComponent,
       SectionSigninWithUsComponent,
       LoginComponent,
-      CheckoutComponent,
       CartComponent,
+      CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +52,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
     VlaunchRoutingModule,
     ShareModule,
     ReactiveFormsModule,
+    MaterialModule,
+    FormsModule,
   ],
 })
 export class VlaunchModule { }

@@ -157,7 +157,10 @@ export class AddressComponent implements OnInit, OnDestroy {
     };
     // this.userService.getWardByCityIdAndDistrictId(address);
     this.userService.getWardByCityIdAndDistrictIdModify(address).subscribe(res => {
-      this.wardList = res.data;
+      if (res){
+        this.wardList = res.data;
+      }else {
+      }
     });
   }
 }

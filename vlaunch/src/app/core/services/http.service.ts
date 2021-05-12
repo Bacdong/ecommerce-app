@@ -4,12 +4,14 @@ import { Observable, of } from 'rxjs';
 import { catchError, switchMap, timeout } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import {TokenService} from './token.service';
+import {SnackbarModifyService} from './snackbar-modify.service';
+import {Result} from '../../models/result';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  constructor(private http: HttpClient, private  tokenService: TokenService) {}
+  constructor(private http: HttpClient, private  tokenService: TokenService, private  snackbarModifyService: SnackbarModifyService) {}
 
   private DOMAIN = environment.API_DOMAIN; // config in environment file
 
@@ -103,6 +105,7 @@ export class HttpService {
     return async (error: any): Promise<any> => {
       console.log(error);
       if (error.status === 0){
+        this.snackbarModifyService.openMessage(new Result('Mạng không ổn định, xin vui lòng kiểm tra lại đường truyền.'));
         return {
           error_message: 'Mạng không ổn định, xin vui lòng kiểm tra lại đường truyền.',
         };

@@ -112,4 +112,9 @@ export class UserService {
     const url = 'Address/GetUserAddressByUserId/' + userId;
     return this.httpService.getHandle(url);
   }
+
+  getAllCityModify(): Observable<any> {
+    const url = 'Address/GetAllCity';
+    return  this.httpService.getHandle(url);
+  }
 }

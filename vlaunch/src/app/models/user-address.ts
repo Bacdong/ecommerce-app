@@ -13,4 +13,20 @@ export class UserAddress{
   'districtAddress': District;
   wardId: number ;
   ward: Ward;
+
+  constructor() {
+    this.id = 0;
+    this.street_Address = '';
+    this.phone = '';
+    this.name = '';
+    this.userId = 1;
+    this.user = new User();
+    this.cityAddressId = 1;
+    this.cityAddress = new City();
+    this.districtAddressId = 1;
+    this.districtAddress = new District();
+    this.wardId = 1;
+    this.ward = new Ward();
+  }
 }
+
