@@ -22,24 +22,36 @@
       <div class="content">
         <div class="form-group">
           <label for="name">Họ và Tên</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Họ và tên"
-            formControlName="name"
-          />
+          <input type="text" class="form-control" id="name" placeholder="Họ và tên" formControlName="name" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
+<!--        <div class="form-group">-->
+<!--          <label for="name">Họ và Tên</label>-->
+<!--          <input-->
+<!--            type="text"-->
+<!--            class="form-control"-->
+<!--            id="name"-->
+<!--            placeholder="Họ và tên"-->
+<!--            formControlName="name"-->
+<!--          />-->
+<!--        </div>-->
         <div class="form-group">
           <label for="email">Địa chỉ email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            formControlName="email"
-            placeholder="Địa chỉ email"
-          />
+          <input type="email" class="form-control" id="email" placeholder="Địa chỉ email" formControlName="email" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
+<!--        <div class="form-group">-->
+<!--          <label for="email">Địa chỉ email</label>-->
+<!--          <input-->
+<!--            type="text"-->
+<!--            class="form-control"-->
+<!--            id="email"-->
+<!--            formControlName="email"-->
+<!--            placeholder="Địa chỉ email"-->
+<!--          />-->
+<!--        </div>-->
         <!-- <div class="form-group">
           <label for="formGroupExampleInput2">Another label</label>
           <input

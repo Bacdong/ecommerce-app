@@ -12,7 +12,10 @@
         class="form-control"
         id="name"
         placeholder="Họ và tên"
+        required
       />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     <div class="form-group col-md-6">
       <label for="phone">Số điện thoại:</label>
@@ -22,42 +25,44 @@
         class="form-control"
         id="phone"
         placeholder="Số điện thoại"
+        required
       />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="address" class="form-control-label">Tỉnh/Thành phố:</label>
-      <select
-        title="Chọn Tỉnh/Thành phố"
-        formControlName="cityAddressId"
-        class="form-control provinceSelectPicker"
-        data-live-search="true"
-        (change)="changeProvince($event.target.value)"
-        [value]="address.cityAddressId"
-      >
-        <option
-          #provincesSelect
-          [value]="city.id"
-          *ngFor="let city of this.citys"
-        >
-          {{ city.cityName}}
-        </option>
-      </select>
+      <label>Tỉnh/Thành phố:</label>
+      <div class="select">
+        <select title="Chọn Tỉnh/Thành phố"
+                formControlName="cityAddressId"
+                class="form-control provinceSelectPicker"
+                data-live-search="true"
+                (change)="changeProvince($event.target.value)"
+                [value]="address.cityAddressId">
+          <option
+            #provincesSelect
+            [value]="city.id"
+            *ngFor="let city of this.citys"
+          >
+            {{ city.cityName}}
+          </option>
+        </select>
+        <span class="focus"></span>
+      </div>
     </div>
 
     <div class="form-group col-md-4">
       <label>Quận/Huyện:</label>
-      <select
-        [value]="address.districtAddressId"
-        title="Chọn Quận/Huyện"
-        formControlName="districtAddressId"
-        class="form-control districtSelectPicker"
-        id="select-country"
-        data-live-search="true"
-        (change)="changeDistrict($event.target.value)"
-      >
+      <div class="select">
+        <select [value]="address.districtAddressId"
+                title="Chọn Quận/Huyện"
+                formControlName="districtAddressId"
+                class="form-control districtSelectPicker"
+                data-live-search="true"
+                (change)="changeDistrict($event.target.value)">
         <option
           #districtsSelect
           [value]="district.id"
@@ -65,26 +70,50 @@
         >
           {{ district.districtName }}
         </option>
-      </select>
+        </select>
+        <span class="focus"></span>
+      </div>
     </div>
+<!--    <div class="form-group col-md-4">-->
+<!--      <label>Quận/Huyện:</label>-->
+<!--      <select-->
+<!--        [value]="address.districtAddressId"-->
+<!--        title="Chọn Quận/Huyện"-->
+<!--        formControlName="districtAddressId"-->
+<!--        class="form-control districtSelectPicker"-->
+<!--        id="select-country"-->
+<!--        data-live-search="true"-->
+<!--        (change)="changeDistrict($event.target.value)"-->
+<!--      >-->
+<!--        <option-->
+<!--          #districtsSelect-->
+<!--          [value]="district.id"-->
+<!--          *ngFor="let district of districts"-->
+<!--        >-->
+<!--          {{ district.districtName }}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+
     <div class="form-group col-md-4">
       <label>Phường/Xã:</label>
-      <select
-        [value]="address.wardId"
-        title="Chọn Quận/Huyện"
-        formControlName="wardId"
-        class="form-control districtSelectPicker"
-        id="select-country"
-        data-live-search="true"
-      >
-                <option
-                  #districtsSelect
-                  [value]="ward.id"
-                  *ngFor="let ward of wards"
-                >
-                  {{ ward.name }}
-                </option>
-      </select>
+      <div class="select">
+        <select [value]="address.wardId"
+                title="Chọn Quận/Huyện"
+                formControlName="wardId"
+                class="form-control districtSelectPicker"
+                id="select-country"
+                data-live-search="true">
+          <option
+            #districtsSelect
+            [value]="ward.id"
+            *ngFor="let ward of wards"
+          >
+            {{ ward.name }}
+          </option>
+        </select>
+        <span class="focus"></span>
+      </div>
     </div>
   </div>
   <div class="form-row">
@@ -97,7 +126,10 @@
         class="form-control"
         rows="3"
         placeholder="Địa chỉ"
+        required
       ></textarea>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
     </div>
   </div>
   <div class="mt-4 text-right">

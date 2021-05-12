@@ -14,6 +14,7 @@
 <!--      </h5>-->
 <!--        <h6 class="card-subtitle mb-2 text-muted">Số điện thoại: <input formControlName="phone" type="text" [value]="address.phone"></h6>-->
       <div class="form-row">
+
         <div class="form-group col-md-6">
           <label for="name">Họ và tên:</label>
           <input
@@ -22,7 +23,10 @@
             class="form-control"
             id="name"
             placeholder="Họ và tên"
+            required
           />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group col-md-6">
           <label for="phone">Số điện thoại:</label>
@@ -33,6 +37,8 @@
             id="phone"
             placeholder="Số điện thoại"
           />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
       </div>
 <!--      -->
@@ -131,6 +137,8 @@
           class="form-control"
           placeholder="Địa chỉ"
         >
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </div>
       <!--      -->
       <div class="text-right">
