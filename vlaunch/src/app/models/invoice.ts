@@ -14,4 +14,5 @@ export class Invoice{
   'email': string;
   'name': string;
   'phone': string;
+  street_Address: string;
 }

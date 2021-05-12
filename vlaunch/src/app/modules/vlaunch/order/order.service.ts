@@ -20,4 +20,14 @@ export class OrderService {
       this.invoiceSubject.next(res.data);
     });
   }
+
+  cancelInvoice(id): Observable<any>{
+    const url = 'Invoice/CancelInvoice/' + id;
+    return this.httpService.postHandle(url);
+  }
+
+  getInvoiceDetail(id: string): Observable<any> {
+    const url = 'InvoiceDetail/' + id;
+    return this.httpService.getHandle(url);
+  }
 }

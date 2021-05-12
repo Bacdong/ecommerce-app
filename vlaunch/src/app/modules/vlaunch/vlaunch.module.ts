@@ -34,7 +34,7 @@ import {MaterialModule} from './material.module';
       SectionSigninWithUsComponent,
       LoginComponent,
       CartComponent,
-      CheckoutComponent
+      CheckoutComponent,
   ],
   imports: [
     CommonModule,

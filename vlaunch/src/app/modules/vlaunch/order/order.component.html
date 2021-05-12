@@ -85,7 +85,7 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Hành động</th>
         <td mat-cell *matCellDef="let row" >
-          <button [disabled]="row.statusId === 2 || row.statusId === 3" mat-raised-button color="accent">Hủy đơn hàng</button>
+          <button (click)="cancelInvoice(row.id)" [disabled]="row.statusId === 2 || row.statusId === 3" mat-raised-button color="accent">Hủy đơn hàng</button>
         </td>
       </ng-container>
 

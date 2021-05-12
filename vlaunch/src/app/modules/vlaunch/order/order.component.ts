@@ -5,6 +5,7 @@ import {MatSort} from '@angular/material/sort';
 import {Invoice} from '../../../models/invoice';
 import {OrderService} from './order.service';
 import {Result} from '../../../models/result';
+import {SnackbarModifyService} from '../../../core/services/snackbar-modify.service';
 
 export interface UserData {
   id: string;
@@ -32,17 +33,17 @@ export class OrderComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  private users: Invoice[] = [];
+  private invoiceList: Invoice[] = [];
 
 
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private snackbarModifyService: SnackbarModifyService) {
     // Assign the data to the data source for the table to render
     this.orderService.getInvoideByUserId();
     this.orderService.$invoice.subscribe(res => {
-      this.users = res;
+      this.invoiceList = res;
       console.log(res);
-      this.dataSource = new MatTableDataSource(this.users);
+      this.dataSource = new MatTableDataSource(this.invoiceList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -65,5 +66,16 @@ export class OrderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+  }
+
+  cancelInvoice(id): any{
+    this.orderService.cancelInvoice(id).subscribe(res => {
+      this.invoiceList = res.data;
+      console.log(this.invoiceList);
+      this.dataSource = new MatTableDataSource(this.invoiceList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.snackbarModifyService.openMessage(res, 'Đã hủy đơn hàng ' + id);
+    });
   }
 }

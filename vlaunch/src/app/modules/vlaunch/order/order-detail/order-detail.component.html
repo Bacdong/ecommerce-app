@@ -1,0 +1,135 @@
+<div class="mb-4">
+  <h3>Đơn hàng {{this.orderDetail?.invoice?.id}}</h3>
+</div>
+
+<div class="app">
+  <div class="main-content container">
+    <div class="left col-12 mb-4">
+      <div class="left-bottom col-12 col-md-12 col-xl-12 flex-wrap">
+        <div class="order-info col-12 col-md-6 col-xl-6">
+          <ul class="order-info__list">
+            <li class="order-info__item">thông tin mua hàng</li>
+            <li class="order-info__item">
+              {{this.orderDetail?.invoice?.name}}
+            </li>
+            <li class="order-info__item">
+              {{this.orderDetail?.invoice?.email}}
+            </li>
+            <li class="order-info__item">
+              {{this.orderDetail?.invoice?.phone}}
+            </li>
+          </ul>
+
+          <ul class="order-info__list">
+            <li class="order-info__item">phương thức thanh toán</li>
+            <li class="order-info__item capitalize-first">
+              {{this.orderDetail?.invoice?.isOnlinePayment | paymentMethod }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="order-info col-12 col-md-6 col-xl-6">
+          <ul class="order-info__list">
+            <li class="order-info__item">địa chỉ nhận hàng</li>
+            <li class="order-info__item">
+              {{ this.orderDetail?.invoice?.street_Address}}
+            </li>
+            <li class="order-info__item capitalize">
+              {{ this.orderDetail?.invoice?.ward?.name}}
+            </li>
+            <li class="order-info__item">
+              {{this.orderDetail?.invoice?.ward?.districtAddress?.districtName}}
+            </li>
+            <li class="order-info__item">
+              {{this.orderDetail?.invoice?.ward?.districtAddress?.cityAddress?.cityName}}
+            </li>
+          </ul>
+
+          <ul class="order-info__list">
+            <li class="order-info__item">phương thức vận chuyển</li>
+            <li class="order-info__item capitalize-first">
+              giao hàng tận nơi: {{ 0  }}đ
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right col-12">
+      <div class="right-row">
+        <div class="right-top__order">
+          <ul class="order-list">
+            <li class="order-item" *ngFor="let line of this.orderDetailList">
+              <a class="order-link">
+                <div class="product-info">
+                  <div class="product-info__img">
+                    <img
+                      src="{{this.imgPath + line.book.mainImage}}"
+                      alt="{{ 'Sach 1' }}"
+                    />
+                    <span>{{line.quantity}}</span>
+                  </div>
+
+                  <div class="product-info__brief">
+                    <h3
+                      *ngIf="line.book"
+                      [routerLink]="'/products/item/' + convertToSlug(line.book.bookName) + '/' + line.book.id"
+                      class="brief-title"
+                    >
+                      {{ line.book.bookName }}
+                    </h3>
+                    <div>
+<!--                      <span-->
+<!--                        class="brief-variant"-->
+<!--                        *ngIf="line.product.product_type.has_variant"-->
+<!--                      >{{ line.variant.name }}</span-->
+<!--                      >-->
+<!--                      <a-->
+<!--                        class="ml-4"-->
+<!--                        [routerLink]="[-->
+<!--                          '/user/order/' +-->
+<!--                            '14' +-->
+<!--                            '/rating/' +-->
+<!--                            line.id-->
+<!--                        ]"-->
+<!--                      >Đánh giá</a-->
+<!--                      >-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="price">
+                  <span class="current-price"
+                  >{{ line.book.price | formatPrice  }}đ</span
+                  >
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="right-top__subtotal">
+          <div class="sub-total">
+            <span class="sub-total__title">tạm tính</span>
+            <span class="price">{{ this.getTotal() | formatPrice }}đ</span>
+          </div>
+
+          <div class="sub-total">
+            <span class="sub-total__title">phí vận chuyển</span>
+            <span class="price"
+            >{{ 0 }}đ</span
+            >
+          </div>
+        </div>
+
+        <div class="total">
+          <span class="total-title">tổng cộng</span>
+          <span class="total-price"
+          >{{
+            this.getTotal() | formatPrice
+            }}đ</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

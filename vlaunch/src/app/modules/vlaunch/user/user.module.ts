@@ -15,6 +15,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddressAddComponent } from './address/address-add/address-add.component';
 import {OrderComponent} from '../order/order.component';
 import {ShareModule} from '../share.module';
+import {OrderDetailComponent} from '../order/order-detail/order-detail.component';
 
 
 
@@ -30,7 +31,8 @@ import {ShareModule} from '../share.module';
     OrderStatusPipe,
     OrderComponent,
     FormatDatePipe,
-    PaymentMethodPipe
+    PaymentMethodPipe,
+    OrderDetailComponent
   ],
   imports: [
     CommonModule,

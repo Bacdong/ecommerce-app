@@ -21,6 +21,7 @@ import {AddressAddComponent} from './user/address/address-add/address-add.compon
 import {CheckoutComponent} from './checkout/checkout.component';
 import {CheckoutGuard} from './checkout/checkout.guard';
 import {OrderComponent} from './order/order.component';
+import {OrderDetailComponent} from './order/order-detail/order-detail.component';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -75,7 +76,12 @@ vlaunchRoutes = [
           {
             path: 'order',
             component: OrderComponent,
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'order/detail/:id',
+            component: OrderDetailComponent,
+            canActivate: [AuthGuard],
           }
         ]
       },
