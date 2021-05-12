@@ -163,7 +163,7 @@
       </div>
       <div class="sidebar col-12 col-lg-5">
         <div class="sidebar__header">
-          <h2>Đơn hàng ({{ 0 }} sản phẩm)</h2>
+          <h2>Đơn hàng ({{ this.getSumCart() }} sản phẩm)</h2>
         </div>
         <div class="sidebar__content">
           <div class="order__product">
@@ -210,12 +210,14 @@
                   aria-label="Nhập mã giảm giá"
                   aria-describedby="Nhập mã giảm giá"
                   #voucher
+                  disabled
                 />
                 <div class="input-group-append">
                   <button
                     class="btn btn-outline-secondary"
                     type="button"
                     (click)="addVoucher(voucher)"
+                    disabled
                   >
                     Áp dụng
                   </button>
@@ -226,7 +228,7 @@
               <div class="d-flex justify-content-between pb-3">
                 <span>Tạm tính</span>
                 <span style="font-size: 18px"
-                >{{ 0 | formatPrice }}đ</span
+                >{{ this.getTotalPrice() | formatPrice }}đ</span
                 >
               </div>
               <div class="d-flex justify-content-between pb-3">
@@ -246,20 +248,19 @@
               <div class="d-flex justify-content-between pb-3">
                 <span>Tổng cộng</span>
                 <span class="price"
-                >{{ 0 + 0 | formatPrice }} đ</span
+                >{{ this.getTotalPrice() | formatPrice }} đ</span
                 >
               </div>
               <hr style="margin-top: 0">
               <div class="d-flex justify-content-between pb-3">
                 <span>Thanh toán qua</span>
               </div>
-              <mat-radio-group
+              <mat-radio-group (change)="changeOption($event.value)"
                 aria-labelledby="example-radio-group-label"
                 class="example-radio-group">
-                <mat-radio-button class="example-radio-button" checked value="1">Thanh toán khi nhận hàng</mat-radio-button>
-                <mat-radio-button class="example-radio-button" value="2">Thanh toán bằng Stripe</mat-radio-button>
+                <mat-radio-button class="example-radio-button" checked value="0">Thanh toán khi nhận hàng</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="1">Thanh toán bằng Stripe</mat-radio-button>
               </mat-radio-group>
-              {{paymentMethodSelected}}
               <div
                 *ngIf="false"
                 style="color: red; font-size: 13px"
@@ -275,7 +276,6 @@
                 >
                 <button
                   type="submit"
-                  [disabled]="true"
                   class="btn btn-primary"
                 >
                   Đặt hàng
