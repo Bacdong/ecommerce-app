@@ -19,6 +19,7 @@ import {AddressComponent} from './user/address/address.component';
 import {AuthGuard} from '../auth/auth.guard';
 import {AddressAddComponent} from './user/address/address-add/address-add.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {CheckoutGuard} from './checkout/checkout.guard';
 
 let vlaunchRoutes: Routes;
 vlaunchRoutes = [
@@ -36,7 +37,11 @@ vlaunchRoutes = [
       {path: 'brand', component: BrandComponent},
       {path: 'ideas', component: IdeasComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'checkout', component: CheckoutComponent},
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [CheckoutGuard]
+      },
       {path: 'filter', component: FilterComponent},
       // Footer categories routes
       {path: 'sitemap', component: SitemapComponent},
