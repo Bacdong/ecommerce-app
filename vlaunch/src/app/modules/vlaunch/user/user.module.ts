@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DefaultImagePipe} from '../../../core/pipes';
+import {DefaultImagePipe, FormatDatePipe, OrderStatusPipe, PaymentMethodPipe} from '../../../core/pipes';
 import { UserComponent } from './user.component';
 import {RouterModule} from '@angular/router';
 import { PasswordComponent } from './password/password.component';
@@ -13,11 +13,25 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddressAddComponent } from './address/address-add/address-add.component';
+import {OrderComponent} from '../order/order.component';
+import {ShareModule} from '../share.module';
 
 
 
 @NgModule({
-  declarations: [DefaultImagePipe, ProfileComponent, UserComponent, DefaultImagePipe, PasswordComponent, AddressComponent, AddressAddComponent],
+  declarations: [
+    DefaultImagePipe,
+    ProfileComponent,
+    UserComponent,
+    DefaultImagePipe,
+    PasswordComponent,
+    AddressComponent,
+    AddressAddComponent,
+    OrderStatusPipe,
+    OrderComponent,
+    FormatDatePipe,
+    PaymentMethodPipe
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,6 +42,7 @@ import { AddressAddComponent } from './address/address-add/address-add.component
     MatInputModule,
     MatAutocompleteModule,
     MaterialModule,
+    ShareModule,
   ]
 })
 export class UserModule { }

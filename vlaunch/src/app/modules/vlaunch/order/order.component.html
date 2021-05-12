@@ -1,1 +1,105 @@
-<p>order works!</p>
+<div class="mb-4">
+  <h3>Đơn hàng gần nhất</h3>
+</div>
+
+<div class="table-responsive">
+<!--  <table class="table table-bordered">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">Mã</th>-->
+<!--      <th scope="col">Ngày</th>-->
+<!--      <th scope="col">Địa chỉ</th>-->
+<!--      <th scope="col text-center">Giá trị</th>-->
+<!--      <th scope="col text-center">Tình trạng thanh toán</th>-->
+<!--      <th scope="col"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody *ngIf="true">-->
+<!--    <tr *ngFor="let order of []">-->
+<!--      <th scope="row">{{ order.code }}</th>-->
+<!--      <td>{{ order.created | date: "dd/MM/yyyy" }}</td>-->
+<!--      <td>-->
+<!--        {{ order.shipping_address.street_address }}-{{-->
+<!--        order.shipping_address.district.name-->
+<!--        }}-{{ order.shipping_address.province.name }}-->
+<!--      </td>-->
+<!--      <td class="text-center">-->
+<!--        {{ order.total + order.shipping_fee | formatPrice }}-->
+<!--      </td>-->
+<!--      <td class="text-center">{{ order.status | orderStatus }}</td>-->
+<!--      <td class="text-center">-->
+<!--        <a-->
+<!--          [routerLink]="['/user', 'order', order.code]"-->
+<!--          routerLinkActive="router-link-active"-->
+<!--        >Chi tiết</a-->
+<!--        >-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày </th>
+        <td mat-cell *matCellDef="let row"> {{row.createAt | formatDate}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </th>
+        <td mat-cell *matCellDef="let row"> {{row?.street_Address+' '+row?.ward?.name+' '+row?.ward?.districtAddress?.districtName +' ' + row?.ward?.districtAddress?.cityAddress?.cityName}} </td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Giá trị </th>
+        <td mat-cell *matCellDef="let row"> {{row.totalMoney | formatPrice}}đ </td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="payment-status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tình trạng</th>
+        <td mat-cell *matCellDef="let row">{{row.statusId | orderStatus}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="payment-method">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Thanh toán</th>
+        <td mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Hành động</th>
+        <td mat-cell *matCellDef="let row" >
+          <button [disabled]="row.statusId === 2 || row.statusId === 3" mat-raised-button color="accent">Hủy đơn hàng</button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+</div>

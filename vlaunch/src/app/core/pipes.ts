@@ -25,3 +25,31 @@ export class DefaultImagePipe implements PipeTransform {
             : 'assets/images/placeholder-img.png';
   }
 }
+@Pipe({ name: 'orderStatus' })
+export class OrderStatusPipe implements PipeTransform {
+  transform(value: number): string {
+    switch (value){
+      case 1: return 'Đang xử lý';
+      case 2: return 'Đã giao hàng';
+      case 3: return 'Đã hủy đơn hàng';
+    }
+  }
+}
+@Pipe({ name: 'formatDate' })
+export class FormatDatePipe implements PipeTransform {
+  transform(value: string): string {
+    if (value) {
+    return value.split(':')[0];
+    }
+  }
+}
+@Pipe({ name: 'paymentMethod' })
+export class PaymentMethodPipe implements PipeTransform {
+  transform(value: boolean): string {
+    if (value){
+      return 'Thanh toán bằng Stripe';
+    }else {
+      return 'Thanh toán khi giao hàng';
+    }
+  }
+}
