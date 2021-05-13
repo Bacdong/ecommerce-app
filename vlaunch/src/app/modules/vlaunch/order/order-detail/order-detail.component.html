@@ -26,6 +26,14 @@
               {{this.orderDetail?.invoice?.isOnlinePayment | paymentMethod }}
             </li>
           </ul>
+
+          <ul class="order-info__list">
+            <li class="order-info__item">tình trạng</li>
+            <li class="order-info__item capitalize-first">
+              {{this.orderDetail?.invoice?.statusId | orderStatus }}
+            </li>
+          </ul>
+
         </div>
 
         <div class="order-info col-12 col-md-6 col-xl-6">

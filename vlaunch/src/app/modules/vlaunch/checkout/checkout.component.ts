@@ -81,7 +81,7 @@ export class CheckoutComponent implements OnInit {
       this.snackbarModifyService.openMessage(res, 'Đặt đơn hàng thành công');
       if (res){
         this.createOrderDetail(res.data.invoiceId);
-        this.router.navigateByUrl('/order');
+        this.router.navigateByUrl('/user/order/');
       }
     });
   }
@@ -94,7 +94,8 @@ export class CheckoutComponent implements OnInit {
     this.userService.getDistrictAndWardByCityId(value).subscribe(res => {
       this.addressSelected.cityAddressId = res.data.cityAddressId;
       this.addressSelected.districtAddressId = res.data.districtAddressId;
-      this.addressSelected.wardId = res.data.wardId;
+      this.addressSelected.wardId = res.data.id;
+      console.log(res.data);
       this.userService.getDistrictByCityIdModify(this.addressSelected.cityAddressId).subscribe(dis => {
         this.districtList = dis.data;
         this.userService.getWardByCityIdAndDistrictIdModify(this.addressSelected).subscribe(ward => {

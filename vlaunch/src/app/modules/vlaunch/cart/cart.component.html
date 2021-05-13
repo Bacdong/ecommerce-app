@@ -94,7 +94,7 @@
       </div>
 
       <div class="checkout-action">
-        <a [routerLink]="['/checkout']" class="checkout-now"
+        <a (click)="checkLogin()" [routerLink]="['/checkout']" class="checkout-now"
           >thanh toán ngay</a
         >
         <a [routerLink]="['/']" class="buy-continue">tiếp tục mua hàng</a>

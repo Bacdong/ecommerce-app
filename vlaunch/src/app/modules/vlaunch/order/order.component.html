@@ -49,36 +49,36 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td routerLink="['/detail',{{row.id}}]" mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.id}} </td>
       </ng-container>
 
       <!-- Progress Column -->
       <ng-container matColumnDef="progress">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày </th>
-        <td mat-cell *matCellDef="let row"> {{row.createAt | formatDate}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.createAt | formatDate}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </th>
-        <td mat-cell *matCellDef="let row"> {{row?.street_Address+' '+row?.ward?.name+' '+row?.ward?.districtAddress?.districtName +' ' + row?.ward?.districtAddress?.cityAddress?.cityName}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row?.street_Address+' '+row?.ward?.name+' '+row?.ward?.districtAddress?.districtName +' ' + row?.ward?.districtAddress?.cityAddress?.cityName}} </td>
       </ng-container>
 
       <!-- Color Column -->
       <ng-container matColumnDef="color">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Giá trị </th>
-        <td mat-cell *matCellDef="let row"> {{row.totalMoney | formatPrice}}đ </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.totalMoney | formatPrice}}đ </td>
       </ng-container>
 
       <!-- Color Column -->
       <ng-container matColumnDef="payment-status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tình trạng</th>
-        <td mat-cell *matCellDef="let row">{{row.statusId | orderStatus}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row">{{row.statusId | orderStatus}} </td>
       </ng-container>
 
       <ng-container matColumnDef="payment-method">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Thanh toán</th>
-        <td mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
       </ng-container>
 
 

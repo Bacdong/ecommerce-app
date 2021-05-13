@@ -4,6 +4,9 @@ import {CartService} from './cart.service';
 import {Book, Cart} from '../../../models/cart';
 import {stringToSlug} from '../../../core/utils';
 import {environment} from '../../../../environments/environment';
+import {TokenService} from '../../../core/services/token.service';
+import {SnackbarModifyService} from '../../../core/services/snackbar-modify.service';
+import {Result} from '../../../models/result';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +20,7 @@ export class CartComponent implements OnInit, OnDestroy {
   listCart: Cart[] = [
     new Cart()
   ];
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private tokenService : TokenService, private snackbarModifyService: SnackbarModifyService) {}
 
   ngOnDestroy(): void {
   }
@@ -74,6 +77,11 @@ export class CartComponent implements OnInit, OnDestroy {
     this.changeQuantity(id, input.value);
   }
 
+  checkLogin(): any{
+    if (!this.tokenService.getUserId()){
+      this.snackbarModifyService.openMessage({data: '', success : false, error_message: 'Vui lòng đăng nhập trước khi mua hàng'}, );
+    }
+  }
 }
 export enum AmountUpdate{
   increase,
