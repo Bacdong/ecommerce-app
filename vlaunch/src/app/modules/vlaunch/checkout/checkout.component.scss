@@ -356,6 +356,9 @@
     }
   }
 }
+.sidebar__header{
+  margin-top: -1px;
+}
 
 ::ng-deep {
   .bootstrap-select > .dropdown-toggle {
@@ -373,4 +376,16 @@
 
 .example-radio-button {
   margin: 5px;
+}
+.provinceSelectPicker {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.districtSelectPicker {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.select-address {
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }

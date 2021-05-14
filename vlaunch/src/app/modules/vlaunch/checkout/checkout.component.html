@@ -1,14 +1,7 @@
 <div class="container">
-  <form (ngSubmit)="createOrder()" [formGroup]="addressForm">
+  <form class="was-validated" (ngSubmit)="createOrder()" [formGroup]="addressForm">
     <div class="wrap row">
       <div class="main col-12 col-lg-7">
-        <div class="main__header">
-          <h1 class="shop__name">
-            <a [routerLink]="'/'"
-            ><img src="assets/images/logo-adiviet.svg" alt="logo"
-            /></a>
-          </h1>
-        </div>
         <div class="main__content">
           <div class="row">
             <div class="col-lg-12">
@@ -67,8 +60,11 @@
                       placeholder="Họ và tên"
                       formControlName="name"
                       [value]="addressSelected?.name"
+                      pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$"
+                      required
                     />
                   </div>
+                  <div class="invalid-feedback">Tên không hợp lệ</div>
                   <div class="form-group col-md-6">
                     <label  class="form-control-label">Email: </label>
                     <input
@@ -76,7 +72,10 @@
                       class="form-control"
                       placeholder="Email"
                       formControlName="email"
+                      pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                      required
                     />
+                    <div class="invalid-feedback">Email không hợp lệ.</div>
                   </div>
                   <div class="form-group col-md-6">
                     <label  class="form-control-label"
@@ -88,7 +87,10 @@
                       placeholder="Số điện thoại"
                       formControlName="phone"
                       [value]="addressSelected?.phone"
+                      pattern="^[0-9]{10,12}$"
+                      required
                     />
+                    <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
                   </div>
                   <div class="form-group col-md-4">
                     <label class="form-control-label"
@@ -150,10 +152,13 @@
                     <label class="form-control-label">Địa chỉ: </label>
                     <textarea
                       formControlName="street_Address"
+                      pattern="^[a-zA-Z0-9_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,}$"
                       class="form-control textarea"
                       rows="3"
                       [value]="addressSelected.street_Address"
+                      required
                     ></textarea>
+                    <div class="invalid-feedback">Địa chỉ không hợp lệ.</div>
                   </div>
                 </div>
               </section>

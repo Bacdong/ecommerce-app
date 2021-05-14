@@ -12,39 +12,34 @@
         <div class="auth__login">
           <div class="logo">
             <img
-              src="assets/images/logo-no-title.png"
+              src="assets/images/logo.png"
               alt="Lavis Decor"
             >
-            <span class="logo__title">sign in or create account</span>
+            <span class="logo__title">Đăng nhập hoặc tạo tài khoản</span>
           </div>
           <div class="form-container">
-            <form>
-              <div class="form-groups">
-                <input
-                  type="text"
-                  class="form-input"
-                  placeholder="Username/Email"
-                  #username
-                >
+            <form class="was-validated">
+
+              <div class="form-group">
+                <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập ..." #username pattern="^[a-z0-9_-]{3,15}$" name="uname" required>
+                <div class="invalid-feedback">Tên đăng nhập có ít nhất 3 ký tự và không chứa ký tự đặc biệt</div>
               </div>
-              <div class="form-groups">
-                <input
-                  type="password"
-                  class="form-input"
-                  placeholder="Password"
-                  #password
-                >
+
+              <div class="form-group">
+                <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu ..." #password pattern="^([a-zA-Z0-9@#$%*]){6,}$" name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
               </div>
+
               <div class="form-groups--check">
                 <div class="check-box">
                   <input type="checkbox" id="check-box-input">
                   <label
                     for="check-box-input"
                     class="check-box__label"
-                  >stay signed in</label>
+                  >Lưu đăng nhập</label>
                 </div>
                 <div class="forgot-pwd">
-                  <a href="" class="forgot-pwd__link">forgot password?</a>
+                  <a href="" class="forgot-pwd__link">Quên mật khẩu?</a>
                 </div>
               </div>
               <button
@@ -54,22 +49,13 @@
                 class="btn btn-block btn-primary form-button"
               >Submit</button>
             </form>
-            <div class="direction-to-register">
-              <span class="direction-to-register__title">
-                don't you have a Lavis account?
-              </span>
-              <a (click)="toggleChangeForm()"
-                class="direction-to-register__link"
-              >join now and enjoy all website features</a>
-            </div>
           </div>
           <div class="footer">
             <div class="footer-wrapper">
-              <span class="footer__title">lavis decor</span>
-              <span class="footer__sub-title">interior designer program</span>
+              <span class="footer__title">Bạn chưa có tài khoản?</span>
               <a (click)="toggleChangeForm()"
                 class="button button--primary footer__action"
-              >discover pro account</a>
+              >Đăng ký tài khoản</a>
             </div>
           </div>
         </div>
@@ -79,35 +65,45 @@
       >
         <div class="register__container">
           <div class="register__header">
-            <h3>create an account</h3>
+            <h3>Tạo tài khoản</h3>
           </div>
           <div class="register__form">
-            <form [formGroup]="registerForm" (ngSubmit)="register()">
-              <div class="group" >
-                  <input
-                    type="text"
-                    placeholder="Username"
-                  formControlName="username"
-                  >
+            <form class="was-validated" [formGroup]="registerForm" (ngSubmit)="register()">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="username" pattern="^[a-z0-9_-]{3,15}$" placeholder="Nhập tên đăng nhập ..." name="uname" required>
+                <div class="invalid-feedback">Tên đăng nhập có ít nhất 3 ký tự và không chứa ký tự đặc biệt</div>
               </div>
-              <div class="group group--separate">
-                <input
-                  type="password"
-                  placeholder="Create password"
-                formControlName="password"
-                >
-                <input
-                  type="password"
-                  placeholder="Re-enter password"
-                  formControlName="comfirmPassword"
-                >
+<!--              <div class="group" >-->
+<!--                  <input-->
+<!--                    type="text"-->
+<!--                    placeholder="Username"-->
+<!--                  formControlName="username"-->
+<!--                  >-->
+<!--              </div>-->
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="password" pattern="^([a-zA-Z0-9@#$%*]){6,}$" placeholder="Nhập mật khẩu ..." name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
               </div>
-              <div class="group" >
-                <input
-                  type="text"
-                  placeholder="Name"
-                  formControlName="name"
-                >
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="comfirmPassword" pattern="^([a-zA-Z0-9@#$%*]){6,}$" placeholder="Nhập lại mật khẩu ..." name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
+              </div>
+<!--              <div class="group group&#45;&#45;separate">-->
+<!--                <input-->
+<!--                  type="password"-->
+<!--                  placeholder="Create password"-->
+<!--                formControlName="password"-->
+<!--                >-->
+<!--                <input-->
+<!--                  type="password"-->
+<!--                  placeholder="Re-enter password"-->
+<!--                  formControlName="comfirmPassword"-->
+<!--                >-->
+<!--              </div>-->
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$"
+                       placeholder="Nhập họ tên ..." name="uname" required>
+                <div class="invalid-feedback">Tên không hợp lệ</div>
               </div>
 <!--              <div class="group">-->
 <!--                <input-->
@@ -121,36 +117,23 @@
 <!--                  placeholder="Email address"-->
 <!--                >-->
 <!--              </div>-->
-              <div class="group group--checkbox">
-                <input type="checkbox" id="input-checkbox">
-                <label
-                  for="input-checkbox"
-                  class="checkbox-label"
-                >
-                  i'd like to receive promotions, surveys, and
-                  updates via email about Lavis Decor and its partners.
-                </label>
-              </div>
-              <button type="submit"
+              <button
+                [disabled]="!registerForm.valid"
+                type="submit"
                 class="btn btn-block btn-primary create-button"
-              >create free account</button>
+              >Đăng ký tài khoản</button>
             </form>
           </div>
           <div class="register__note">
             <span class="register__note__txt w-100">
-              by registering, you agree to Lavis Decor's
-            </span>
-            <span class="register__note__action w-100">
-              <a href="" class="terms-link">Terms of Services</a>
-              and
-              <a href="" class="privacy-link">privacy policy</a>
+              Tài khoản của bạn được chấp nhập bởi Book Store
             </span>
           </div>
         </div>
         <div class="register__direction">
           <a (click)="toggleChangeForm()"
             class="register__direction__link"
-          >already have an Lavis account? Sign in</a>
+          >Bạn đã có tài khoản? Đăng nhập</a>
         </div>
       </div>
     </div>

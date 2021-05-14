@@ -5,7 +5,7 @@ import {AlertService} from '../../../core/services/alert.service';
 import {AlertComponent} from '../../../components/alert/alert.component';
 import {TokenService} from '../../../core/services/token.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Result} from '../../../models/result';
 
 @Component({
@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
   //   });
   // }
   registerForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    comfirmPassword: new FormControl(''),
-    name: new FormControl('')
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    comfirmPassword: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required)
   });
 
   ngOnInit(): void { this.toggleChangeForm(); }
@@ -77,18 +77,56 @@ export class LoginComponent implements OnInit {
   }
 
   register(): any {
-    console.log(this.registerForm.value);
-    this.authService.register(this.registerForm.value).subscribe((result: Result) => {
-      if (result.success){
-        this.matSnackBar.open(result.data.toString(), 'Close', {
-          duration: 2000
-        });
-        this.toggleChangeForm();
-      }else {
-        this.matSnackBar.open(result.error_message, 'Close', {
+    let usn = this.registerForm.get('username').value;
+    let pwRegister = this.registerForm.get('password').value;
+    let pwConfirm = this.registerForm.get('comfirmPassword').value;
+    let name = this.registerForm.get('name').value;
+    let checkPassword = new RegExp('^([a-zA-Z0-9@#$%*]){6,}$');
+    let checkName = new RegExp('^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$');
+    let checkUsername = new RegExp('^[a-z0-9_-]{3,15}$');
+    if(checkUsername.test(usn) && checkPassword.test(pwRegister) && pwRegister === pwConfirm && checkName.test(name))
+    {
+      this.authService.register(this.registerForm.value).subscribe((result: Result) => {
+        if (result.success){
+          this.matSnackBar.open(result.data.toString(), 'Close', {
+            duration: 2000
+          });
+          this.toggleChangeForm();
+        }else {
+          this.matSnackBar.open(result.error_message, 'Close', {
+            duration: 2000
+          });
+        }
+      });
+    }
+    else
+    {
+      if(checkPassword.test(pwRegister) === false){
+        this.matSnackBar.open('Mật khẩu phải ít nhất 6 ký tự, vui lòng thử lại !', 'Close', {
           duration: 2000
         });
       }
-    });
+      if(pwRegister !== pwConfirm){
+        this.matSnackBar.open('Mật khẩu chưa trùng nhau, vui lòng thử lại !', 'Close', {
+          duration: 2000
+        });
+      }
+      if(checkName.test(name) === false){
+        this.matSnackBar.open('Tên không hợp lệ, vui lòng thử lại !', 'Close', {
+          duration: 2000
+        });
+      }
+      if(checkUsername.test(usn) === false){
+        this.matSnackBar.open('Tên đăng nhập có ít nhất 3 ký tự và không chứa ký tự đặc biệt, vui lòng thử lại !', 'Close', {
+          duration: 2000
+        });
+      }
+      if(checkName.test(name) === false){
+        this.matSnackBar.open('Tên không hợp lệ hoặc quá ít ký tự, vui lòng thử lại !', 'Close', {
+          duration: 2000
+        });
+      }
+    }
+    console.log(this.registerForm.value);
   }
 }

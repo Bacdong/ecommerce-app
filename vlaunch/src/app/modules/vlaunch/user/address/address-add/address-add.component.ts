@@ -5,6 +5,7 @@ import {UserService} from '../../user.service';
 import {SnackbarService} from '../../../../../core/services/snackbar.service';
 import { SnackbarModifyService } from 'src/app/core/services/snackbar-modify.service';
 import {TokenService} from '../../../../../core/services/token.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-address-add',
@@ -31,7 +32,7 @@ export class AddressAddComponent implements OnInit {
   citys: City[] = [];
   districts: District[];
   wards: Ward[];
-  constructor(private userService: UserService, private snackbarModifyService: SnackbarModifyService, private tokenService: TokenService) { }
+  constructor(private userService: UserService, private snackbarModifyService: SnackbarModifyService, private tokenService: TokenService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.userService.getAllCity();
@@ -51,14 +52,38 @@ export class AddressAddComponent implements OnInit {
   }
 
   submitAddress(): any {
-    const data = this.addressForm.value;
-    data.userId = this.tokenService.getUserId();
-    this.userService.AddAddress(data).subscribe(res => {
-      if (res.success){
-        this.snackbarModifyService.openMessage(res);
+    let name = this.addressForm.get('name').value;
+    let numberPhone = this.addressForm.get('phone').value;
+    let address = this.addressForm.get('street_Address').value;
+    let checkName = new RegExp('^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$');
+    let checkAddress = new RegExp('^[a-zA-Z0-9_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,}$');
+    let checkNumberPhone = new RegExp('^[0-9]{10,12}$');
+    if(checkName.test(name) && checkNumberPhone.test(numberPhone) && checkAddress.test(address)){
+      const data = this.addressForm.value;
+      data.userId = this.tokenService.getUserId();
+      this.userService.AddAddress(data).subscribe(res => {
+        if (res.success){
+          this.snackbarModifyService.openMessage(res);
+        }
+      });
+    }
+    else {
+      if (checkName.test(name) === false){
+        this.matSnackBar.open('Tên không hợp lệ, vui lòng nhập lại!', 'Close', {
+          duration: 2000
+        })
       }
-    });
-
+      if (checkNumberPhone.test(numberPhone) === false){
+        this.matSnackBar.open('Số điện thoại không hợp lệ, vui lòng nhập lại!', 'Close', {
+          duration: 2000
+        })
+      }
+      if (checkAddress.test(address) === false){
+        this.matSnackBar.open('Địa chỉ không hợp lệ, vui lòng nhập lại!', 'Close', {
+          duration: 2000
+        })
+      }
+    }
   }
 
   changeProvince(value: number): any {

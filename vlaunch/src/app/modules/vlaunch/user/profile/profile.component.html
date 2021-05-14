@@ -1,6 +1,6 @@
 <h3 class="mb-4">Thông tin cá nhân</h3>
 <div class="row">
-  <form class="col-12" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+  <form class="col-12 was-validated" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
     <div class="form-content">
       <label class="avatar text-center d-block" for="avatar">
         <img
@@ -22,24 +22,36 @@
       <div class="content">
         <div class="form-group">
           <label for="name">Họ và Tên</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Họ và tên"
-            formControlName="name"
-          />
+          <input type="text" class="form-control" id="name" placeholder="Họ và tên" formControlName="name" pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$" required>
+          <div class="invalid-feedback">Tên không hợp lệ</div>
         </div>
+<!--        <div class="form-group">-->
+<!--          <label for="name">Họ và Tên</label>-->
+<!--          <input-->
+<!--            type="text"-->
+<!--            class="form-control"-->
+<!--            id="name"-->
+<!--            placeholder="Họ và tên"-->
+<!--            formControlName="name"-->
+<!--          />-->
+<!--        </div>-->
         <div class="form-group">
           <label for="email">Địa chỉ email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            formControlName="email"
-            placeholder="Địa chỉ email"
-          />
+          <input type="email" class="form-control" id="email" placeholder="Địa chỉ email" formControlName="email"
+                 pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                 required>
+          <div class="invalid-feedback">Email không hợp lệ.</div>
         </div>
+<!--        <div class="form-group">-->
+<!--          <label for="email">Địa chỉ email</label>-->
+<!--          <input-->
+<!--            type="text"-->
+<!--            class="form-control"-->
+<!--            id="email"-->
+<!--            formControlName="email"-->
+<!--            placeholder="Địa chỉ email"-->
+<!--          />-->
+<!--        </div>-->
         <!-- <div class="form-group">
           <label for="formGroupExampleInput2">Another label</label>
           <input

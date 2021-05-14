@@ -12,44 +12,32 @@ export interface SubMenu {
 
 export const SUBMENUS: SubMenu[] = [
   {
-    navigation: { url: 'products/seating', name: 'seating' },
+    navigation: { url: 'products/seating', name: 'Lịch sử' },
     megaMenu: [
       {
         title: 'tablet',
-        megaMenu: [
-          { url: 'products/seating/sectionals', name: 'sectionals' },
-          { url: 'products/seating/sofas', name: 'sofas' },
-          { url: 'products/seating/chaise', name: 'chaise' },
-          { url: 'products/seating/palatial-chairs', name: 'palatial chairs' },
-          { url: 'products/seating/sectionals', name: 'sectionals' },
-          { url: 'products/seating/palatial-chairs', name: 'palatial chairs' },
-        ],
+        megaMenu: [],
       },
       {
         title: 'chairs',
-        megaMenu: [
-          { url: 'products/seating/sectionals', name: 'sectionals' },
-          { url: 'products/seating/sofas', name: 'sofas' },
-          { url: 'products/seating/chaise', name: 'chaise' },
-          { url: 'products/seating/palatial-chairs', name: 'palatial chairs' },
-        ],
+        megaMenu: [],
       }
     ],
   },
   {
-    navigation: { url: 'products/table', name: 'table' },
+    navigation: { url: 'products/table', name: 'Văn học' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/cabinets', name: 'cabinets' },
+    navigation: { url: 'products/cabinets', name: 'Kỹ năng sống' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/bedroom', name: 'bedroom' },
+    navigation: { url: 'products/bedroom', name: 'Tuổi teen' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/mirrors', name: 'mirrors' },
+    navigation: { url: 'products/mirrors', name: 'Danh mục khác' },
     megaMenu: [],
   },
 ];

@@ -21,11 +21,10 @@ export class NavigationComponent implements OnInit {
   currentCity: string;
   cityList = [
     'ho chi minh',
-    'chicago',
-    'singapore',
-    'hollywood',
-    'dubai',
-    'new york',
+    'da nang',
+    'ha noi',
+    'vinh',
+    'da lat'
   ];
 
   constructor(public tokenService: TokenService) { }
