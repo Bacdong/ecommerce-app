@@ -5,7 +5,7 @@
   </button>
 </div>
 
-<form [formGroup]="formAddress" (ngSubmit)="submitForm()">
+<form class="was-validated" [formGroup]="formAddress" (ngSubmit)="submitForm()">
 <div *ngIf="isDelete" class="row" style="border: 1px solid gainsboro">
     <div *ngIf="isEdit" class="card-body">
 <!--      <h5 class="card-title">-->
@@ -19,26 +19,27 @@
           <label for="name">Họ và tên:</label>
           <input
             formControlName="name"
+            pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$"
             type="text"
             class="form-control"
             id="name"
             placeholder="Họ và tên"
             required
           />
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
+          <div class="invalid-feedback">Tên không hợp lệ.</div>
         </div>
         <div class="form-group col-md-6">
           <label for="phone">Số điện thoại:</label>
           <input
             type="text"
             formControlName="phone"
+            pattern="^[0-9]{10,12}$"
             class="form-control"
             id="phone"
             placeholder="Số điện thoại"
+            required
           />
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
+          <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
         </div>
       </div>
 <!--      -->
@@ -128,19 +129,21 @@
           </select>
         </div>
       </div>
-
+<div class="row">
       <div class="form-group col-12">
         <label>Địa chỉ:</label>
         <input
           formControlName="street_Address"
+          pattern="^[a-zA-Z0-9_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,}$"
           type="text"
           class="form-control"
           placeholder="Địa chỉ"
-        >
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
+          required
+        />
+        <div class="invalid-feedback">Địa chỉ không hợp lệ.</div>
       </div>
-      <!--      -->
+</div>
+      <!-- Button group -->
       <div class="text-right">
         <button type="submit" routerLinkActive="router-link-active" class="card-link btn btn-warning">
           Cập nhật

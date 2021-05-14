@@ -5,7 +5,7 @@ import {AlertService} from '../../../core/services/alert.service';
 import {AlertComponent} from '../../../components/alert/alert.component';
 import {TokenService} from '../../../core/services/token.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Result} from '../../../models/result';
 
 @Component({
@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
   //   });
   // }
   registerForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    comfirmPassword: new FormControl(''),
-    name: new FormControl('')
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    comfirmPassword: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required)
   });
 
   ngOnInit(): void { this.toggleChangeForm(); }

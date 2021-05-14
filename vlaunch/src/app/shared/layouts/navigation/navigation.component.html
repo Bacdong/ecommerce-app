@@ -26,7 +26,7 @@
           <ul class="action-menu" id="action-menu">
             <li *ngIf="tokenService.getName()==null">
                 <a class="has-label" (click)="toggleDisplay()">
-                  <span class="auth-label">login / register</span>
+                  <span class="auth-label">Đăng nhập / Đăng ký</span>
                   <mat-icon class="action-icon">person_outline</mat-icon>
                 </a>
              </li>
@@ -66,7 +66,7 @@
                   type="text"
                   autocomplete="true"
                   id="input-search"
-                  placeholder="Search by category, name, code or room type"
+                  placeholder="Tiìm kiếm theo danh mục, tên sách"
                 >
                 <mat-icon
                   class="action-icon close-icon"

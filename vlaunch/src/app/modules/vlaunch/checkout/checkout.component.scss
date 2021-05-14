@@ -356,6 +356,9 @@
     }
   }
 }
+.sidebar__header{
+  margin-top: -1px;
+}
 
 ::ng-deep {
   .bootstrap-select > .dropdown-toggle {
@@ -363,4 +366,16 @@
     background-color: transparent !important;
     border: 1px solid #ced4da;
   }
+}
+.provinceSelectPicker {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.districtSelectPicker {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.select-address {
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }

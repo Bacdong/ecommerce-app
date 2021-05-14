@@ -2,20 +2,20 @@
   <h3>Thêm địa chỉ</h3>
 </div>
 
-<form [formGroup]="addressForm" (ngSubmit)="submitAddress()">
+<form class="was-validated" [formGroup]="addressForm" (ngSubmit)="submitAddress()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="name">Họ và tên:</label>
       <input
         formControlName="name"
+        pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$"
         type="text"
         class="form-control"
         id="name"
         placeholder="Họ và tên"
         required
       />
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
+      <div class="invalid-feedback">Tên không hợp lệ.</div>
     </div>
     <div class="form-group col-md-6">
       <label for="phone">Số điện thoại:</label>
@@ -24,11 +24,11 @@
         formControlName="phone"
         class="form-control"
         id="phone"
+        pattern="^[0-9]{10,12}$"
         placeholder="Số điện thoại"
         required
       />
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
+      <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
     </div>
   </div>
 
@@ -43,6 +43,7 @@
                 (change)="changeProvince($event.target.value)"
                 [value]="address.cityAddressId">
           <option
+            class="city"
             #provincesSelect
             [value]="city.id"
             *ngFor="let city of this.citys"
@@ -119,17 +120,17 @@
   <div class="form-row">
     <div class="form-group col-12">
       <label for="address">Địa chỉ:</label>
-      <textarea
+      <input
         formControlName="street_Address"
+        pattern="^[a-zA-Z0-9_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,}$"
         type="text"
         id="address"
         class="form-control"
         rows="3"
         placeholder="Địa chỉ"
         required
-      ></textarea>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
+      />
+      <div class="invalid-feedback">Địa chỉ không hợp lệ.</div>
     </div>
   </div>
   <div class="mt-4 text-right">

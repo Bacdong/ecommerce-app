@@ -3,82 +3,58 @@ import { CategoryBannerItem } from "src/app/models/category-banner-item";
 export const CATEGORY_BANNER_ITEMS: CategoryBannerItem[] = [
   {
     images: [
-      { src: "assets/images/category-banners/seating/1.png" },
-      { src: "assets/images/category-banners/seating/2.png" },
-      { src: "assets/images/category-banners/seating/3.png" },
-      { src: "assets/images/category-banners/seating/4.png" },
-      { src: "assets/images/category-banners/seating/5.png" },
+      { src: "assets/images/category-banners/lichsu/lichsu1.jpg" },
+      { src: "assets/images/category-banners/lichsu/lichsu.jpg" },
     ],
-    name: "seating"
+    name: "Lịch sử"
   },
   {
     images: [
-      { src: "assets/images/category-banners/tables/1.png" },
-      { src: "assets/images/category-banners/tables/2.png" },
-      { src: "assets/images/category-banners/tables/3.png" },
-      { src: "assets/images/category-banners/tables/4.png" },
-      { src: "assets/images/category-banners/tables/5.png" },
+      { src: "assets/images/category-banners/kinhte/kinhte1.jpg" },
+      { src: "assets/images/category-banners/kinhte/kinhte.jpg" },
     ],
-    name: "tables"
+    name: "Kinh tế"
   },
   {
     images: [
-      { src: "assets/images/category-banners/cabinets/1.png" },
-      { src: "assets/images/category-banners/cabinets/2.png" },
-      { src: "assets/images/category-banners/cabinets/3.png" },
-      { src: "assets/images/category-banners/cabinets/4.png" },
-      { src: "assets/images/category-banners/cabinets/5.png" },
+      { src: "assets/images/category-banners/vanhoc/vanhoc1.jpg" },
+      { src: "assets/images/category-banners/vanhoc/vanhoc.jpg" },
     ],
-    name: "cabinets"
+    name: "Văn học"
   },
   {
     images: [
-      { src: "assets/images/category-banners/bedroom/1.png" },
-      { src: "assets/images/category-banners/bedroom/2.png" },
-      { src: "assets/images/category-banners/bedroom/3.png" },
-      { src: "assets/images/category-banners/bedroom/4.png" },
-      { src: "assets/images/category-banners/bedroom/5.png" },
+      { src: "assets/images/category-banners/truyentranh/truyentranh1.jpg" },
+      { src: "assets/images/category-banners/truyentranh/truyentranh.jpg" },
     ],
-    name: "bedroom"
+    name: "Truyện tranh"
   },
   {
     images: [
-      { src: "assets/images/category-banners/mirrors/1.png" },
-      { src: "assets/images/category-banners/mirrors/2.png" },
-      { src: "assets/images/category-banners/mirrors/3.png" },
-      { src: "assets/images/category-banners/mirrors/4.png" },
-      { src: "assets/images/category-banners/mirrors/5.png" },
+      { src: "assets/images/category-banners/tinhoc/tinhoc1.jpg" },
+      { src: "assets/images/category-banners/tinhoc/tinhoc.jpg" },
     ],
-    name: "mirrors"
+    name: "Tin học"
   },
   {
     images: [
-      { src: "assets/images/category-banners/art-decor/1.png" },
-      { src: "assets/images/category-banners/art-decor/2.png" },
-      { src: "assets/images/category-banners/art-decor/3.png" },
-      { src: "assets/images/category-banners/art-decor/4.png" },
-      { src: "assets/images/category-banners/art-decor/5.png" },
+      { src: "assets/images/category-banners/tieuthuyet/tieuthuyet1.jpg" },
+      { src: "assets/images/category-banners/tieuthuyet/tieuthuyet.jpg" },
     ],
-    name: "art & decor"
+    name: "Tiểu thuyết"
   },
   {
     images: [
-      { src: "assets/images/category-banners/rugs/1.png" },
-      { src: "assets/images/category-banners/rugs/2.png" },
-      { src: "assets/images/category-banners/rugs/3.png" },
-      { src: "assets/images/category-banners/rugs/4.png" },
-      { src: "assets/images/category-banners/rugs/5.png" },
+      { src: "assets/images/category-banners/tuoiteen/tuoiteen1.jpg" },
+      { src: "assets/images/category-banners/tuoiteen/tuoiteen.jpg" },
     ],
-    name: "rugs"
+    name: "Tuổi teen"
   },
   {
     images: [
-      { src: "assets/images/category-banners/lighting/1.png" },
-      { src: "assets/images/category-banners/lighting/2.png" },
-      { src: "assets/images/category-banners/lighting/3.png" },
-      { src: "assets/images/category-banners/lighting/4.png" },
-      { src: "assets/images/category-banners/lighting/5.png" },
+      { src: "assets/images/category-banners/kynangsong/kynangsong1.jpg" },
+      { src: "assets/images/category-banners/kynangsong/kynangsong.jpg" },
     ],
-    name: "lighting"
+    name: "Kỹ năng sống"
   },
 ];

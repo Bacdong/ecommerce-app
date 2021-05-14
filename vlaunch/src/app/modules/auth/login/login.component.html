@@ -15,19 +15,19 @@
               src="assets/images/logo.png"
               alt="Lavis Decor"
             >
-            <span class="logo__title">sign in or create account</span>
+            <span class="logo__title">Đăng nhập hoặc tạo tài khoản</span>
           </div>
           <div class="form-container">
-            <form>
+            <form class="was-validated">
 
               <div class="form-group">
-                <input type="text" class="form-control" id="uname" placeholder="Enter username" #username name="uname" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập ..." #username pattern="^[a-z0-9_-]{3,15}$" name="uname" required>
+                <div class="invalid-feedback">Tên đăng nhập có ít nhất 3 ký tự và không chứa ký tự đặc biệt</div>
               </div>
 
               <div class="form-group">
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" #password name="pswd" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu ..." #password pattern="^([a-zA-Z0-9@#$%*]){6,}$" name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
               </div>
 
               <div class="form-groups--check">
@@ -36,10 +36,10 @@
                   <label
                     for="check-box-input"
                     class="check-box__label"
-                  >stay signed in</label>
+                  >Lưu đăng nhập</label>
                 </div>
                 <div class="forgot-pwd">
-                  <a href="" class="forgot-pwd__link">forgot password?</a>
+                  <a href="" class="forgot-pwd__link">Quên mật khẩu?</a>
                 </div>
               </div>
               <button
@@ -52,10 +52,10 @@
           </div>
           <div class="footer">
             <div class="footer-wrapper">
-              <span class="footer__title">You have not account?</span>
+              <span class="footer__title">Bạn chưa có tài khoản?</span>
               <a (click)="toggleChangeForm()"
                 class="button button--primary footer__action"
-              >REGISTER NOW</a>
+              >Đăng ký tài khoản</a>
             </div>
           </div>
         </div>
@@ -65,13 +65,13 @@
       >
         <div class="register__container">
           <div class="register__header">
-            <h3>create an account</h3>
+            <h3>Tạo tài khoản</h3>
           </div>
           <div class="register__form">
-            <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <form class="was-validated" [formGroup]="registerForm" (ngSubmit)="register()">
               <div class="form-group">
-                <input type="text" class="form-control" formControlName="username" placeholder="Enter username" name="uname" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="text" class="form-control" formControlName="username" pattern="^[a-z0-9_-]{3,15}$" placeholder="Nhập tên đăng nhập ..." name="uname" required>
+                <div class="invalid-feedback">Tên đăng nhập có ít nhất 3 ký tự và không chứa ký tự đặc biệt</div>
               </div>
 <!--              <div class="group" >-->
 <!--                  <input-->
@@ -81,12 +81,12 @@
 <!--                  >-->
 <!--              </div>-->
               <div class="form-group">
-                <input type="password" class="form-control" formControlName="password" placeholder="Enter password" name="pswd" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="password" class="form-control" formControlName="password" pattern="^([a-zA-Z0-9@#$%*]){6,}$" placeholder="Nhập mật khẩu ..." name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" formControlName="comfirmPassword" placeholder="Re-enter password" name="pswd" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="password" class="form-control" formControlName="comfirmPassword" pattern="^([a-zA-Z0-9@#$%*]){6,}$" placeholder="Nhập lại mật khẩu ..." name="pswd" required>
+                <div class="invalid-feedback">Mật khẩu phải ít nhất 6 ký tự</div>
               </div>
 <!--              <div class="group group&#45;&#45;separate">-->
 <!--                <input-->
@@ -101,8 +101,9 @@
 <!--                >-->
 <!--              </div>-->
               <div class="form-group">
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter name" name="uname" required>
-                <div class="invalid-feedback">Không được để trống!</div>
+                <input type="text" class="form-control" formControlName="name" pattern="^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕUÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ_ ]{3,30}$"
+                       placeholder="Nhập họ tên ..." name="uname" required>
+                <div class="invalid-feedback">Tên không hợp lệ</div>
               </div>
 <!--              <div class="group">-->
 <!--                <input-->
@@ -120,19 +121,19 @@
                 [disabled]="!registerForm.valid"
                 type="submit"
                 class="btn btn-block btn-primary create-button"
-              >create free account</button>
+              >Đăng ký tài khoản</button>
             </form>
           </div>
           <div class="register__note">
             <span class="register__note__txt w-100">
-              by registering, you agree to Book Store
+              Tài khoản của bạn được chấp nhập bởi Book Store
             </span>
           </div>
         </div>
         <div class="register__direction">
           <a (click)="toggleChangeForm()"
             class="register__direction__link"
-          >already have an account? Sign in</a>
+          >Bạn đã có tài khoản? Đăng nhập</a>
         </div>
       </div>
     </div>
