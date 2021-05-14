@@ -33,7 +33,7 @@
 
           <div class="item-info col-12 col-md-6">
             <a
-              [routerLink]="['/', stringToSlug(line.book.bookName) + '-p' + line.bookId]"
+              [routerLink]="['../products/item', stringToSlug(line.book.bookName), line.bookId]"
               class="info-name"
             >
               <br />
