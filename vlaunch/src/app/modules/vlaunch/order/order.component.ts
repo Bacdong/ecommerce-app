@@ -35,7 +35,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   private invoiceList: Invoice[] = [];
   orderDetailLink = '/user/order/detail/';
-w
+
   constructor(private orderService: OrderService, private snackbarModifyService: SnackbarModifyService) {
     // Assign the data to the data source for the table to render
     this.orderService.getInvoideByUserId();
@@ -58,7 +58,6 @@ w
   applyFilter(event: Event): any {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

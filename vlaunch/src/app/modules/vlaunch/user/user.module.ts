@@ -16,6 +16,7 @@ import { AddressAddComponent } from './address/address-add/address-add.component
 import {OrderComponent} from '../order/order.component';
 import {ShareModule} from '../share.module';
 import {OrderDetailComponent} from '../order/order-detail/order-detail.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -32,7 +33,8 @@ import {OrderDetailComponent} from '../order/order-detail/order-detail.component
     OrderComponent,
     FormatDatePipe,
     PaymentMethodPipe,
-    OrderDetailComponent
+    OrderDetailComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
