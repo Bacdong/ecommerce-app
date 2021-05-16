@@ -12,8 +12,6 @@ export const NAVIGATIONS: Navigation[] = [
   { url: '/products', name: 'Sản phẩm' },
   { url: '/project', name: 'Dự án' },
   { url: '/styletools', name: 'Cài đặt' },
-  { url: '/', name: 'Thương hiệu' },
-  { url: '/', name: 'Ý tưởng' },
-  // { url: '/brand', name: 'Thương hiệu' },
-  // { url: '/ideas', name: 'Ý tưởng' },
+  { url: '/brand', name: 'Thương hiệu' },
+  { url: '/ideas', name: 'Ý tưởng' },
 ];
