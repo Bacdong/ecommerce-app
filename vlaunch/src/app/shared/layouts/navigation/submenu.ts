@@ -12,32 +12,23 @@ export interface SubMenu {
 
 export const SUBMENUS: SubMenu[] = [
   {
-    navigation: { url: 'products/seating', name: 'Lịch sử' },
-    megaMenu: [
-      {
-        title: 'tablet',
-        megaMenu: [],
-      },
-      {
-        title: 'chairs',
-        megaMenu: [],
-      }
-    ],
-  },
-  {
-    navigation: { url: 'products/table', name: 'Văn học' },
+    navigation: { url: 'products/lichsu', name: 'Lịch sử' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/cabinets', name: 'Kỹ năng sống' },
+    navigation: { url: 'products/vanhoc', name: 'Văn học' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/bedroom', name: 'Tuổi teen' },
+    navigation: { url: 'products/kynangsong', name: 'Kỹ năng sống' },
     megaMenu: [],
   },
   {
-    navigation: { url: 'products/mirrors', name: 'Danh mục khác' },
+    navigation: { url: 'products/tuoiteen', name: 'Tuổi teen' },
+    megaMenu: [],
+  },
+  {
+    navigation: { url: 'products/more', name: 'Danh mục khác' },
     megaMenu: [],
   },
 ];

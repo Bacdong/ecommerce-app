@@ -83,7 +83,8 @@ export class CheckoutComponent implements OnInit {
         this.createOrderDetail(res.data.invoiceId);
         this.router.navigateByUrl('/user/order/');
       }
-    });
+    }
+    );
   }
 
   selectAddress(): any {

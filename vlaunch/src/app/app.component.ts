@@ -11,7 +11,7 @@ import { formatPrice } from './core/utils';
 export class AppComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
-  title = 'LavisDecor Dashboard';
+  title = 'BookStore';
 
   price = formatPrice(100000);
 

@@ -21,7 +21,8 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $aqua-blue;
+      background-color: #282828;
+      color: white;
     }
   }
 }
@@ -30,4 +31,9 @@
   .list-group {
     display: none;
   }
+}
+.list-group-item.active{
+  background-color:#282828;
+  color: white;
+  border-color: #07f613;
 }

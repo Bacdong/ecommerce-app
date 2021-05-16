@@ -7,7 +7,7 @@ import { RoomsService } from './rooms.service';
   styleUrls: ['./rooms.component.scss']
 })
 export class RoomsComponent implements OnInit {
-  title: string = "all great things start with an idea";
+  title: string = '';
   background: string = "assets/images/backgrounds/room-page/banner.jpg";
 
   constructor() { }

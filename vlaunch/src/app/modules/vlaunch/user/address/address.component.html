@@ -1,8 +1,11 @@
 <div class="mb-4 d-flex justify-content-between align-items-center">
   <h3>Sổ địa chỉ</h3>
-  <button class="btn btn-primary" [routerLink]="['/user', 'address', 'add']">
-    Thêm địa chỉ
-  </button>
+<!--  <button class="btn btn-primary" [routerLink]="['/user', 'address', 'add']">-->
+<!--    Thêm địa chỉ-->
+<!--  </button>-->
+  <button type="button"
+          class="btn btn-dark" [routerLink]="['/user', 'address', 'add']"
+  >Thêm địa chỉ</button>
 </div>
 
 <form class="was-validated" [formGroup]="formAddress" (ngSubmit)="submitForm()">

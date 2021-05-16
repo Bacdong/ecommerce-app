@@ -27,7 +27,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
     'color',
     'payment-status',
     'payment-method',
-    'action'
+    'action',
   ];
   dataSource: MatTableDataSource<Invoice>;
 
