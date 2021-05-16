@@ -60,4 +60,14 @@ export class ProductsService {
       }
     });
   }
+
+  getProductsByOptions(options: { sortByTimeAsc: undefined; totalPerPage: number; currentPage: number }): any{
+    const url = 'Books/SearchBook';
+    this.http.postHandle(url, options).subscribe(res => {
+      if (res && res.success) {
+        this.product$.next(res.data);
+        console.log(res);
+      }
+    });
+  }
 }
