@@ -6,4 +6,5 @@ export class Result{
   constructor(error_message: string) {
     this.error_message = error_message;
   }
+
 }

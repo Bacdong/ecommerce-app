@@ -20,7 +20,7 @@ export class CartComponent implements OnInit, OnDestroy {
   listCart: Cart[] = [
     new Cart()
   ];
-  constructor(private cartService: CartService,private tokenService : TokenService, private snackbarModifyService: SnackbarModifyService) {}
+  constructor(private cartService: CartService, public tokenService : TokenService, private snackbarModifyService: SnackbarModifyService) {}
 
   ngOnDestroy(): void {
   }

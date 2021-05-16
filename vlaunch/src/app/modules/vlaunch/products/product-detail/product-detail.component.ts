@@ -8,6 +8,8 @@ import { CartService } from '../../cart/cart.service';
 import { ProductsService } from '../products.service';
 import {TokenService} from '../../../../core/services/token.service';
 import {Product} from '../../../../models/product';
+import {SnackbarModifyService} from '../../../../core/services/snackbar-modify.service';
+import {Result} from '../../../../models/result';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +21,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(private productsService: ProductsService,
               private router: Router,
               private cartService: CartService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private snackbarModifyService: SnackbarModifyService) {
   }
   product: Product = new Product();
   pathImg = environment.IMAGE_PATH;
@@ -118,7 +121,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCart(id): void {
-
+    if (!this.tokenService.getUserId()){
+      this.snackbarModifyService.openMessage(new Result('Vui lòng đăng nhập để mua sắm!'));
+      return;
+    }
     const data = {
       userId: this.tokenService.getUserId(),
       bookId: id,

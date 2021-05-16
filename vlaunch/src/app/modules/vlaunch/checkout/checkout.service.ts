@@ -8,7 +8,6 @@ import {HttpService} from '../../../core/services/http.service';
 export class CheckoutService {
 
   constructor(private httpService: HttpService) { }
-
   createOrder(data: any): Observable<any> {
     const url = 'Invoice';
     return this.httpService.postHandle(url, data);

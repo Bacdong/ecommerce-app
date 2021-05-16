@@ -2,12 +2,12 @@
   <div class="page-title">
     <h3>
       <span class="title">giỏ hàng</span>
-      <span class="qty-count">({{this.sumCart()}} sản phẩm)</span>
+      <span class="qty-count">({{this.sumCart()?this.sumCart():0}} sản phẩm)</span>
       <span class="title-mobile-tablet">giỏ hàng của bạn</span>
     </h3>
   </div>
 
-  <div class="empty-cart" *ngIf="this.listCart.length==0">
+  <div class="empty-cart" *ngIf="this.listCart.length==0 || !this.tokenService.getUserId()">
     <div class="img">
       <img src="../../../../assets/images/cart-image/empty-cart.png" alt="" />
     </div>
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="has-item row" *ngIf="this.listCart.length!=0">
+  <div class="has-item row" *ngIf="this.listCart.length!=0 && this.tokenService.getUserId()">
     <div class="cart-list col-12 col-md-12 col-xl-8">
       <ul class="product-list">
         <li

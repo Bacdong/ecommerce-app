@@ -11,7 +11,9 @@ import {CartService} from '../cart/cart.service';
 import {CheckoutService} from './checkout.service';
 import {SnackbarModifyService} from '../../../core/services/snackbar-modify.service';
 import {Router} from '@angular/router';
-import {log} from 'ng-zorro-antd/core/logger';
+import {StripeToken} from '../../../models/stripe-token';
+import {BehaviorSubject} from 'rxjs';
+
 
 @Component({
   selector: 'app-checkout',
@@ -24,8 +26,13 @@ export class CheckoutComponent implements OnInit {
               private cartService: CartService,
               private checkoutService: CheckoutService,
               private snackbarModifyService: SnackbarModifyService,
-              private router: Router
-  ) { }
+              private router: Router,
+  ) {
+
+  }
+  static paymentNotifySubject = new BehaviorSubject(null);
+  static $paymentNotify = CheckoutComponent.paymentNotifySubject.asObservable();
+  private handler: any;
   addressForm = new FormGroup({
     // userAddressId: new FormControl(''),
     name: new FormControl(''),
@@ -44,8 +51,9 @@ export class CheckoutComponent implements OnInit {
   paymentMethodSelected = 0;
   cartList: Cart[] = [];
 
-
+  private key = 'pk_test_51Hds9CDa9Wt0jMavaIgUpFqwPCcVq50HmzBk5j2maKvaiGnoaZXNxee668jIGqdEmSETbBgokFc84Sk4fWYvLZqQ00PQk8i2eK';
   ngOnInit(): void {
+    this.loadStripe();
     this.userService.getUserAddress(this.tokenService.getUserId()).subscribe(res => {
       this.addressList = res.data;
       if (this.addressList.length !== 0){
@@ -70,19 +78,50 @@ export class CheckoutComponent implements OnInit {
     this.cartService.$cart.subscribe(res => {
       this.cartList = res;
     });
+    CheckoutComponent.$paymentNotify.subscribe(data => {
+      this.checkoutService.createOrder(data).subscribe((res: Result) => {
+        this.snackbarModifyService.openMessage(res, 'Đặt đơn hàng thành công');
+        if (res){
+          this.createOrderDetail(res.data.invoiceId);
+          this.router.navigateByUrl('/user/order/detail/' + res.data.invoiceId);
+        }});
+    });
   }
 
   createOrder(): any {
     const data = this.addressForm.value;
     data.totalMoney = this.getTotalPrice();
     data.userId = this.tokenService.getUserId();
-    console.log(data);
-    this.checkoutService.createOrder(data).subscribe((res: Result) => {
-      this.snackbarModifyService.openMessage(res, 'Đặt đơn hàng thành công');
-      if (res){
-        this.createOrderDetail(res.data.invoiceId);
-        this.router.navigateByUrl('/user/order/');
-      }
+    if (this.paymentMethodSelected.toString() === '1'){
+      this.invokeOnlinePayment(data);
+    }else {
+      this.checkoutService.createOrder(data).subscribe((res: Result) => {
+        this.snackbarModifyService.openMessage(res, 'Đặt đơn hàng thành công');
+        if (res){
+          this.createOrderDetail(res.data.invoiceId);
+          this.router.navigateByUrl('/user/order/detail/' + res.data.invoiceId);
+    }}); }
+  }
+
+  private invokeOnlinePayment(data: any): any {
+
+    const handler = (window as any).StripeCheckout.configure({
+      key: this.key,
+      locale: 'auto',
+      currency: 'VND',
+      token(token: StripeToken): any {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log(token);
+        alert('Thanh toán thành công!!');
+        CheckoutComponent.paymentNotifySubject.next(data);
+      },
+    });
+
+    handler.open({
+      name: 'Thanh toán Stripe',
+      description: 'Tổng:' + this.getSumCart(),
+      amount: data.totalMoney,
     });
   }
 
@@ -156,5 +195,28 @@ export class CheckoutComponent implements OnInit {
     this.checkoutService.createOrderDetail(invoiceDetail).subscribe(res => {
       this.snackbarModifyService.openMessage(res);
     });
+  }
+
+  private loadStripe(): any {
+    if (!window.document.getElementById('stripe-script')) {
+      const s = window.document.createElement('script');
+      s.id = 'stripe-script';
+      s.type = 'text/javascript';
+      s.src = 'https://checkout.stripe.com/checkout.js';
+      s.onload = () => {
+        this.handler = (window as any).StripeCheckout.configure({
+          key: this.key,
+          locale: 'auto',
+          currency: 'VND',
+          token(token: any): any {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            console.log(token);
+            alert('Payment Success!!');
+          }
+        });
+      };
+      window.document.body.appendChild(s);
+    }
   }
 }
