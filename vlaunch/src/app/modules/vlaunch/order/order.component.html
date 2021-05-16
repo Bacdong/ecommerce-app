@@ -1,4 +1,4 @@
-<div class="mb-4">
+<div class="mb-7">
   <h3>Đơn hàng gần nhất</h3>
 </div>
 <div class="table-striped">
@@ -36,6 +36,10 @@
 <!--    </tr>-->
 <!--    </tbody>-->
 <!--  </table>-->
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
+  </mat-form-field>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -54,7 +58,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </th>
-        <td id="tdDiaChi" routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row?.street_Address+' '+row?.ward?.name+' '+row?.ward?.districtAddress?.districtName +' ' + row?.ward?.districtAddress?.cityAddress?.cityName}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row?.street_Address+' '+row?.ward?.name+' '+row?.ward?.districtAddress?.districtName +' ' + row?.ward?.districtAddress?.cityAddress?.cityName}} </td>
       </ng-container>
 
       <!-- Color Column -->
@@ -66,7 +70,7 @@
       <!-- Color Column -->
       <ng-container matColumnDef="payment-status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tình trạng</th>
-        <td id="idStt" routerLink="{{this.orderDetailLink +row.id}}"
+        <td routerLink="{{this.orderDetailLink +row.id}}"
             mat-cell *matCellDef="let row">
           <span *ngIf="row.statusId === 2" class="badge badge-primary">{{row.statusId | orderStatus}}</span>
           <span *ngIf="row.statusId === 1" class="badge badge-warning">{{row.statusId | orderStatus}}</span>
@@ -76,9 +80,8 @@
 
       <ng-container matColumnDef="payment-method">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Thanh toán</th>
-        <td id="tdThanhToan" routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
       </ng-container>
-
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Hành động</th>
