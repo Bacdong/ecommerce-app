@@ -113,6 +113,11 @@ export class HttpService {
       if (error.status === 500){
         return {error_message: 'Lỗi server'};
       }
+      if (error.status === 403){
+        return {
+          error_message: 'Bạn cần quyền Admin để truy cập tài nguyên này!'
+        };
+      }
       if (error.status === 404){
         return {error_message: 'Không tìm thấy tài nguyên này'};
       }
