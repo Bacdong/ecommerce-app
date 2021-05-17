@@ -9,20 +9,20 @@ export class Language {
 }
 
 export const LANGUAGES: Language[] = [
-  { 
-    src: "assets/images/flags/flag-en-gb.png", 
-    name: "english (gb)",
+  {
+    src: 'assets/images/flags/flag-en-gb.png',
+    name: 'english (gb)',
   },
-  { 
-    src: "assets/images/flags/flag-en.png", 
-    name: "english",
+  {
+    src: 'assets/images/flags/flag-en.png',
+    name: 'english',
   },
-  { 
-    src: "assets/images/flags/flag-zh-Hans.png", 
-    name: "chinese", 
+  {
+    src: 'assets/images/flags/flag-zh-Hans.png',
+    name: 'chinese',
   },
-  { 
-    src: "assets/images/flags/flag-es.png", 
-    name: "spanish", 
+  {
+    src: 'assets/images/flags/flag-es.png',
+    name: 'spanish',
   },
 ];

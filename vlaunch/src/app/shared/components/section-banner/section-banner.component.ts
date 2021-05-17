@@ -7,6 +7,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./section-banner.component.scss']
 })
 export class SectionBannerComponent implements OnInit {
+
+  constructor() { }
   banners = [
     { src: 'assets/images/banners/1.jpg' },
     { src: 'assets/images/banners/2.jpg' },
@@ -15,12 +17,7 @@ export class SectionBannerComponent implements OnInit {
     { src: 'assets/images/banners/5.jpg' },
     { src: 'assets/images/banners/6.jpg' },
     { src: 'assets/images/banners/7.jpg' },
-  ]
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -46,5 +43,8 @@ export class SectionBannerComponent implements OnInit {
       }
     },
     nav: true
+  };
+
+  ngOnInit(): void {
   }
 }

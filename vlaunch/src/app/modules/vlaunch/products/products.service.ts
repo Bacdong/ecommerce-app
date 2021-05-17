@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import {AsyncSubject, BehaviorSubject, Subject} from 'rxjs';
 import { Params } from 'src/app/core/http-params';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Product } from 'src/app/models/product';
@@ -11,7 +11,8 @@ import {SnackbarModifyService} from 'src/app/core/services/snackbar-modify.servi
 })
 export class ProductsService {
   product$ = new Subject<Product>();
-  products$ = new Subject<Product>();
+  products$ = new BehaviorSubject(new Array(new Product()));
+  $queryParam = new Subject<string>();
   constructor(
     private http: HttpService,
     private router: Router,
@@ -76,12 +77,13 @@ export class ProductsService {
     return this.http.getHandle(url);
   }
 
-  getAllProduct(options: { totalPerPage: number }): any {
+  getAllProduct(options: {
+    bookName: undefined;
+    totalPerPage: number }): any {
     const url = 'Books/SearchBook';
     this.http.postHandle(url, options).subscribe(res => {
-      console.log(res);
       if (res.success){
-        this.products$.next(res.data);
+        this.products$.next(res.data?.data);
       }
     });
   }

@@ -64,9 +64,11 @@
                 </button>
                 <input
                   type="text"
+                  #searchInput
                   autocomplete="true"
                   id="input-search"
-                  placeholder="Tiìm kiếm theo danh mục, tên sách"
+                  placeholder="Tìm kiếm theo danh mục, tên sách"
+                  (keyup.enter)="search(searchInput.value)"
                 >
                 <mat-icon
                   class="action-icon close-icon"

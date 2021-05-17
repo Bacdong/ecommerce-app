@@ -4,6 +4,8 @@ import { LANGUAGES } from './language';
 import { NAVIGATIONS } from './navigation';
 import { SUBMENUS } from './submenu';
 import {TokenService} from '../../../core/services/token.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProductsService} from '../../../modules/vlaunch/products/products.service';
 
 @Component({
   selector: 'app-navigation',
@@ -27,7 +29,7 @@ export class NavigationComponent implements OnInit {
     'da lat'
   ];
 
-  constructor(public tokenService: TokenService) { }
+  constructor(public tokenService: TokenService, private activatedRoute: ActivatedRoute, private router: Router, private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.cityListSlide();
@@ -64,5 +66,10 @@ export class NavigationComponent implements OnInit {
 
   logout(): any {
     this.tokenService.clear();
+  }
+
+  search(value: string): any {
+    console.log(value);
+    this.router.navigate(['products'], {queryParams: {keyword: value}});
   }
 }

@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    BrandComponent, 
-    SectionQuoteComponent, 
+    BrandComponent,
+    SectionQuoteComponent,
     SectionHowItsWorkComponent,
   ],
   imports: [
