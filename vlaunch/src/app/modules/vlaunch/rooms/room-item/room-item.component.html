@@ -1,22 +1,20 @@
 <div class="rooms-item h-100">
   <div class="content h-100">
     <div class="content__image h-100">
-      <img 
-        [src]="room.src" 
+      <img
+        [src]="room.src"
         [alt]="room.name"
       >
     </div>
     <div class="content__info">
       <div class="content__info__name">
-        <span>{{ room.name }}</span>
-        <span>lavis decor</span>
       </div>
       <div class="content__info__action">
         <mat-icon class="action-icon">favorite</mat-icon>
       </div>
     </div>
     <div class="content__overlay">
-      <a 
+      <a
         (click)="showPreview()"
         class="content__overlay__link"
       >
