@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MaterialModule} from '../material.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -22,16 +23,17 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FilterBarComponent,
     ProductDetailComponent,
   ],
-    imports: [
-        CommonModule,
-        ShareModule,
-        MatIconModule,
-        MatSelectModule,
-        CarouselModule,
-        RouterModule,
-        VlaunchRoutingModule,
-        MaterialModule,
-        NgxPaginationModule,
-    ]
+  imports: [
+    CommonModule,
+    ShareModule,
+    MatIconModule,
+    MatSelectModule,
+    CarouselModule,
+    RouterModule,
+    VlaunchRoutingModule,
+    MaterialModule,
+    NgxPaginationModule,
+    FormsModule,
+  ]
 })
 export class ProductsModule { }

@@ -13,8 +13,8 @@
       <div class="filter__sort" style="margin-right: 40px">
         <mat-form-field appearance="outline">
           <mat-label>Thể loại</mat-label>
-          <mat-select (valueChange)="changeCategory($event)" value="default">
-            <mat-option value="default">Tất cả</mat-option>
+          <mat-select (valueChange)="changeCategory($event)" value="0">
+            <mat-option value="0" >Tất cả</mat-option>
             <mat-option
               *ngFor="let category of this.categories"
               [value]="category.id"

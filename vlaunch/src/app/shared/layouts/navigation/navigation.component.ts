@@ -4,7 +4,7 @@ import { LANGUAGES } from './language';
 import { NAVIGATIONS } from './navigation';
 import { SUBMENUS } from './submenu';
 import {TokenService} from '../../../core/services/token.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProductsService} from '../../../modules/vlaunch/products/products.service';
 
 @Component({
@@ -28,11 +28,23 @@ export class NavigationComponent implements OnInit {
     'vinh',
     'da lat'
   ];
+  private queryParam: Params | null = {};
 
-  constructor(public tokenService: TokenService, private activatedRoute: ActivatedRoute, private router: Router, private productsService: ProductsService) { }
+  constructor(public tokenService: TokenService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.cityListSlide();
+    this.activatedRoute.queryParams.subscribe(res => {
+      if (res.category){
+        this.queryParam.category = res.category;
+      }
+      if (res.sort){
+        this.queryParam.sort = res.sort;
+      }
+    });
   }
 
   showSearch(): any {
@@ -69,7 +81,7 @@ export class NavigationComponent implements OnInit {
   }
 
   search(value: string): any {
-    console.log(value);
-    this.router.navigate(['products'], {queryParams: {keyword: value}});
+    this.queryParam.keyword = value;
+    this.router.navigate(['products'], {queryParams: this.queryParam});
   }
 }
