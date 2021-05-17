@@ -66,20 +66,19 @@
               <p>{{ product?.description }}</p>
             </div>
             <div class="content__dropdown">
-              <mat-form-field class="w-100" appearance="outline">
-                <mat-label>Select Model</mat-label>
-                <mat-select [(value)]="selectedModel">
-                  <mat-option
-                    [value]="option.value"
-                    *ngFor="let option of models"
-                  >{{ option.name }}</mat-option>
-                </mat-select>
-              </mat-form-field>
+<!--              <mat-form-field class="w-100" appearance="outline">-->
+<!--                <mat-label>Select Model</mat-label>-->
+<!--                <mat-select [(value)]="selectedModel">-->
+<!--                  <mat-option-->
+<!--                    [value]="option.value"-->
+<!--                    *ngFor="let option of models"-->
+<!--                  >{{ option.name }}</mat-option>-->
+<!--                </mat-select>-->
+<!--              </mat-form-field>-->
             </div>
             <div class="content__variant">
               <div class="content__variant__original">
-                <span class="type">vietnam retail</span>
-                <span class="type-brief">from</span>
+                <span class="type">{{product?.authorName}}</span>
               </div>
               <span class="content__variant__price">{{ product?.price |formatPrice }} VND</span>
             </div>

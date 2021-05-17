@@ -9,36 +9,36 @@
     </div>
     <div class="col-1">
     </div>
-    <div class="col-md-1">
-      <div class="filter__sort" style="margin-right: 40px">
-        <mat-form-field appearance="outline">
-          <mat-label>Thể loại</mat-label>
-          <mat-select (valueChange)="changeCategory($event)" value="default">
-            <mat-option value="default">Tất cả</mat-option>
-            <mat-option
-              *ngFor="let category of this.categories"
-              [value]="category.id"
-            >
-              {{ category.categoryName }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="col-md-1">
-      <div class="filter__sort">
-        <mat-form-field appearance="outline">
-          <mat-label>Sắp xếp bởi</mat-label>
-          <mat-select (valueChange)="sortBy($event)" value="new">
-            <mat-option
-              *ngFor="let sort of sortby"
-              [value]="sort.value"
-            >
-              {{ sort.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
+<!--    <div class="col-md-1">-->
+<!--      <div class="filter__sort" style="margin-right: 40px">-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Thể loại</mat-label>-->
+<!--          <mat-select (valueChange)="changeCategory($event)" value="0">-->
+<!--            <mat-option value="0" >Tất cả</mat-option>-->
+<!--            <mat-option-->
+<!--              *ngFor="let category of this.categories"-->
+<!--              [value]="category.id"-->
+<!--            >-->
+<!--              {{ category.categoryName }}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-1">-->
+<!--      <div class="filter__sort">-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Sắp xếp bởi</mat-label>-->
+<!--          <mat-select (valueChange)="sortBy($event)" value="new">-->
+<!--            <mat-option-->
+<!--              *ngFor="let sort of sortby"-->
+<!--              [value]="sort.value"-->
+<!--            >-->
+<!--              {{ sort.name }}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--    </div>-->
     </div>
 </div>

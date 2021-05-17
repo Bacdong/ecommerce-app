@@ -9,8 +9,8 @@
     text-decoration: none;
     color: currentColor;
     text-align: center;
-    img { 
-      width: 60%; 
+    img {
+      width: 70%;
       object-fit: contain;
       object-position: center;
       transition: ease-in-out 325ms;
@@ -24,7 +24,7 @@
     @include text-style($decor-color, 18px, '', 400, left, uppercase, '');
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     overflow: hidden;
   }
   &__more-info {
@@ -57,8 +57,8 @@
   &:active,
   &:focus {
     .product__image {
-      img { 
-        transform: scale(1.1); 
+      img {
+        transform: scale(1.1);
         transition: ease-in-out 325ms;
       }
     }

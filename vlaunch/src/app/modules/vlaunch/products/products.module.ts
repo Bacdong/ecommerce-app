@@ -12,6 +12,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MaterialModule} from '../material.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {FormsModule} from '@angular/forms';
+import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.component';
+import {ProductNotFoundComponent} from '../../../components/product-not-found/product-not-found.component';
 
 
 
@@ -21,17 +24,20 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductListComponent,
     FilterBarComponent,
     ProductDetailComponent,
+    SidebarComponent,
+    ProductNotFoundComponent
   ],
-    imports: [
-        CommonModule,
-        ShareModule,
-        MatIconModule,
-        MatSelectModule,
-        CarouselModule,
-        RouterModule,
-        VlaunchRoutingModule,
-        MaterialModule,
-        NgxPaginationModule,
-    ]
+  imports: [
+    CommonModule,
+    ShareModule,
+    MatIconModule,
+    MatSelectModule,
+    CarouselModule,
+    RouterModule,
+    VlaunchRoutingModule,
+    MaterialModule,
+    NgxPaginationModule,
+    FormsModule,
+  ]
 })
 export class ProductsModule { }

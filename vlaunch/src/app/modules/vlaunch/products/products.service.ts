@@ -11,7 +11,7 @@ import {SnackbarModifyService} from 'src/app/core/services/snackbar-modify.servi
 })
 export class ProductsService {
   product$ = new Subject<Product>();
-  products$ = new BehaviorSubject(new Array(new Product()));
+  products$ = new Subject<Product[]>();
   $queryParam = new Subject<string>();
   constructor(
     private http: HttpService,
