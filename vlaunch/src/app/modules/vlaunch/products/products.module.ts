@@ -13,6 +13,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MaterialModule} from '../material.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
+import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.component';
 
 
 
@@ -22,6 +23,7 @@ import {FormsModule} from '@angular/forms';
     ProductListComponent,
     FilterBarComponent,
     ProductDetailComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
