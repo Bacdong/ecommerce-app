@@ -8,7 +8,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Từ</label>
-            <input type="number" class="form-control" id="inputEmail4" placeholder="0">
+            <input (change)="minPrice($event.target.value)" type="number" class="form-control" id="inputEmail4" placeholder="0">
           </div>
           <div class="form-group col-md-6 text-right">
             <label>Đến</label>
@@ -28,25 +28,25 @@
           appearance="outline"
           class="mat-select-filter mat-select-filter--sortby"
         >
-          <mat-select>
-            <mat-option
-            >{{ 'Xấp theo giá' }}</mat-option>
+          <mat-select (valueChange)="sortBy($event)" value="new">
+            <mat-option [value]="sort.value" *ngFor="let sort of this.sortby"
+            >{{sort.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div> <!-- card-body.// -->
     </div>
     <header class="card-header sidebar_header">
-      <h6 class="title"> Sắp xép danh mục </h6>
+      <h6 class="title"> Sắp xếp danh mục </h6>
     </header>
     <div class="filter-content">
       <div class="card-body sidebar_body">
         <div class="filter__sort" style="margin-right: 40px">
           <mat-form-field appearance="outline">
             <mat-label>Thể loại</mat-label>
-            <mat-select value="default">
-              <mat-option value="default">Tất cả</mat-option>
-              <mat-option>
-                {{ 'Danh mục' }}
+            <mat-select value="0" (valueChange)="changeCategory($event)">
+              <mat-option value="0">Tất cả</mat-option>
+              <mat-option *ngFor="let category of this.categoryList" [value]="category.id">
+                {{category.categoryName}}
               </mat-option>
             </mat-select>
           </mat-form-field>

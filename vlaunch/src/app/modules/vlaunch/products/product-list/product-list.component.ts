@@ -14,7 +14,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   p: string | number = 1;
   private options = {
-    totalPerPage: 100, bookName: undefined
+    totalPerPage: 100, bookName: undefined,
+    categoryId: undefined,
+    sortByTimeAsc: undefined,
+    sortByPriceAsc: undefined,
+    sortByPriceDesc: undefined
 
   };
 
@@ -50,10 +54,37 @@ export class ProductListComponent implements OnInit, OnDestroy {
         console.log(query);
         this.options.bookName = query.keyword;
       }
-      this.productsService.getAllProduct(this.options);
-      this.productsService.products$.subscribe(res => {
-        this.products = res;
-      });
+      if (query.category){
+        this.options.categoryId = query.category;
+      }
+      if (query.sort){
+        switch (query.sort){
+          case 'new': {
+            this.options.sortByTimeAsc = 'string';
+            break;
+          }
+          case 'increase': {
+            this.options.sortByPriceAsc = 'string';
+            break;
+          }
+          case 'decrease': {
+            this.options.sortByPriceDesc = 'string';
+            break;
+          }
+        }
+      }
+     },
+      error => {
+
+      },
+      () => {
+        this.productsService.getAllProduct(this.options);
+      }
+      );
+    this.productsService.getAllProduct(this.options);
+    this.productsService.products$.subscribe(res => {
+      this.products = res;
+      console.log(this.products);
     });
   }
 
