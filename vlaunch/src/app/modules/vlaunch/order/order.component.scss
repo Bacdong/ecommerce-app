@@ -1,16 +1,19 @@
 table {
   width: 100%;
 }
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
+th {
+  font-size: 15px;
+  font-weight: 700;
+}
+td{
+  padding: 10px 10px 10px 10px;
 }
 
-td, th {
-  width: 25%;
-}
 .mat-row:hover {
-  background-color: red;
+  background-color: #ced4da;
   cursor: pointer;
+}
+#idStt{
+  margin-left: 5px;
+  margin-right: 5px;
 }

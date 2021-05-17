@@ -1,8 +1,7 @@
-<div class="mb-4">
+<div class="mb-7">
   <h3>Đơn hàng gần nhất</h3>
 </div>
-
-<div class="table-responsive">
+<div class="table-striped">
 <!--  <table class="table table-bordered">-->
 <!--    <thead>-->
 <!--    <tr>-->
@@ -37,12 +36,10 @@
 <!--    </tr>-->
 <!--    </tbody>-->
 <!--  </table>-->
-
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
   </mat-form-field>
-
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -73,7 +70,12 @@
       <!-- Color Column -->
       <ng-container matColumnDef="payment-status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tình trạng</th>
-        <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row">{{row.statusId | orderStatus}} </td>
+        <td routerLink="{{this.orderDetailLink +row.id}}"
+            mat-cell *matCellDef="let row">
+          <span *ngIf="row.statusId === 2" class="badge badge-primary">{{row.statusId | orderStatus}}</span>
+          <span *ngIf="row.statusId === 1" class="badge badge-warning">{{row.statusId | orderStatus}}</span>
+          <span *ngIf="row.statusId === 3" class="badge badge-danger">{{row.statusId | orderStatus}}</span>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="payment-method">
@@ -81,11 +83,11 @@
         <td routerLink="{{this.orderDetailLink +row.id}}" mat-cell *matCellDef="let row"> {{row.isOnlinePayment | paymentMethod}} </td>
       </ng-container>
 
-
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Hành động</th>
         <td mat-cell *matCellDef="let row" >
-          <button (click)="cancelInvoice(row.id)" [disabled]="row.statusId === 2 || row.statusId === 3" mat-raised-button color="accent">Hủy đơn hàng</button>
+<!--          <button (click)="cancelInvoice(row.id)" [disabled]="row.statusId === 2 || row.statusId === 3" mat-raised-button color="accent">Hủy đơn hàng</button>-->
+          <button id="btnHuyDonHang" (click)="cancelInvoice(row.id)" [disabled]="row.statusId === 2 || row.statusId === 3" type="button" class="btn btn-danger">Hủy</button>
         </td>
       </ng-container>
 

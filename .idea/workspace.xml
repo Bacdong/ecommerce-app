@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6d9b25b-38d2-41b9-82c9-eae07ee2cc33" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/checkout/checkout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/checkout/checkout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/checkout/checkout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/checkout/checkout.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/home/category-banner/mock-category-banner-item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/home/category-banner/mock-category-banner-item.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address-add/address-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address-add/address-add.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address-add/address-add.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address-add/address-add.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/address/address.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/password/password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/password/password.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/user/profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/navigation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/submenu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/navigation/submenu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/banners/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/art-decor/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/art-decor/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/art-decor/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/art-decor/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/art-decor/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/bedroom/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/bedroom/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/bedroom/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/bedroom/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/bedroom/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/cabinets/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/cabinets/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/cabinets/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/cabinets/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/cabinets/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/lighting/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/lighting/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/lighting/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/lighting/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/lighting/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/mirrors/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/mirrors/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/mirrors/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/mirrors/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/mirrors/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/rugs/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/rugs/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/rugs/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/rugs/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/rugs/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/seating/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/seating/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/seating/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/seating/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/seating/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/tables/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/tables/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/tables/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/tables/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlaunch/src/assets/images/category-banners/tables/5.png" beforeDir="false" />
-    </list>
+    <list default="true" id="c6d9b25b-38d2-41b9-82c9-eae07ee2cc33" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,6 +50,7 @@
       <workItem from="1620838092660" duration="119000" />
       <workItem from="1620839113310" duration="13080000" />
       <workItem from="1620853649739" duration="1007000" />
+      <workItem from="1620973367266" duration="60000" />
     </task>
     <servers />
   </component>

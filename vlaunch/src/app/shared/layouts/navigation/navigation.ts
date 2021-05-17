@@ -9,9 +9,9 @@ export class Navigation {
 }
 
 export const NAVIGATIONS: Navigation[] = [
-  { url: "/products", name: "Sản phẩm" },
-  { url: "/project", name: "Dự án" },
-  { url: "/styletools", name: "Cài đặt" },
-  { url: "/brand", name: "Thương hiệu" },
-  { url: "/ideas", name: "Ý tưởng" },
+  { url: '/products', name: 'Sản phẩm' },
+  { url: '/project', name: 'Dự án' },
+  { url: '/styletools', name: 'Cài đặt' },
+  { url: '/brand', name: 'Thương hiệu' },
+  { url: '/ideas', name: 'Ý tưởng' },
 ];
