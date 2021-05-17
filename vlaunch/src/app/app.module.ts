@@ -10,7 +10,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthModule } from './modules/auth/auth.module';
 import { MaterialModule } from './modules/vlaunch/material.module';
 import { VlaunchModule } from './modules/vlaunch/vlaunch.module';
-import {StripeModule} from 'stripe-angular';
 import {NgxStripeModule} from 'ngx-stripe';
 
 
@@ -32,7 +31,8 @@ import {NgxStripeModule} from 'ngx-stripe';
     MaterialModule,
   NgxStripeModule.forRoot('pk_test_51Hds9CDa9Wt0jMavaIgUpFqwPCcVq50HmzBk5j2maKvaiGnoaZXNxee668jIGqdEmSETbBgokFc84Sk4fWYvLZqQ00PQk8i2eK')
   ],
-  exports: [],
+  exports: [
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
