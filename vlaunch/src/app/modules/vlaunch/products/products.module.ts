@@ -12,7 +12,6 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MaterialModule} from '../material.module';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.component';
 
 
 
@@ -22,7 +21,6 @@ import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.componen
     ProductListComponent,
     FilterBarComponent,
     ProductDetailComponent,
-    SidebarComponent
   ],
     imports: [
         CommonModule,
