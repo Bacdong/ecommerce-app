@@ -10,6 +10,7 @@ import { ShareModule } from '../share.module';
 import { MatSelectModule } from '@angular/material/select';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MaterialModule} from '../material.module';
 
 
 
@@ -20,14 +21,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FilterBarComponent,
     ProductDetailComponent,
   ],
-  imports: [
-    CommonModule,
-    ShareModule,
-    MatIconModule,
-    MatSelectModule,
-    CarouselModule,
-    RouterModule,
-    VlaunchRoutingModule,
-  ]
+    imports: [
+        CommonModule,
+        ShareModule,
+        MatIconModule,
+        MatSelectModule,
+        CarouselModule,
+        RouterModule,
+        VlaunchRoutingModule,
+        MaterialModule,
+    ]
 })
 export class ProductsModule { }

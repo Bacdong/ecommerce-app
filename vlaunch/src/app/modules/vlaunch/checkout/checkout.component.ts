@@ -92,7 +92,9 @@ export class CheckoutComponent implements OnInit {
     const data = this.addressForm.value;
     data.totalMoney = this.getTotalPrice();
     data.userId = this.tokenService.getUserId();
+    console.log(data);
     if (this.paymentMethodSelected.toString() === '1'){
+      data.isOnlinePayment = true;
       this.invokeOnlinePayment(data);
     }else {
       this.checkoutService.createOrder(data).subscribe((res: Result) => {

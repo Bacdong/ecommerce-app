@@ -65,9 +65,14 @@ export class ProductsService {
     const url = 'Books/SearchBook';
     this.http.postHandle(url, options).subscribe(res => {
       if (res && res.success) {
-        this.product$.next(res.data);
+        this.products$.next(res.data);
         console.log(res);
       }
     });
+  }
+
+  getAllCategory(): any {
+    const url = 'Category/GetAllCategories';
+    return this.http.getHandle(url);
   }
 }
