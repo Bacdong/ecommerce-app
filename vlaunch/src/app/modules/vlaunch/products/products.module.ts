@@ -14,6 +14,7 @@ import {MaterialModule} from '../material.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
 import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.component';
+import {ProductNotFoundComponent} from '../../../components/product-not-found/product-not-found.component';
 
 
 
@@ -23,7 +24,8 @@ import {SidebarComponent} from '../../../shared/layouts/sidebar/sidebar.componen
     ProductListComponent,
     FilterBarComponent,
     ProductDetailComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProductNotFoundComponent
   ],
   imports: [
     CommonModule,

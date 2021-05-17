@@ -28,3 +28,6 @@
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>
+<section class="products container" *ngIf="products?.length === 0">
+  <app-product-not-found></app-product-not-found>
+</section>

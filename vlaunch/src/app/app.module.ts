@@ -20,7 +20,6 @@ import { ProductNotFoundComponent } from './components/product-not-found/product
     AppComponent,
     PageNotFoundComponent,
     AlertComponent,
-    ProductNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +33,8 @@ import { ProductNotFoundComponent } from './components/product-not-found/product
     MaterialModule,
   NgxStripeModule.forRoot('pk_test_51Hds9CDa9Wt0jMavaIgUpFqwPCcVq50HmzBk5j2maKvaiGnoaZXNxee668jIGqdEmSETbBgokFc84Sk4fWYvLZqQ00PQk8i2eK')
   ],
-  exports: [],
+    exports: [
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })

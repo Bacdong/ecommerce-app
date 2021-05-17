@@ -29,6 +29,13 @@ export class NavigationComponent implements OnInit {
     'da lat'
   ];
   private queryParam: Params | null = {};
+  private options: any = {
+    totalPerPage: 100, bookName: undefined,
+    categoryId: undefined,
+    sortByTimeAsc: undefined,
+    sortByPriceAsc: undefined,
+    sortByPriceDesc: undefined
+  };
 
   constructor(public tokenService: TokenService,
               private activatedRoute: ActivatedRoute,
@@ -40,9 +47,29 @@ export class NavigationComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(res => {
       if (res.category){
         this.queryParam.category = res.category;
+        this.options.categoryId = res.category;
       }
       if (res.sort){
         this.queryParam.sort = res.sort;
+        if (res.sort){
+          switch (res.sort){
+            case 'new': {
+              this.options.sortByTimeAsc = 'string';
+              break;
+            }
+            case 'increase': {
+              this.options.sortByPriceAsc = 'string';
+              break;
+            }
+            case 'decrease': {
+              this.options.sortByPriceDesc = 'string';
+              break;
+            }
+          }
+      }}
+      if (res.keyword){
+        this.queryParam.keyword = res.keyword;
+        this.options.bookName = res.keword;
       }
     });
   }
@@ -82,6 +109,10 @@ export class NavigationComponent implements OnInit {
 
   search(value: string): any {
     this.queryParam.keyword = value;
-    this.router.navigate(['products'], {queryParams: this.queryParam});
+    this.router.navigate(['products'], {queryParams: this.queryParam}).then(r => {
+      this.options.bookName = value;
+      console.log(this.options);
+      this.productsService.getProductsByOptions(this.options);
+    });
   }
 }
