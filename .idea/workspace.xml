@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6d9b25b-38d2-41b9-82c9-eae07ee2cc33" name="Default Changelist" comment="" />
+    <list default="true" id="c6d9b25b-38d2-41b9-82c9-eae07ee2cc33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/sidebar/sidebar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/sidebar/sidebar.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vlaunch/src/app/shared/layouts/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/products/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/vlaunch/src/app/modules/vlaunch/products/product-list/product-list.component.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
