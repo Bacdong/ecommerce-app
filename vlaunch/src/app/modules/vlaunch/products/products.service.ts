@@ -67,7 +67,6 @@ export class ProductsService {
     this.http.postHandle(url, options).subscribe(res => {
       if (res && res.success) {
         this.products$.next(res.data?.data);
-        console.log(res);
       }
     });
   }
