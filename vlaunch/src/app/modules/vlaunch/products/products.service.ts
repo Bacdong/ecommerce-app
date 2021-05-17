@@ -61,7 +61,7 @@ export class ProductsService {
     });
   }
 
-  getProductsByOptions(options: { sortByTimeAsc: undefined; totalPerPage: number; currentPage: number }): any{
+  getProductsByOptions(options: { sortByPriceDesc: undefined; sortByTimeAsc: undefined; sortByPriceAsc: undefined; totalPerPage: number }): any{
     const url = 'Books/SearchBook';
     this.http.postHandle(url, options).subscribe(res => {
       if (res && res.success) {
@@ -74,5 +74,15 @@ export class ProductsService {
   getAllCategory(): any {
     const url = 'Category/GetAllCategories';
     return this.http.getHandle(url);
+  }
+
+  getAllProduct(options: { totalPerPage: number }): any {
+    const url = 'Books/SearchBook';
+    this.http.postHandle(url, options).subscribe(res => {
+      console.log(res);
+      if (res.success){
+        this.products$.next(res.data);
+      }
+    });
   }
 }

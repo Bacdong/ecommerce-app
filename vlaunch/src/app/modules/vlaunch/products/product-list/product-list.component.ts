@@ -11,6 +11,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   rootPath = 'products';
   products: any;
   subscription = new Subscription();
+  p: string | number = 1;
+  private options = {
+    totalPerPage: 100,
+  };
 
   constructor(private productsService: ProductsService, private route: ActivatedRoute) {
 
@@ -21,24 +25,28 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    let page;
-
-    this.subscription.add(
-      this.route.queryParams.subscribe((params) => {
-        page = params.page;
-      })
-    );
-
-    if (page) {
-      this.productsService.getProducts({ page });
-    } else {
-      this.productsService.getProducts();
-    }
-    this.subscription.add(
-      this.productsService.products$.subscribe((products) => {
-        this.products = products;
-      })
-    );
+    // let page;
+    //
+    // this.subscription.add(
+    //   this.route.queryParams.subscribe((params) => {
+    //     page = params.page;
+    //   })
+    // );
+    //
+    // if (page) {
+    //   this.productsService.getProducts({ page });
+    // } else {
+    //   this.productsService.getProducts();
+    // }
+    // this.subscription.add(
+    //   this.productsService.products$.subscribe((products) => {
+    //     this.products = products;
+    //   })
+    // );
+    this.productsService.getAllProduct(this.options);
+    this.productsService.products$.subscribe(res => {
+      this.products = res;
+    });
   }
 
   changePage(page): any {

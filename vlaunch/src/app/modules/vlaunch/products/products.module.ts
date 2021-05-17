@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MaterialModule} from '../material.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -30,6 +31,7 @@ import {MaterialModule} from '../material.module';
         RouterModule,
         VlaunchRoutingModule,
         MaterialModule,
+        NgxPaginationModule,
     ]
 })
 export class ProductsModule { }

@@ -18,8 +18,8 @@ export class FilterBarComponent implements OnInit {
     { value: 'decrease', name: 'Giá giảm dần' },
   ];
   private options = {
-    totalPerPage: 8,
-    currentPage: 0, sortByTimeAsc: undefined,
+    totalPerPage: 100,
+    sortByTimeAsc: undefined,
     sortByPriceAsc: undefined,
     sortByPriceDesc: undefined
 

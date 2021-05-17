@@ -36,6 +36,7 @@
     "ng-stripe-checkout": "^1.0.4",
     "ng-zorro-antd": "^11.2.0",
     "ngx-owl-carousel-o": "^5.0.0",
+    "ngx-pagination": "^5.1.0",
     "ngx-stripe": "^11.0.0",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
