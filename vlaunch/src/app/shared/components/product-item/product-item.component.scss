@@ -9,8 +9,8 @@
     text-decoration: none;
     color: currentColor;
     text-align: center;
-    img { 
-      width: 60%; 
+    img {
+      width: 70%;
       object-fit: contain;
       object-position: center;
       transition: ease-in-out 325ms;
@@ -57,8 +57,8 @@
   &:active,
   &:focus {
     .product__image {
-      img { 
-        transform: scale(1.1); 
+      img {
+        transform: scale(1.1);
         transition: ease-in-out 325ms;
       }
     }
