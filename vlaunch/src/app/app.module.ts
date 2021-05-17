@@ -11,6 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { MaterialModule } from './modules/vlaunch/material.module';
 import { VlaunchModule } from './modules/vlaunch/vlaunch.module';
 import {NgxStripeModule} from 'ngx-stripe';
+import { ProductNotFoundComponent } from './components/product-not-found/product-not-found.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {NgxStripeModule} from 'ngx-stripe';
     AppComponent,
     PageNotFoundComponent,
     AlertComponent,
+    ProductNotFoundComponent,
   ],
   imports: [
     BrowserModule,
