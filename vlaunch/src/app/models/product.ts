@@ -19,6 +19,7 @@ export class Product {
   public comment;
   public invoiceDetails;
   public categoryName: string;
+  public authorName: string;
 
 
   constructor() {
