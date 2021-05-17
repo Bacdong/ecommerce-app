@@ -100,8 +100,7 @@ export class CheckoutComponent implements OnInit {
       this.checkoutService.createOrder(data).subscribe((res: Result) => {
         this.snackbarModifyService.openMessage(res, 'Đặt đơn hàng thành công');
         if (res){
-          this.createOrderDetail(res.data.invoiceId);
-          this.router.navigateByUrl('/user/order/detail/' + res.data.invoiceId);
+          this.createOrderDetail(res.data.invoiceId);;
     }}); }
   }
 
@@ -196,6 +195,7 @@ export class CheckoutComponent implements OnInit {
     });
     this.checkoutService.createOrderDetail(invoiceDetail).subscribe(res => {
       this.snackbarModifyService.openMessage(res);
+      this.router.navigateByUrl('/user/order/detail/' + invoiceId);
     });
   }
 

@@ -66,7 +66,7 @@ export class ProductsService {
     const url = 'Books/SearchBook';
     this.http.postHandle(url, options).subscribe(res => {
       if (res && res.success) {
-        this.products$.next(res.data);
+        this.products$.next(res.data?.data);
         console.log(res);
       }
     });
