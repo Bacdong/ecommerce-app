@@ -96,7 +96,13 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  minPrice(value: any) {
-    console.log(value);
+  minPrice(value: any): any {
+    this.options.startPrice = value;
+    this.productsService.getProductsByOptions(this.options);
+  }
+
+  maxPrice(value: any): any{
+    this.options.endPrice = value;
+    this.productsService.getProductsByOptions(this.options);
   }
 }
