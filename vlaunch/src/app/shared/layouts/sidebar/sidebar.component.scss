@@ -1,6 +1,6 @@
 .sidebar{
   background-color: white;
-  border: white;
+  border-color: white;
 }
 .sidebar_header{
   background-color: white;
@@ -8,4 +8,9 @@
 }
 .sidebar_body{
   padding: 0;
+}
+.title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
 }
